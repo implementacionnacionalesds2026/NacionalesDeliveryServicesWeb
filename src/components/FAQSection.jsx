@@ -16,8 +16,8 @@ const faqs = [
         a: 'Sí, ofrecemos servicio de recolección en toda la Ciudad de Guatemala (Villa Canales, San Miguel Petapa, Villa Nueva y alrededores) y en las zonas de Huehuetenango.',
     },
     {
-        q: '¿Cómo puedo rastrear mi paquete?',
-        a: 'Te proporcionamos un número de guía al momento del envío. Puedes rastrearlo ingresando tu guía en nuestra sección de rastreo o contactándonos por WhatsApp.',
+        q: '¿Cómo puedo saber el estado de mi paquete?',
+        a: 'Al momento del envío te proporcionamos un número de guía. Puedes consultarnos el estado de tu paquete por WhatsApp o llamando a nuestros teléfonos. ¡Te respondemos al instante!',
     },
     {
         q: '¿Qué puedo enviar?',

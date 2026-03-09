@@ -13,7 +13,7 @@ export default function AnnouncementBanner() {
     const text = activeAnnouncements.map((a) => a.text).join('     •     ')
 
     return (
-        <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-accent to-accent-dark text-primary-dark">
+        <div className="fixed top-[72px] left-0 right-0 z-40 bg-gradient-to-r from-accent to-accent-dark text-primary-dark">
             <div className="relative flex items-center h-10 overflow-hidden">
                 <div className="flex items-center gap-2 px-3 shrink-0 bg-accent-dark/30 h-full">
                     <Megaphone className="w-4 h-4" />

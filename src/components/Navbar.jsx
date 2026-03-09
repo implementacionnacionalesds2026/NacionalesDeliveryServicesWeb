@@ -54,7 +54,7 @@ export default function Navbar() {
                     </a>
 
                     {/* Desktop nav */}
-                    <div className="hidden lg:flex items-center gap-1">
+                    <div className="hidden lg:flex items-center gap-2">
                         {navLinks.map((link) => (
                             <a
                                 key={link.href}
@@ -77,11 +77,13 @@ export default function Navbar() {
                             <span className="font-semibold">5568-3682</span>
                         </a>
                         <a
-                            href="#rastreo"
+                            href="https://wa.me/50255683682?text=Hola%21%20Quiero%20cotizar%20un%20envio"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="btn-primary !px-6 !py-2.5 !text-sm !rounded-xl"
                         >
-                            <MapPin className="w-4 h-4" />
-                            Rastrear Paquete
+                            <MessageCircle className="w-4 h-4" />
+                            Cotizar Envío
                         </a>
                     </div>
 
@@ -127,11 +129,13 @@ export default function Navbar() {
                             <Phone className="w-5 h-5" /> 5568-3682
                         </a>
                         <a
-                            href="#rastreo"
+                            href="https://wa.me/50255683682?text=Hola%21%20Quiero%20cotizar%20un%20envio"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             onClick={() => setMobileOpen(false)}
                             className="btn-primary"
                         >
-                            <MapPin className="w-5 h-5" /> Rastrear Paquete
+                            <MessageCircle className="w-5 h-5" /> Cotizar Envío
                         </a>
                     </div>
                 </div>

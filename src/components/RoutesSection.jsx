@@ -94,7 +94,7 @@ export default function RoutesSection() {
                                             📞 {route.phone}
                                         </a>
                                         <a
-                                            href={`https://wa.me/502${route.phone.replace(/[‑\s]/g, '')}?text=Hola! Quiero cotizar un envío de Guatemala a ${route.to}`}
+                                            href={`https://wa.me/502${route.phone.replace(/[‑\s]/g, '')}?text=Hola%21%20Quiero%20cotizar%20un%20envio%20de%20Guatemala%20a%20${encodeURIComponent(route.to)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="px-4 py-2 rounded-xl bg-green-500/20 text-green-400 text-xs font-bold hover:bg-green-500/30 transition-all"

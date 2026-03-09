@@ -1,15 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import { Search, ArrowRight, MapPin, Truck, Bike } from 'lucide-react'
-import toast from 'react-hot-toast'
+import { ArrowRight, MapPin, Truck, Bike, MessageCircle } from 'lucide-react'
 
 export default function HeroSection() {
     const titleRef = useRef(null)
-    const [trackingId, setTrackingId] = useState('')
     const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
         setLoaded(true)
-        // Animate title letters with anime.js
         const loadAnime = async () => {
             try {
                 const anime = (await import('animejs/lib/anime.es.js')).default
@@ -30,25 +27,11 @@ export default function HeroSection() {
                     })
                 }
             } catch (e) {
-                // Fallback: just show the title
                 if (titleRef.current) titleRef.current.style.opacity = '1'
             }
         }
         loadAnime()
     }, [])
-
-    const handleTrack = (e) => {
-        e.preventDefault()
-        if (!trackingId.trim()) {
-            toast.error('Por favor ingresa un número de guía')
-            return
-        }
-        toast.success(`Buscando guía: ${trackingId}... 📦`)
-        // Simulate tracking
-        setTimeout(() => {
-            toast('Tu paquete está en camino 🚀', { icon: '📦' })
-        }, 1500)
-    }
 
     return (
         <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden grid-pattern">
@@ -97,22 +80,20 @@ export default function HeroSection() {
                             Desde <span className="text-white font-bold">Q25</span>.
                         </p>
 
-                        {/* Search bar */}
-                        <form onSubmit={handleTrack} className="flex gap-2 max-w-lg mb-6">
-                            <div className="flex-1 relative">
-                                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50" />
-                                <input
-                                    type="text"
-                                    value={trackingId}
-                                    onChange={(e) => setTrackingId(e.target.value)}
-                                    placeholder="Ingresa tu número de guía..."
-                                    className="input-field !pl-12"
-                                />
-                            </div>
-                            <button type="submit" className="btn-primary !px-6 !rounded-xl shrink-0">
-                                <ArrowRight className="w-5 h-5" />
-                            </button>
-                        </form>
+                        {/* CTA Buttons */}
+                        <div className="flex flex-wrap gap-4 mb-8">
+                            <a
+                                href="https://wa.me/50255683682?text=Hola%21%20Quiero%20cotizar%20un%20envio"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-primary !text-lg"
+                            >
+                                <MessageCircle className="w-5 h-5" /> Cotizar Envío
+                            </a>
+                            <a href="#contacto" className="btn-secondary !text-lg">
+                                <ArrowRight className="w-5 h-5" /> Contáctanos
+                            </a>
+                        </div>
 
                         {/* Quick info chips */}
                         <div className="flex flex-wrap gap-3">

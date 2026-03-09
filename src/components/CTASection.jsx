@@ -27,7 +27,7 @@ export default function CTASection() {
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <a
-                                href="https://wa.me/50255683682?text=Hola! Quiero cotizar un envío 📦"
+                                href="https://wa.me/50255683682?text=Hola%21%20Quiero%20cotizar%20un%20envio"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="btn-primary !text-lg"
