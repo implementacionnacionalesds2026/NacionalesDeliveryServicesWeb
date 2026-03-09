@@ -15,6 +15,13 @@ const iconMap = {
     ),
 }
 
+const hoverColors = {
+    whatsapp: 'hover:text-green-400',
+    facebook: 'hover:text-blue-500',
+    instagram: 'hover:text-pink-400',
+    tiktok: 'hover:text-white',
+}
+
 export default function StickyLinksPanel() {
     const { config } = useAdmin()
     const activeLinks = config.stickyLinks.filter((l) => l.active)
@@ -22,19 +29,24 @@ export default function StickyLinksPanel() {
     if (activeLinks.length === 0) return null
 
     return (
-        <div className="sticky-links hidden md:flex">
+        <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-1">
             {activeLinks.map((link) => (
                 <a
                     key={link.id}
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="sticky-link-item group"
-                    style={{ background: link.color }}
+                    className={`flex items-center justify-center w-11 h-11 rounded-l-xl
+                      bg-primary-dark/80 backdrop-blur-md border border-white/10 border-r-0
+                      text-white/70 ${hoverColors[link.icon] || 'hover:text-accent'}
+                      hover:w-14 hover:bg-primary-dark/95 hover:border-accent/30
+                      transition-all duration-300 group`}
                     aria-label={link.label}
                     title={link.label}
                 >
-                    <span className="text-white">{iconMap[link.icon] || null}</span>
+                    <span className="transition-transform duration-300 group-hover:scale-110">
+                        {iconMap[link.icon] || null}
+                    </span>
                 </a>
             ))}
         </div>
