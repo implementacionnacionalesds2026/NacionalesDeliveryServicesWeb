@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight, MapPin, Truck, Bike, MessageCircle } from 'lucide-react'
+import { ArrowRight, MapPin, Truck, Bike, MessageCircle, Star, Clock, ShieldCheck } from 'lucide-react'
 
 export default function HeroSection() {
     const titleRef = useRef(null)
@@ -20,10 +20,10 @@ export default function HeroSection() {
                         targets: titleRef.current.querySelectorAll('span'),
                         opacity: [0, 1],
                         translateY: [40, 0],
-                        rotateX: [90, 0],
-                        duration: 800,
-                        delay: anime.stagger(40, { start: 300 }),
-                        easing: 'easeOutExpo',
+                        translateZ: 0,
+                        duration: 1000,
+                        delay: anime.stagger(30, { start: 200 }),
+                        easing: 'easeOutElastic(1, .8)',
                     })
                 }
             } catch (e) {
@@ -34,147 +34,135 @@ export default function HeroSection() {
     }, [])
 
     return (
-        <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden grid-pattern">
-            {/* Background gradient orbs */}
-            <div className="absolute top-20 -left-40 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-20 -right-40 w-96 h-96 bg-primary-light/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl" />
+        <section id="inicio" className="relative min-h-[100vh] flex items-center overflow-hidden pt-20">
+            {/* Dynamic Background */}
+            <div className="absolute inset-0 bg-primary-dark/90" />
+            <div className="absolute inset-0 grid-pattern opacity-30 mix-blend-overlay" />
 
-            {/* Floating particles */}
-            {[...Array(12)].map((_, i) => (
-                <div
-                    key={i}
-                    className="particle"
-                    style={{
-                        width: `${Math.random() * 6 + 2}px`,
-                        height: `${Math.random() * 6 + 2}px`,
-                        left: `${Math.random() * 100}%`,
-                        animationDuration: `${Math.random() * 8 + 6}s`,
-                        animationDelay: `${Math.random() * 5}s`,
-                    }}
-                />
-            ))}
+            {/* Animated Light Orbs */}
+            <div className="absolute top-1/4 -left-32 w-[30rem] h-[30rem] bg-accent/20 rounded-full blur-[100px] animate-pulse-glow" />
+            <div className="absolute bottom-1/4 -right-32 w-[30rem] h-[30rem] bg-primary-light/30 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: '2s' }} />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-accent/15 rounded-full blur-[120px]" />
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 relative z-10">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    {/* LEFT — Text */}
-                    <div className={`transition-all duration-1000 ${loaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-accent font-medium mb-6">
-                            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                            Rapidez que nos une 🚀
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-12 lg:py-24">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+
+                    {/* LEFT CONTENT */}
+                    <div className={`transition-all duration-1000 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-accent/30 text-sm text-accent font-medium mb-8 hover:bg-accent/10 transition-colors shadow-[0_0_20px_rgba(62,198,224,0.2)]">
+                            <span className="relative flex h-3 w-3">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+                            </span>
+                            Conectando a todo el país al instante
                         </div>
 
                         <h1
                             ref={titleRef}
-                            className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6"
+                            className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-6 drop-shadow-lg"
                         >
-                            Nacionales Delivery Services
+                            Entregas Que <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Inspiran</span> Confianza
                         </h1>
 
-                        <p className="text-lg text-blue-200 leading-relaxed max-w-lg mb-8">
-                            Envíos seguros y rápidos a todo Guatemala. Conectamos{' '}
-                            <span className="text-accent font-semibold">Guatemala</span>,{' '}
-                            <span className="text-accent font-semibold">Huehuetenango</span>,{' '}
-                            <span className="text-accent font-semibold">Chimaltenango</span>,{' '}
-                            <span className="text-accent font-semibold">Petén</span> y más destinos.
-                            Desde <span className="text-white font-bold">Q25</span>.
+                        <p className="text-lg text-blue-100/90 leading-relaxed max-w-lg mb-10 text-shadow-sm font-light">
+                            Somos tu aliado logístico. Envíos exprés, seguros y monitoreados a <span className="text-white font-medium">Guatemala, Huehuetenango, Chimaltenango y Petén</span>. Confía tus paquetes a los expertos desde <span className="inline-block px-2 py-0.5 rounded-md bg-accent/20 text-accent font-bold">Q25</span>.
                         </p>
 
-                        {/* CTA Buttons */}
-                        <div className="flex flex-wrap gap-4 mb-8">
+                        <div className="flex flex-col sm:flex-row gap-4 mb-10">
                             <a
                                 href="https://wa.me/50255683682?text=Hola%21%20Quiero%20cotizar%20un%20envio"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn-primary !text-lg"
+                                className="btn-primary !px-8 !py-4 !text-lg !rounded-2xl group flex justify-center shadow-[0_10px_40px_-10px_rgba(62,198,224,0.5)]"
                             >
-                                <MessageCircle className="w-5 h-5" /> Cotizar Envío
+                                <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                Cotizar mi Envío
                             </a>
-                            <a href="#contacto" className="btn-secondary !text-lg">
-                                <ArrowRight className="w-5 h-5" /> Contáctanos
+                            <a
+                                href="#servicios"
+                                className="btn-secondary !px-8 !py-4 !text-lg !rounded-2xl group flex justify-center bg-white/5 hover:bg-white/10 border-white/10"
+                            >
+                                Ver Servicios
+                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </a>
                         </div>
 
-                        {/* Quick info chips */}
-                        <div className="flex flex-wrap gap-3">
-                            {[
-                                { icon: MapPin, text: 'Guate ↔ Huehue' },
-                                { icon: Truck, text: 'Guate ↔ Petén' },
-                                { icon: Bike, text: 'Guate ↔ Chimaltenango' },
-                            ].map(({ icon: Icon, text }) => (
-                                <div
-                                    key={text}
-                                    className="flex items-center gap-2 px-4 py-2 rounded-xl glass text-sm text-blue-200 hover:text-white hover:border-accent/40 transition-all cursor-pointer"
-                                >
-                                    <Icon className="w-4 h-4 text-accent" />
-                                    {text}
-                                </div>
-                            ))}
+                        {/* Micro-Features */}
+                        <div className="flex items-center gap-6 text-sm text-blue-200">
+                            <div className="flex items-center gap-2">
+                                <ShieldCheck className="w-5 h-5 text-accent" /> 100% Seguro
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <Clock className="w-5 h-5 text-accent" /> Entregas 24/48h
+                            </div>
                         </div>
                     </div>
 
-                    {/* RIGHT — Animated 3D Scene */}
-                    <div className={`relative flex items-center justify-center transition-all duration-1000 delay-300 ${loaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
-                        {/* Glow ring */}
-                        <div className="absolute w-80 h-80 rounded-full border-2 border-accent/20 animate-spin-slow" />
-                        <div className="absolute w-72 h-72 rounded-full border border-accent/10 animate-spin-slow" style={{ animationDirection: 'reverse' }} />
+                    {/* RIGHT CONTENT — Creative Visual Layout */}
+                    <div className={`relative w-full h-full min-h-[400px] flex items-center justify-center transition-all duration-1000 delay-300 ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
 
-                        {/* Vehicle scene */}
-                        <div className="relative w-full max-w-md">
-                            {/* Main truck */}
-                            <div className="animate-float relative z-10">
-                                <img
-                                    src="/images/truck-3d.png"
-                                    alt="Camión de entrega Nacionales Delivery Services"
-                                    className="w-full drop-shadow-2xl"
-                                />
-                            </div>
+                        {/* Center Glowing Hub */}
+                        <div className="relative z-10 w-48 h-48 rounded-[2rem] bg-gradient-to-br from-white/10 to-white/5 border border-white/20 backdrop-blur-xl shadow-2xl flex flex-col items-center justify-center transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-500 cursor-pointer">
+                            <Truck className="w-16 h-16 text-accent mb-3 drop-shadow-[0_0_15px_rgba(62,198,224,0.5)]" />
+                            <span className="text-xl font-bold text-white tracking-widest">NDS</span>
+                            <span className="text-xs text-accent uppercase font-semibold">Logistics</span>
 
-                            {/* Moto orbiting */}
-                            <div className="absolute -bottom-4 -left-8 w-32 animate-float" style={{ animationDelay: '0.5s' }}>
-                                <img
-                                    src="/images/moto-3d.png"
-                                    alt="Moto de entrega"
-                                    className="w-full drop-shadow-xl"
-                                />
-                            </div>
+                            {/* Pulse rings */}
+                            <div className="absolute inset-0 rounded-[2rem] border-2 border-accent/30 animate-ping opacity-20" style={{ animationDuration: '3s' }} />
+                            <div className="absolute -inset-4 rounded-[2.5rem] border border-accent/20 animate-spin-slow" />
+                        </div>
 
-                            {/* Car orbiting */}
-                            <div className="absolute -top-4 -right-4 w-36 animate-float" style={{ animationDelay: '1s' }}>
-                                <img
-                                    src="/images/car-3d.png"
-                                    alt="Auto de entrega"
-                                    className="w-full drop-shadow-xl"
-                                />
+                        {/* Floating Card: Fast Routes */}
+                        <div className="absolute top-[5%] -left-[10%] sm:left-0 z-20 w-56 p-4 rounded-2xl bg-primary/40 backdrop-blur-xl border border-white/10 shadow-2xl animate-float">
+                            <div className="flex items-center gap-3 mb-2">
+                                <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                                    <MapPin className="w-4 h-4 text-blue-400" />
+                                </div>
+                                <p className="text-sm font-semibold text-white">Rutas Activas</p>
                             </div>
-
-                            {/* Delivery person peeking */}
-                            <div className="absolute -bottom-8 right-4 w-28 animate-float" style={{ animationDelay: '1.5s' }}>
-                                <img
-                                    src="/images/person-3d.png"
-                                    alt="Repartidor Nacionales DS"
-                                    className="w-full drop-shadow-xl"
-                                />
-                            </div>
-
-                            {/* Floating badges */}
-                            <div className="absolute top-0 left-0 glass px-3 py-1.5 rounded-xl animate-float" style={{ animationDelay: '0.8s' }}>
-                                <p className="text-xs font-semibold text-accent">📦 +5,000 entregas</p>
-                            </div>
-                            <div className="absolute bottom-16 right-0 glass px-3 py-1.5 rounded-xl animate-float" style={{ animationDelay: '1.2s' }}>
-                                <p className="text-xs font-semibold text-accent">⭐ 99% satisfacción</p>
+                            <div className="space-y-2">
+                                {['Guatemala', 'Huehuetenango', 'Petén'].map((route, i) => (
+                                    <div key={route} className="flex items-center gap-2 text-xs text-blue-200">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                                        {route}
+                                        <div className="ml-auto w-12 h-0.5 bg-gradient-to-r from-accent/50 to-transparent" />
+                                    </div>
+                                ))}
                             </div>
                         </div>
+
+                        {/* Floating Card: Delivery Count */}
+                        <div className="absolute bottom-[10%] right-0 z-20 p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl animate-float" style={{ animationDelay: '1.5s' }}>
+                            <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-blue-500 flex items-center justify-center shadow-lg">
+                                    <Star className="w-6 h-6 text-white" />
+                                </div>
+                                <div>
+                                    <h4 className="text-2xl font-bold text-white tracking-tight">5k+</h4>
+                                    <p className="text-xs text-blue-200 uppercase tracking-wide font-medium">Entregas Exitosas</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Floating Card: Delivery Map Pulse */}
+                        <div className="absolute top-[20%] -right-[5%] z-0 animate-float" style={{ animationDelay: '0.8s' }}>
+                            <div className="relative">
+                                <div className="w-24 h-24 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center">
+                                    <div className="w-16 h-16 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center">
+                                        <Bike className="w-8 h-8 text-accent opacity-50" />
+                                    </div>
+                                </div>
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-accent rounded-full shadow-[0_0_15px_rgba(62,198,224,1)]" />
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-            {/* Bottom wave */}
-            <div className="absolute bottom-0 left-0 right-0">
-                <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-                    <path d="M0 50L48 45C96 40 192 30 288 35C384 40 480 60 576 65C672 70 768 60 864 50C960 40 1056 30 1152 35C1248 40 1344 60 1392 70L1440 80V100H0V50Z" fill="#0a1035" />
-                </svg>
-            </div>
+            {/* Fade to next section */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-dark to-transparent pointer-events-none" />
         </section>
     )
 }
