@@ -3,10 +3,10 @@ import { Package, Users, MapPin, Award } from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
 
 const stats = [
-    { icon: Package, value: 5000, suffix: '+', label: 'Paquetes Entregados', color: 'text-accent' },
-    { icon: Users, value: 2500, suffix: '+', label: 'Clientes Satisfechos', color: 'text-blue-400' },
-    { icon: MapPin, value: 50, suffix: '+', label: 'Aldeas y Ciudades', color: 'text-purple-400' },
-    { icon: Award, value: 3, suffix: '', label: 'Años de Experiencia', color: 'text-amber-400' },
+    { icon: Package, value: 1000, suffix: '+', label: 'Envíos Realizados', color: 'text-accent' },
+    { icon: Users, value: 500, suffix: '+', label: 'Clientes Satisfechos', color: 'text-blue-400' },
+    { icon: MapPin, value: 22, suffix: '', label: 'Departamentos de GT', color: 'text-purple-400' },
+    { icon: Award, value: 100, suffix: '%', label: 'Confianza Total', color: 'text-amber-400' },
 ]
 
 function Counter({ target, suffix }) {
