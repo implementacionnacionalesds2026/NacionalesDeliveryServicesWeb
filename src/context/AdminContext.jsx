@@ -2,7 +2,6 @@ import { createContext, useContext, useState, useEffect } from 'react'
 
 const defaultConfig = {
     announcements: [
-        { id: 1, text: '🚀 ¡Envíos express a todo el país! Cotiza ahora y obtén 10% de descuento en tu primer envío.', active: true, color: 'accent' },
         { id: 2, text: '📍 Servicio puerta a puerta — Guatemala, Huehuetenango, Chimaltenango y Petén. ¡Cotiza ahora!', active: true, color: 'primary' },
     ],
     whatsapp: {
