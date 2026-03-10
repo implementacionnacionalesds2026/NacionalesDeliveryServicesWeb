@@ -21,30 +21,17 @@ export default function ContactSection() {
         setSending(true)
 
         try {
-            // Using FormSubmit for easy functional emails
-            const response = await fetch('https://formsubmit.co/ajax/implementacionnacionalesds@gmail.com', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    Nombre: form.name,
-                    Telefono: form.phone || 'No indicado',
-                    Email: form.email,
-                    Mensaje: form.message,
-                    _subject: 'Nuevo mensaje web de ' + form.name,
-                    _template: 'table'
-                })
-            })
-
-            if (response.ok) {
-                toast.success('¡Mensaje enviado con éxito! Te contactaremos pronto 📬')
-                setForm({ name: '', email: '', phone: '', message: '' })
-            } else {
-                throw new Error('Error on fetch')
-            }
-        } catch {
+            const emailjs = await import('@emailjs/browser')
+            await emailjs.sendForm(
+                'service_kjussrr',
+                'template_kc6cfd8',
+                formRef.current,
+                'ru6akFUJJ-xcgtGS_'
+            )
+            toast.success('¡Mensaje enviado con éxito! Te contactaremos pronto 📬')
+            setForm({ name: '', email: '', phone: '', message: '' })
+        } catch (error) {
+            console.error('EmailJS Error:', error)
             toast.error('Ocurrió un error al enviar el mensaje. Intenta por WhatsApp.')
         } finally {
             setSending(false)
