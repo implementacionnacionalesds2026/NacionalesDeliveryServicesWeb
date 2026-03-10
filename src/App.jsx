@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage'
 import AdminPage from './pages/AdminPage'
 import WhatsAppFab from './components/WhatsAppFab'
 import StickyLinksPanel from './components/StickyLinksPanel'
+import BackgroundAnimation from './components/BackgroundAnimation'
 
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
                     }}
                 />
 
+                <BackgroundAnimation />
                 <StickyLinksPanel />
                 <WhatsAppFab />
                 <Routes>
