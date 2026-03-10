@@ -61,8 +61,7 @@ export default function HeroSection() {
                             ref={titleRef}
                             className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-6 drop-shadow-md md:drop-shadow-lg"
                         >
-                            Entregas Que <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Inspiran</span> Confianza
+                            Entregas Que <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Inspiran</span> Confianza
                         </h1>
 
                         <p className="text-base sm:text-lg text-blue-100/90 leading-relaxed max-w-lg mb-8 md:mb-10 font-light">
@@ -102,57 +101,19 @@ export default function HeroSection() {
                     {/* RIGHT CONTENT — Creative Visual Layout */}
                     <div className={`relative w-full h-full min-h-[300px] md:min-h-[400px] flex items-center justify-center transition-all duration-1000 delay-300 ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
 
-                        {/* Center Glowing Hub - Optimized for mobile */}
-                        <div className="relative z-10 w-40 h-40 md:w-48 md:h-48 rounded-[2rem] bg-primary/80 md:bg-gradient-to-br md:from-white/10 md:to-white/5 border border-white/10 md:border-white/20 md:backdrop-blur-xl shadow-xl flex flex-col items-center justify-center transform md:rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-500 cursor-pointer">
-                            <Truck className="w-12 h-12 md:w-16 md:h-16 text-accent mb-2 md:mb-3 md:drop-shadow-[0_0_15px_rgba(62,198,224,0.5)]" />
-                            <span className="text-lg md:text-xl font-bold text-white tracking-widest">NDS</span>
-                            <span className="text-[10px] md:text-xs text-accent uppercase font-semibold">Logistics</span>
+                        {/* Hero Logo - Replaced floating cards with the official logo */}
+                        <div className="relative z-10 w-64 h-64 md:w-80 md:h-80 flex items-center justify-center animate-float">
+                            {/* Glow effect behind logo */}
+                            <div className="absolute inset-0 bg-accent/20 rounded-full blur-[60px] animate-pulse-glow" />
 
-                            {/* Pulse rings - Hidden on mobile */}
-                            <div className="hidden md:block absolute inset-0 rounded-[2rem] border-2 border-accent/30 animate-ping opacity-20" style={{ animationDuration: '3s' }} />
-                            <div className="hidden md:block absolute -inset-4 rounded-[2.5rem] border border-accent/20 animate-spin-slow" />
-                        </div>
+                            <img
+                                src="/images/logo.png"
+                                alt="Nacionales Logo"
+                                className="relative z-20 w-full h-full object-contain filter drop-shadow-[0_20px_50px_rgba(62,198,224,0.4)]"
+                            />
 
-                        {/* Floating Card: Fast Routes - Hidden on small screens */}
-                        <div className="hidden md:block absolute top-[5%] left-0 z-20 w-56 p-4 rounded-2xl bg-primary/40 backdrop-blur-xl border border-white/10 shadow-2xl animate-float">
-                            <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
-                                    <MapPin className="w-4 h-4 text-blue-400" />
-                                </div>
-                                <p className="text-sm font-semibold text-white">Rutas Activas</p>
-                            </div>
-                            <div className="space-y-2">
-                                {['Guatemala', 'Huehuetenango', 'Petén'].map((route, i) => (
-                                    <div key={route} className="flex items-center gap-2 text-xs text-blue-200">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                                        {route}
-                                        <div className="ml-auto w-12 h-0.5 bg-gradient-to-r from-accent/50 to-transparent" />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Floating Card: Delivery Count - Hidden on small screens */}
-                        <div className="hidden md:flex absolute bottom-[10%] right-0 z-20 p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl animate-float items-center gap-4" style={{ animationDelay: '1.5s' }}>
-                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-blue-500 flex items-center justify-center shadow-lg">
-                                <Star className="w-6 h-6 text-white" />
-                            </div>
-                            <div>
-                                <h4 className="text-2xl font-bold text-white tracking-tight">5k+</h4>
-                                <p className="text-xs text-blue-200 uppercase tracking-wide font-medium">Entregas Exitosas</p>
-                            </div>
-                        </div>
-
-                        {/* Floating Card: Delivery Map Pulse - Hidden on small screens */}
-                        <div className="hidden md:block absolute top-[20%] -right-[5%] z-0 animate-float" style={{ animationDelay: '0.8s' }}>
-                            <div className="relative">
-                                <div className="w-24 h-24 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center">
-                                    <div className="w-16 h-16 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center">
-                                        <Bike className="w-8 h-8 text-accent opacity-50" />
-                                    </div>
-                                </div>
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-accent rounded-full shadow-[0_0_15px_rgba(62,198,224,1)]" />
-                            </div>
+                            {/* Decorative rotating ring */}
+                            <div className="absolute -inset-8 rounded-full border border-accent/10 border-dashed animate-spin-slow opacity-50" />
                         </div>
 
                     </div>
