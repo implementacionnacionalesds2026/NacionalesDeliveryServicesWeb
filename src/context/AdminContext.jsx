@@ -29,8 +29,18 @@ export function AdminProvider({ children }) {
     const [config, setConfig] = useState(() => {
         try {
             const saved = localStorage.getItem('nds_admin_config')
-            return saved ? JSON.parse(saved) : defaultConfig
-        } catch { return defaultConfig }
+            if (saved) {
+                const parsed = JSON.parse(saved)
+                // Force remove the old 10% discount announcement (id: 1) if it exists in user's cache
+                if (parsed.announcements) {
+                    parsed.announcements = parsed.announcements.filter(a => a.id !== 1)
+                }
+                return parsed
+            }
+            return defaultConfig
+        } catch {
+            return defaultConfig
+        }
     })
 
     useEffect(() => {
