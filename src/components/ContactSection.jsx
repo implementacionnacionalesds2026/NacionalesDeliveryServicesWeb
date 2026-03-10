@@ -163,7 +163,7 @@ export default function ContactSection() {
                                 {
                                     icon: Phone,
                                     title: 'Teléfonos',
-                                    lines: ['5271-3803 (Huehue)', '3722-3693 (Chimaltenango)', '1358-3067 (Petén)', '5683-668 (General)'],
+                                    lines: ['5271-3803 (Huehue)', '3722-3693 (Chimaltenango)', '1358-3067 (Petén)', '5683-6688 (General)'],
                                     color: 'bg-accent/10 text-accent',
                                 },
                                 {
@@ -196,17 +196,17 @@ export default function ContactSection() {
 
                             {/* WhatsApp CTA */}
                             <a
-                                href="https://wa.me/5025683668?text=Hola%21%20Quiero%20cotizar%20un%20envio"
+                                href="https://wa.me/50256836688?text=Hola%21%20👋%20Vengo%20de%20la%20página%20web%20y%20necesito%20cotizar%20un%20envío%20📦.%20¿Me%20podrían%20dar%20información?"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-4 p-6 rounded-2xl bg-green-500/10 border border-green-500/20 hover:border-green-500/50 transition-all group"
                             >
                                 <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                    <MessageCircle className="w-6 h-6 text-green-400" />
+                                    <WhatsAppIcon className="w-6 h-6 text-green-400" />
                                 </div>
                                 <div>
                                     <p className="text-green-400 font-bold">Escríbenos por WhatsApp</p>
-                                    <p className="text-green-300/70 text-sm">Respuesta inmediata • Cotización rápida</p>
+                                    <p className="text-green-300/70 text-sm">Respuesta inmediata • Cotización rápida 🚚</p>
                                 </div>
                             </a>
                         </div>

@@ -74,7 +74,7 @@ export default function RoutesSection() {
 
                                 {/* Places */}
                                 <div className="p-6 flex-1 flex flex-col">
-                                    <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-3">Aldeas y zonas que atendemos</p>
+                                    <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-3">Municipios y zonas que atendemos</p>
                                     <div className="flex flex-wrap gap-2 mb-6">
                                         {route.places.map((p) => (
                                             <span
@@ -96,7 +96,7 @@ export default function RoutesSection() {
                                             Llamar al {route.phone}
                                         </a>
                                         <a
-                                            href={`https://wa.me/50256836688?text=Hola%21%20👋%20Quiero%20cotizar%20un%20envío%20de%20Guatemala%20a%20${encodeURIComponent(route.to)}%20📦`}
+                                            href={`https://wa.me/502${route.phone.replace(/[‑\s]/g, '')}?text=Hola%21%20👋%20Quiero%20cotizar%20un%20envío%20de%20Guatemala%20a%20${encodeURIComponent(route.to)}%20📦`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-accent/30 bg-accent/5 text-accent hover:bg-accent/20 transition-all font-bold text-sm"
