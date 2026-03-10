@@ -39,9 +39,6 @@ export default function CTASection() {
                             </a>
                         </div>
 
-                        <p className="text-blue-400 text-sm mt-6">
-                            📞 5683-668 / 5271-3803 • 📧 implementacionnacionalesds@gmail.com
-                        </p>
                     </div>
                 </ScrollReveal>
             </div>
