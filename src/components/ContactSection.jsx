@@ -21,23 +21,33 @@ export default function ContactSection() {
         setSending(true)
 
         try {
-            // Try EmailJS if configured
-            const emailjs = await import('@emailjs/browser')
-            // Users should set these values in the admin or .env
-            await emailjs.sendForm(
-                'YOUR_SERVICE_ID',
-                'YOUR_TEMPLATE_ID',
-                formRef.current,
-                'YOUR_PUBLIC_KEY'
-            )
-            toast.success('¡Mensaje enviado con éxito! Te contactaremos pronto 📬')
-            setForm({ name: '', email: '', phone: '', message: '' })
+            // Using FormSubmit for easy functional emails
+            const response = await fetch('https://formsubmit.co/ajax/implementacionnacionalesds@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    Nombre: form.name,
+                    Telefono: form.phone || 'No indicado',
+                    Email: form.email,
+                    Mensaje: form.message,
+                    _subject: 'Nuevo mensaje web de ' + form.name
+                })
+            })
+
+            if (response.ok) {
+                toast.success('¡Mensaje enviado con éxito! Te contactaremos pronto 📬')
+                setForm({ name: '', email: '', phone: '', message: '' })
+            } else {
+                throw new Error('Error on fetch')
+            }
         } catch {
-            // Fallback — just show success for demo
-            toast.success('¡Mensaje recibido! Te contactaremos pronto 📬')
-            setForm({ name: '', email: '', phone: '', message: '' })
+            toast.error('Ocurrió un error al enviar el mensaje. Intenta por WhatsApp.')
+        } finally {
+            setSending(false)
         }
-        setSending(false)
     }
 
     return (
@@ -141,7 +151,7 @@ export default function ContactSection() {
                                 {
                                     icon: Mail,
                                     title: 'Correo',
-                                    lines: ['nacionalesdelivery@gmail.com'],
+                                    lines: ['implementacionnacionalesds@gmail.com'],
                                     color: 'bg-amber-500/10 text-amber-400',
                                 },
                             ].map((card) => (

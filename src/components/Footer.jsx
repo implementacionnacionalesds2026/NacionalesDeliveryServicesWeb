@@ -129,9 +129,9 @@ export default function Footer() {
                                 <Phone className="w-4 h-4 mt-0.5 shrink-0" />
                                 <span>5568-3682 / 5271-3803</span>
                             </a>
-                            <a href="mailto:nacionalesdelivery@gmail.com" className="flex items-start gap-2 footer-link">
-                                <Mail className="w-4 h-4 mt-0.5 shrink-0" />
-                                <span>nacionalesdelivery@gmail.com</span>
+                            <a href="mailto:implementacionnacionalesds@gmail.com" className="flex items-start gap-2 footer-link">
+                                <Mail className="w-5 h-5 shrink-0 text-accent mt-0.5" />
+                                <span>implementacionnacionalesds@gmail.com</span>
                             </a>
                             <div className="flex items-start gap-2 text-blue-300 text-sm">
                                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />

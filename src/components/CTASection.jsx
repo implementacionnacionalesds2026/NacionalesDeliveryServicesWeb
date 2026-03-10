@@ -40,7 +40,7 @@ export default function CTASection() {
                         </div>
 
                         <p className="text-blue-400 text-sm mt-6">
-                            📞 5568-3682 / 5271-3803 • 📧 nacionalesdelivery@gmail.com
+                            📞 5568-3682 / 5271-3803 • 📧 implementacionnacionalesds@gmail.com
                         </p>
                     </div>
                 </ScrollReveal>
