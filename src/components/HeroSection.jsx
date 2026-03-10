@@ -11,19 +11,13 @@ export default function HeroSection() {
             try {
                 const anime = (await import('animejs/lib/anime.es.js')).default
                 if (titleRef.current) {
-                    const text = titleRef.current.textContent || ''
-                    titleRef.current.innerHTML = text
-                        .split('')
-                        .map((l) => `<span class="inline-block" style="opacity:0">${l === ' ' ? '&nbsp;' : l}</span>`)
-                        .join('')
                     anime({
-                        targets: titleRef.current.querySelectorAll('span'),
+                        targets: titleRef.current,
                         opacity: [0, 1],
-                        translateY: [40, 0],
-                        translateZ: 0,
-                        duration: 1000,
-                        delay: anime.stagger(30, { start: 200 }),
-                        easing: 'easeOutElastic(1, .8)',
+                        translateY: [30, 0],
+                        duration: 1200,
+                        easing: 'easeOutExpo',
+                        delay: 300
                     })
                 }
             } catch (e) {
@@ -61,7 +55,8 @@ export default function HeroSection() {
                             ref={titleRef}
                             className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-6 drop-shadow-md md:drop-shadow-lg"
                         >
-                            Entregas Que <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Inspiran</span> Confianza
+                            Entregas Que <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">Inspiran</span> Confianza
                         </h1>
 
                         <p className="text-base sm:text-lg text-blue-100/90 leading-relaxed max-w-lg mb-8 md:mb-10 font-light">
