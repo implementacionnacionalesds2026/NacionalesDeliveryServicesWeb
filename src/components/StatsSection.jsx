@@ -5,7 +5,7 @@ import ScrollReveal from './ScrollReveal'
 const stats = [
     { icon: Package, value: 1000, suffix: '+', label: 'Envíos Realizados', color: 'text-accent' },
     { icon: Users, value: 500, suffix: '+', label: 'Clientes Satisfechos', color: 'text-blue-400' },
-    { icon: MapPin, value: 22, suffix: '', label: 'Departamentos de GT', color: 'text-purple-400' },
+    { icon: MapPin, value: 50, suffix: '+', label: 'Municipios Cubiertos', color: 'text-purple-400' },
     { icon: Award, value: 100, suffix: '%', label: 'Confianza Total', color: 'text-amber-400' },
 ]
 
