@@ -58,11 +58,7 @@ export default function RoutesSection() {
                                     <div className="flex flex-col items-center justify-center gap-1">
                                         <span className="text-xs font-bold text-accent tracking-[0.2em] uppercase opacity-70">Ruta Directa</span>
                                         <div className="flex items-center justify-center gap-4 my-2">
-                                            <span className="text-2xl font-black text-white tracking-tight">GUATE</span>
-                                            <div className="flex items-center px-3 py-1 bg-accent/10 rounded-full border border-accent/20">
-                                                <ArrowRight className="w-4 h-4 text-accent" />
-                                            </div>
-                                            <span className="text-2xl font-black text-white tracking-tight">{route.to.toUpperCase()}</span>
+                                            <span className="text-3xl font-black text-white tracking-tight">{route.to.toUpperCase()}</span>
                                         </div>
                                         <div className="px-4 py-1.5 rounded-xl bg-white/5 border border-white/10 text-blue-200 text-sm font-bold mt-2">
                                             {route.price}
