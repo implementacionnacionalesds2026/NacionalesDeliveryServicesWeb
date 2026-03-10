@@ -27,20 +27,20 @@ export default function CTASection() {
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <a
-                                href="https://wa.me/50255683682?text=Hola%21%20Quiero%20cotizar%20un%20envio"
+                                href="https://wa.me/5025683668?text=Hola%21%20Quiero%20cotizar%20un%20envio"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="btn-primary !text-lg"
                             >
                                 Cotizar Envío <ArrowRight className="w-5 h-5" />
                             </a>
-                            <a href="tel:55683682" className="btn-secondary !text-lg">
+                            <a href="tel:5683668" className="btn-secondary !text-lg">
                                 <Phone className="w-5 h-5" /> Llamar Ahora
                             </a>
                         </div>
 
                         <p className="text-blue-400 text-sm mt-6">
-                            📞 5568-3682 / 5271-3803 • 📧 implementacionnacionalesds@gmail.com
+                            📞 5683-668 / 5271-3803 • 📧 implementacionnacionalesds@gmail.com
                         </p>
                     </div>
                 </ScrollReveal>

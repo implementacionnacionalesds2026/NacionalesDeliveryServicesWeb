@@ -68,8 +68,9 @@ export default function Footer() {
                     {/* Brand */}
                     <div className="col-span-2 md:col-span-1">
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center">
-                                <Package className="w-6 h-6 text-accent" />
+                            <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 p-1 backdrop-blur-sm border border-white/20 shadow-[0_0_15px_rgba(62,198,224,0.3)] group-hover:shadow-[0_0_25px_rgba(62,198,224,0.6)] group-hover:border-accent/50 transition-all duration-300 transform group-hover:-translate-y-1">
+                                <img src="/images/logo.png" alt="Nacionales Logo" className="w-full h-full object-contain rounded-xl" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
+                                <Package className="w-full h-full text-accent hidden p-1" />
                             </div>
                             <div>
                                 <h3 className="font-bold text-white leading-tight">Nacionales</h3>
@@ -125,9 +126,9 @@ export default function Footer() {
                     <div>
                         <h4 className="text-white font-bold mb-4 text-sm">Contacto</h4>
                         <div className="space-y-3">
-                            <a href="tel:55683682" className="flex items-start gap-2 footer-link">
+                            <a href="tel:5683668" className="flex items-start gap-2 footer-link">
                                 <Phone className="w-4 h-4 mt-0.5 shrink-0" />
-                                <span>5568-3682 / 5271-3803</span>
+                                <span>5683-668 / 5271-3803</span>
                             </a>
                             <a href="mailto:implementacionnacionalesds@gmail.com" className="flex items-start gap-2 footer-link">
                                 <Mail className="w-5 h-5 shrink-0 text-accent mt-0.5" />
