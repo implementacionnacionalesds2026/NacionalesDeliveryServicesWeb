@@ -145,7 +145,7 @@ export default function Footer() {
                 {/* Bottom */}
                 <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <p className="text-blue-400 text-xs text-center sm:text-left">
-                        © {year} Nacionales Delivery Services. Todos los derechos reservados. Hecho con ❤️ en Guatemala 🇬🇹
+                        © {year} Nacionales Delivery Services. Todos los derechos reservados. Hecho con amor en Guatemala
                     </p>
                     <button
                         onClick={scrollTop}
