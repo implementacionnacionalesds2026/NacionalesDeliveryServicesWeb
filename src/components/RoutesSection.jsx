@@ -1,4 +1,4 @@
-import { MapPin, ArrowLeftRight, Truck, Bike, Car } from 'lucide-react'
+import { MapPin, ArrowRight, Phone, MessageCircle } from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
 
 const routes = [
@@ -7,8 +7,6 @@ const routes = [
         to: 'Huehuetenango',
         places: ['Chiantla', 'Malacatancito', 'Piedras Negras', 'San Sebastián', 'San Lorenzo', 'Chinaca'],
         phone: '5271‑3803',
-        icon: Truck,
-        img: '/images/truck-3d.png',
         price: 'Desde Q35',
         address: '4ta Calle Zona 9, Zaculei Central',
     },
@@ -17,8 +15,6 @@ const routes = [
         to: 'Chimaltenango',
         places: ['Tecpán', 'Chimaltenango centro', 'San Martín Jilotepeque'],
         phone: '3722‑3693',
-        icon: Car,
-        img: '/images/car-3d.png',
         price: 'Desde Q35',
         address: '',
     },
@@ -27,8 +23,6 @@ const routes = [
         to: 'Petén',
         places: ['San Benito', 'Santa Elena-Flores', 'San José', 'San Andrés', 'Sacpuy', 'San Antonio', 'Belén', 'Purusila', 'Santa Ana', 'El Limón', 'La Pita'],
         phone: '1358‑3067',
-        icon: Bike,
-        img: '/images/moto-3d.png',
         price: 'Desde Q35',
         address: '',
     },
@@ -57,18 +51,23 @@ export default function RoutesSection() {
                     {routes.map((route, i) => (
                         <ScrollReveal key={route.to} delay={i * 150}>
                             <div className="glass rounded-3xl overflow-hidden group hover:border-accent/40 transition-all duration-500 h-full flex flex-col">
-                                {/* Header with animated vehicle */}
-                                <div className="relative bg-gradient-to-br from-primary/50 to-primary-dark/50 p-6 text-center overflow-hidden">
-                                    <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-accent/10 blur-2xl group-hover:bg-accent/20 transition-all" />
-                                    <div className="w-24 h-24 mx-auto mb-3 animate-float" style={{ animationDelay: `${i * 0.4}s` }}>
-                                        <img src={route.img} alt={`${route.from} a ${route.to}`} className="w-full h-full object-contain drop-shadow-xl" />
+                                {/* Header with cleaner route display */}
+                                <div className="relative bg-gradient-to-br from-primary/30 to-primary-dark/30 p-8 text-center overflow-hidden">
+                                    <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-accent/5 blur-2xl group-hover:bg-accent/15 transition-all" />
+
+                                    <div className="flex flex-col items-center justify-center gap-1">
+                                        <span className="text-xs font-bold text-accent tracking-[0.2em] uppercase opacity-70">Ruta Directa</span>
+                                        <div className="flex items-center justify-center gap-4 my-2">
+                                            <span className="text-2xl font-black text-white tracking-tight">GUATE</span>
+                                            <div className="flex items-center px-3 py-1 bg-accent/10 rounded-full border border-accent/20">
+                                                <ArrowRight className="w-4 h-4 text-accent" />
+                                            </div>
+                                            <span className="text-2xl font-black text-white tracking-tight">{route.to.toUpperCase()}</span>
+                                        </div>
+                                        <div className="px-4 py-1.5 rounded-xl bg-white/5 border border-white/10 text-blue-200 text-sm font-bold mt-2">
+                                            {route.price}
+                                        </div>
                                     </div>
-                                    <div className="flex items-center justify-center gap-3">
-                                        <span className="text-xl font-bold text-white">GUATE</span>
-                                        <ArrowLeftRight className="w-5 h-5 text-accent" />
-                                        <span className="text-xl font-bold text-accent">{route.to.toUpperCase()}</span>
-                                    </div>
-                                    <p className="text-sm text-blue-200 mt-1 font-medium">{route.price}</p>
                                 </div>
 
                                 {/* Places */}
@@ -85,21 +84,23 @@ export default function RoutesSection() {
                                         ))}
                                     </div>
 
-                                    {/* Contact */}
-                                    <div className="mt-auto pt-4 border-t border-white/10 flex items-center justify-between">
+                                    {/* Action Buttons */}
+                                    <div className="mt-auto grid grid-cols-1 gap-3 pt-6 border-t border-white/10">
                                         <a
                                             href={`tel:${route.phone.replace(/[‑\s]/g, '')}`}
-                                            className="flex items-center gap-2 text-accent hover:text-white transition-colors font-semibold text-sm"
+                                            className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-white/20 bg-white/5 text-white hover:bg-white/15 transition-all font-bold text-sm"
                                         >
-                                            📞 {route.phone}
+                                            <Phone className="w-4 h-4 text-accent" />
+                                            Llamar al {route.phone}
                                         </a>
                                         <a
                                             href={`https://wa.me/502${route.phone.replace(/[‑\s]/g, '')}?text=Hola%21%20Quiero%20cotizar%20un%20envio%20de%20Guatemala%20a%20${encodeURIComponent(route.to)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="px-4 py-2 rounded-xl bg-green-500/20 text-green-400 text-xs font-bold hover:bg-green-500/30 transition-all"
+                                            className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-accent/30 bg-accent/5 text-accent hover:bg-accent/20 transition-all font-bold text-sm"
                                         >
-                                            WhatsApp 💬
+                                            <MessageCircle className="w-4 h-4" />
+                                            Quiero Cotizar (WhatsApp)
                                         </a>
                                     </div>
                                 </div>
