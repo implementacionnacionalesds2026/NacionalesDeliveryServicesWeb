@@ -74,7 +74,7 @@ export default function RoutesSection() {
 
                                 {/* Places */}
                                 <div className="p-6 flex-1 flex flex-col">
-                                    <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-3">Aldeas y zonas que atendemos</p>
+                                    <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-3">Municipios y zonas que atendemos</p>
                                     <div className="flex flex-wrap gap-2 mb-6">
                                         {route.places.map((p) => (
                                             <span
