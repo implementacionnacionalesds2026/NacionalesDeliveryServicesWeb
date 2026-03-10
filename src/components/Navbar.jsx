@@ -39,7 +39,7 @@ export default function Navbar() {
             <nav
                 ref={navRef}
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                    ? 'py-2 bg-primary-dark/95 backdrop-blur-xl shadow-2xl'
+                    ? 'py-2 bg-[#05081a]/95 backdrop-blur-xl shadow-2xl'
                     : 'py-4 bg-transparent'
                     }`}
             >
@@ -115,12 +115,13 @@ export default function Navbar() {
             {/* Mobile menu - Moved outside nav to avoid backdrop-blur stacking context bug */}
             <div
                 className={`lg:hidden fixed inset-0 z-50 transition-opacity duration-300 ${mobileOpen
-                    ? 'opacity-100 pointer-events-auto bg-primary-dark/98'
-                    : 'opacity-0 pointer-events-none bg-primary-dark/0'
+                    ? 'opacity-100 pointer-events-auto backdrop-blur-xl'
+                    : 'opacity-0 pointer-events-none'
                     }`}
+                style={{ backgroundColor: mobileOpen ? 'rgba(5, 8, 26, 0.95)' : 'transparent' }}
             >
-                {/* Clean, fast background without expensive blur filters */}
-                <div className="absolute inset-0 bg-primary-dark" />
+                {/* Clean, fast background with subtle transparency */}
+                <div className="absolute inset-0" style={{ backgroundColor: 'rgba(5, 8, 26, 0.8)' }} />
 
                 <div className="relative flex flex-col items-center justify-start pt-24 h-full gap-4 p-6 overflow-y-auto">
                     {/* Close button for mobile menu inside the overlay since it covers the navbar */}

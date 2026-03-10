@@ -20,7 +20,7 @@ export default function WhatsAppFab() {
                    whitespace-nowrap shadow-xl opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100
                    transition-all duration-300 pointer-events-none"
             >
-                ¡Escríbenos! 💬
+                ¡Escríbenos!
             </span>
         </a>
     )
