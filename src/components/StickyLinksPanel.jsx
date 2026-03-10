@@ -25,7 +25,7 @@ export default function StickyLinksPanel() {
     if (activeLinks.length === 0) return null
 
     return (
-        <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-1">
+        <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-1 items-end">
             {activeLinks.map((link) => (
                 <a
                     key={link.id}
