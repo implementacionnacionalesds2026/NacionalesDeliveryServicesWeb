@@ -20,6 +20,7 @@ const defaultConfig = {
         { id: 2, label: 'Facebook', color: '#1877F2', icon: 'facebook', url: 'https://www.facebook.com/profile.php?id=61586422649312', active: true },
         { id: 3, label: 'Instagram', color: '#E4405F', icon: 'instagram', url: 'https://www.instagram.com/nacionalesdelivery/', active: true },
         { id: 4, label: 'TikTok', color: '#000000', icon: 'tiktok', url: 'https://www.tiktok.com/@nacionales.delive', active: true },
+        { id: 5, label: 'YouTube', color: '#FF0000', icon: 'youtube', url: 'https://www.youtube.com/@NacionalesDS', active: true },
     ],
 }
 
