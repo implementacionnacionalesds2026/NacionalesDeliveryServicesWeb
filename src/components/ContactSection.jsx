@@ -84,7 +84,7 @@ export default function ContactSection() {
                                                 handleChange(e)
                                             }
                                         }}
-                                        className="input-field bg-white/5 border-white/10 focus:border-accent hover:border-white/20 transition-all rounded-xl"
+                                        className="w-full px-5 py-4 rounded-xl font-medium outline-none transition-all duration-300 text-white bg-white/5 border-2 border-white/10 focus:bg-white/10 focus:border-accent hover:border-white/20"
                                         placeholder="Ej. Juan Pérez"
                                         autoComplete="off"
                                         required
@@ -106,7 +106,7 @@ export default function ContactSection() {
                                                     handleChange(e)
                                                 }
                                             }}
-                                            className="input-field pl-14 font-mono bg-white/5 border-white/10 focus:border-accent hover:border-white/20 transition-all rounded-xl"
+                                            className="w-full pr-5 pl-14 py-4 rounded-xl font-mono font-medium outline-none transition-all duration-300 text-white bg-white/5 border-2 border-white/10 focus:bg-white/10 focus:border-accent hover:border-white/20"
                                             placeholder="55683682"
                                             autoComplete="off"
                                             required
@@ -125,7 +125,7 @@ export default function ContactSection() {
                                         name="email"
                                         value={form.email}
                                         onChange={handleChange}
-                                        className="input-field pl-12 bg-white/5 border-white/10 focus:border-accent hover:border-white/20 transition-all rounded-xl shadow-inner"
+                                        className="w-full pr-5 pl-12 py-4 rounded-xl font-medium outline-none transition-all duration-300 text-white bg-white/5 border-2 border-white/10 focus:bg-white/10 focus:border-accent hover:border-white/20 shadow-inner"
                                         placeholder="tu@correo.com"
                                         required
                                     />
@@ -138,7 +138,7 @@ export default function ContactSection() {
                                     value={form.message}
                                     onChange={handleChange}
                                     rows={4}
-                                    className="input-field resize-none bg-white/5 border-white/10 focus:border-accent hover:border-white/20 transition-all rounded-xl leading-relaxed"
+                                    className="w-full px-5 py-4 rounded-xl font-medium outline-none transition-all duration-300 text-white resize-none bg-white/5 border-2 border-white/10 focus:bg-white/10 focus:border-accent hover:border-white/20 leading-relaxed"
                                     placeholder="¿De dónde hacia dónde quieres enviar tu paquete?"
                                     required
                                 />
