@@ -28,11 +28,8 @@ export default function HeroSection() {
     }, [])
 
     return (
-        <section id="inicio" className="relative min-h-[100vh] flex items-center overflow-hidden pt-20">
+        <section id="inicio" className="relative min-h-[90vh] flex items-center overflow-hidden pt-20">
             {/* Dynamic Background */}
-            <div className="absolute inset-0 bg-primary-dark/90" />
-            <div className="absolute inset-0 grid-pattern opacity-10 md:opacity-30 md:mix-blend-overlay" />
-
             {/* Animated Light Orbs - Hidden on mobile to save GPU */}
             <div className="hidden md:block absolute top-1/4 -left-32 w-[30rem] h-[30rem] bg-accent/20 rounded-full blur-[100px] animate-pulse-glow" />
             <div className="hidden md:block absolute bottom-1/4 -right-32 w-[30rem] h-[30rem] bg-primary-light/30 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: '2s' }} />
