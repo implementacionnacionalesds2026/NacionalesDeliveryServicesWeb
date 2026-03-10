@@ -5,21 +5,21 @@ const defaultConfig = {
         { id: 2, text: '📍 Servicio puerta a puerta — Guatemala, Huehuetenango, Chimaltenango y Petén. ¡Cotiza ahora!', active: true, color: 'primary' },
     ],
     whatsapp: {
-        number: '50255683682',
+        number: '5025683668',
         message: 'Hola, me interesa información sobre sus servicios de paquetería 📦',
     },
     socialLinks: {
-        facebook: 'https://facebook.com/NacionalesDeliveryServices',
-        instagram: 'https://instagram.com/NacionalesDeliveryServices',
-        tiktok: 'https://tiktok.com/@NacionalesDS',
-        whatsapp: '50255683682',
-        youtube: 'https://youtube.com/@NacionalesDS',
+        facebook: 'https://www.facebook.com/profile.php?id=61586422649312',
+        instagram: 'https://www.instagram.com/nacionalesdelivery/',
+        tiktok: 'https://www.tiktok.com/@nacionales.delive',
+        whatsapp: '5025683668',
+        youtube: 'https://www.youtube.com/@NacionalesDS',
     },
     stickyLinks: [
-        { id: 1, label: 'WhatsApp', color: '#25D366', icon: 'whatsapp', url: 'https://wa.me/50255683682', active: true },
-        { id: 2, label: 'Facebook', color: '#1877F2', icon: 'facebook', url: 'https://facebook.com/NacionalesDeliveryServices', active: true },
-        { id: 3, label: 'Instagram', color: '#E4405F', icon: 'instagram', url: 'https://instagram.com/NacionalesDeliveryServices', active: true },
-        { id: 4, label: 'TikTok', color: '#000000', icon: 'tiktok', url: 'https://tiktok.com/@NacionalesDS', active: true },
+        { id: 1, label: 'WhatsApp', color: '#25D366', icon: 'whatsapp', url: 'https://wa.me/5025683668', active: true },
+        { id: 2, label: 'Facebook', color: '#1877F2', icon: 'facebook', url: 'https://www.facebook.com/profile.php?id=61586422649312', active: true },
+        { id: 3, label: 'Instagram', color: '#E4405F', icon: 'instagram', url: 'https://www.instagram.com/nacionalesdelivery/', active: true },
+        { id: 4, label: 'TikTok', color: '#000000', icon: 'tiktok', url: 'https://www.tiktok.com/@nacionales.delive', active: true },
     ],
 }
 
@@ -35,6 +35,10 @@ export function AdminProvider({ children }) {
                 if (parsed.announcements) {
                     parsed.announcements = parsed.announcements.filter(a => a.id !== 1)
                 }
+                // Force update social links to the new official links from defaultConfig
+                parsed.socialLinks = defaultConfig.socialLinks
+                parsed.stickyLinks = defaultConfig.stickyLinks
+
                 return parsed
             }
             return defaultConfig
