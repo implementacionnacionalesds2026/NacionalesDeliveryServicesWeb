@@ -105,27 +105,28 @@ export default function Navbar() {
 
             {/* Mobile menu */}
             <div
-                className={`lg:hidden fixed inset-0 top-[60px] z-40 transition-all duration-500 ${mobileOpen
-                    ? 'opacity-100 pointer-events-auto'
-                    : 'opacity-0 pointer-events-none'
+                className={`lg:hidden fixed inset-0 top-[70px] z-40 transition-opacity duration-300 ${mobileOpen
+                    ? 'opacity-100 pointer-events-auto bg-primary-dark/98'
+                    : 'opacity-0 pointer-events-none bg-primary-dark/0'
                     }`}
             >
-                <div className="absolute inset-0 bg-primary-dark/98 backdrop-blur-2xl" />
-                <div className="relative flex flex-col items-center justify-center h-full gap-2 p-6">
-                    {navLinks.map((link, i) => (
+                {/* Clean, fast background without expensive blur filters */}
+                <div className="absolute inset-0 bg-primary-dark" />
+
+                <div className="relative flex flex-col items-center justify-start pt-12 h-full gap-4 p-6 overflow-y-auto">
+                    {navLinks.map((link) => (
                         <a
                             key={link.href}
                             href={link.href}
                             onClick={() => setMobileOpen(false)}
-                            className="text-2xl font-semibold text-white hover:text-accent transition-all duration-300
-                         opacity-0 animate-fade-up"
-                            style={{ animationDelay: `${i * 80}ms`, animationFillMode: 'forwards' }}
+                            className={`text-2xl font-semibold text-white hover:text-accent transition-all duration-300 ${mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
                         >
                             {link.label}
                         </a>
                     ))}
-                    <div className="mt-8 flex flex-col gap-3 items-center">
-                        <a href="tel:55683682" className="flex items-center gap-2 text-accent font-semibold">
+
+                    <div className={`mt-8 flex flex-col gap-4 items-center transition-all duration-300 delay-100 ${mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+                        <a href="tel:55683682" className="flex items-center gap-2 text-accent font-semibold text-lg">
                             <Phone className="w-5 h-5" /> 5568-3682
                         </a>
                         <a
@@ -133,7 +134,7 @@ export default function Navbar() {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => setMobileOpen(false)}
-                            className="btn-primary"
+                            className="btn-primary !w-full !justify-center"
                         >
                             <MessageCircle className="w-5 h-5" /> Cotizar Envío
                         </a>
