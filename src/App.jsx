@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage'
 import AdminPage from './pages/AdminPage'
 import WhatsAppFab from './components/WhatsAppFab'
 import StickyLinksPanel from './components/StickyLinksPanel'
-import AnnouncementBanner from './components/AnnouncementBanner'
+
 
 export default function App() {
     return (
@@ -27,7 +27,7 @@ export default function App() {
                         error: { iconTheme: { primary: '#ff6b6b', secondary: '#fff' } },
                     }}
                 />
-                <AnnouncementBanner />
+
                 <StickyLinksPanel />
                 <WhatsAppFab />
                 <Routes>
