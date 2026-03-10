@@ -41,8 +41,9 @@ export default function Navbar() {
                     <div className="flex items-center justify-between">
                         {/* Logo */}
                         <a href="#inicio" className="flex items-center gap-3 group">
-                            <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-all duration-300">
-                                <Package className="w-6 h-6 text-accent" />
+                            <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 p-1 backdrop-blur-sm border border-white/20 shadow-[0_0_15px_rgba(62,198,224,0.3)] group-hover:shadow-[0_0_25px_rgba(62,198,224,0.6)] group-hover:border-accent/50 transition-all duration-300 transform group-hover:-translate-y-1">
+                                <img src="/logo.png" alt="Nacionales Logo" className="w-full h-full object-contain rounded-xl" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
+                                <Package className="w-full h-full text-accent hidden p-1" />
                             </div>
                             <div>
                                 <h1 className="text-lg font-bold text-white leading-tight tracking-tight">
@@ -71,14 +72,14 @@ export default function Navbar() {
                         {/* Desktop CTA */}
                         <div className="hidden lg:flex items-center gap-3">
                             <a
-                                href="tel:55683682"
+                                href="tel:5683668"
                                 className="flex items-center gap-2 px-4 py-2 text-sm text-accent hover:text-white transition-colors"
                             >
                                 <Phone className="w-4 h-4" />
-                                <span className="font-semibold">5568-3682</span>
+                                <span className="font-semibold">5683-668</span>
                             </a>
                             <a
-                                href="https://wa.me/50255683682?text=Hola%21%20Quiero%20cotizar%20un%20envio"
+                                href="https://wa.me/5025683668?text=Hola%21%20Quiero%20cotizar%20un%20envio"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="btn-primary !px-6 !py-2.5 !text-sm !rounded-xl"
@@ -136,11 +137,11 @@ export default function Navbar() {
                     ))}
 
                     <div className={`mt-8 flex flex-col gap-4 items-center transition-all duration-300 delay-100 ${mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-                        <a href="tel:55683682" className="flex items-center gap-2 text-accent font-semibold text-lg">
-                            <Phone className="w-5 h-5" /> 5568-3682
+                        <a href="tel:5683668" className="flex items-center gap-2 text-accent font-semibold text-lg">
+                            <Phone className="w-5 h-5" /> 5683-668
                         </a>
                         <a
-                            href="https://wa.me/50255683682?text=Hola%21%20Quiero%20cotizar%20un%20envio"
+                            href="https://wa.me/5025683668?text=Hola%21%20Quiero%20cotizar%20un%20envio"
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => setMobileOpen(false)}
