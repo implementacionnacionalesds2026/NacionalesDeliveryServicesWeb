@@ -14,8 +14,16 @@ export default function ContactSection() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (!form.name || !form.email || !form.message) {
+        if (!form.name || !form.email || !form.message || !form.phone) {
             toast.error('Por favor completa todos los campos requeridos')
+            return
+        }
+        if (form.name.trim().length < 3) {
+            toast.error('Por favor ingresa un nombre válido y real.')
+            return
+        }
+        if (form.phone.length !== 8) {
+            toast.error('El número de teléfono debe tener exactamente 8 dígitos (formato Guatemala).')
             return
         }
         setSending(true)
@@ -59,62 +67,91 @@ export default function ContactSection() {
                 <div className="grid lg:grid-cols-2 gap-8">
                     {/* Form */}
                     <ScrollReveal delay={100}>
-                        <form ref={formRef} onSubmit={handleSubmit} className="glass rounded-3xl p-8 space-y-4">
-                            <div className="grid sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label className="text-sm text-blue-300 font-medium mb-1 block">Nombre *</label>
+                        <form ref={formRef} onSubmit={handleSubmit} className="glass rounded-3xl p-8 space-y-5 relative overflow-hidden">
+                            {/* Decorative background glow */}
+                            <div className="absolute -top-20 -right-20 w-40 h-40 bg-accent/20 rounded-full blur-3xl pointer-events-none" />
+
+                            <div className="grid sm:grid-cols-2 gap-5 relative z-10">
+                                <div className="group">
+                                    <label className="text-sm text-blue-300 font-semibold mb-1.5 block">Nombre *</label>
                                     <input
                                         type="text"
                                         name="name"
                                         value={form.name}
-                                        onChange={handleChange}
-                                        className="input-field"
-                                        placeholder="Tu nombre"
+                                        onChange={(e) => {
+                                            // Only allow letters and spaces
+                                            if (/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/.test(e.target.value)) {
+                                                handleChange(e)
+                                            }
+                                        }}
+                                        className="input-field bg-white/5 border-white/10 focus:border-accent hover:border-white/20 transition-all rounded-xl"
+                                        placeholder="Ej. Juan Pérez"
+                                        autoComplete="off"
                                         required
                                     />
                                 </div>
-                                <div>
-                                    <label className="text-sm text-blue-300 font-medium mb-1 block">Teléfono</label>
+                                <div className="group">
+                                    <label className="text-sm text-blue-300 font-semibold mb-1.5 block">Teléfono (WhatsApp) *</label>
+                                    <div className="relative">
+                                        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                            <span className="text-blue-200/50 text-sm font-semibold">+502</span>
+                                        </div>
+                                        <input
+                                            type="tel"
+                                            name="phone"
+                                            value={form.phone}
+                                            onChange={(e) => {
+                                                // Only allow up to 8 digits
+                                                if (/^[0-9]{0,8}$/.test(e.target.value)) {
+                                                    handleChange(e)
+                                                }
+                                            }}
+                                            className="input-field pl-14 font-mono bg-white/5 border-white/10 focus:border-accent hover:border-white/20 transition-all rounded-xl"
+                                            placeholder="55683682"
+                                            autoComplete="off"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="group relative z-10">
+                                <label className="text-sm text-blue-300 font-semibold mb-1.5 block">Correo Electrónico *</label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <Mail className="w-5 h-5 text-blue-300/50 group-focus-within:text-accent transition-colors duration-300" />
+                                    </div>
                                     <input
-                                        type="tel"
-                                        name="phone"
-                                        value={form.phone}
+                                        type="email"
+                                        name="email"
+                                        value={form.email}
                                         onChange={handleChange}
-                                        className="input-field"
-                                        placeholder="5568-3682"
+                                        className="input-field pl-12 bg-white/5 border-white/10 focus:border-accent hover:border-white/20 transition-all rounded-xl shadow-inner"
+                                        placeholder="tu@correo.com"
+                                        required
                                     />
                                 </div>
                             </div>
-                            <div>
-                                <label className="text-sm text-blue-300 font-medium mb-1 block">Email *</label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={form.email}
-                                    onChange={handleChange}
-                                    className="input-field"
-                                    placeholder="tu@correo.com"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label className="text-sm text-blue-300 font-medium mb-1 block">Mensaje *</label>
+                            <div className="group relative z-10">
+                                <label className="text-sm text-blue-300 font-semibold mb-1.5 block">Mensaje *</label>
                                 <textarea
                                     name="message"
                                     value={form.message}
                                     onChange={handleChange}
                                     rows={4}
-                                    className="input-field resize-none"
-                                    placeholder="¿Cómo podemos ayudarte?"
+                                    className="input-field resize-none bg-white/5 border-white/10 focus:border-accent hover:border-white/20 transition-all rounded-xl leading-relaxed"
+                                    placeholder="¿De dónde hacia dónde quieres enviar tu paquete?"
                                     required
                                 />
                             </div>
                             <button
                                 type="submit"
-                                disabled={sending}
-                                className="btn-primary w-full justify-center !rounded-xl disabled:opacity-50"
+                                disabled={sending || form.phone.length !== 8 || form.name.trim().length <= 2}
+                                className="relative z-10 btn-primary w-full justify-center !rounded-xl disabled:opacity-50 disabled:cursor-not-allowed group overflow-hidden"
                             >
-                                {sending ? 'Enviando...' : <><Send className="w-5 h-5" /> Enviar Mensaje</>}
+                                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                                <span className="relative flex items-center gap-2">
+                                    {sending ? 'Procesando Envío...' : <><Send className="w-5 h-5 group-hover:scale-110 transition-transform" /> Enviar Mensaje Seguro</>}
+                                </span>
                             </button>
                         </form>
                     </ScrollReveal>
