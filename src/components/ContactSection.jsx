@@ -33,7 +33,8 @@ export default function ContactSection() {
                     Telefono: form.phone || 'No indicado',
                     Email: form.email,
                     Mensaje: form.message,
-                    _subject: 'Nuevo mensaje web de ' + form.name
+                    _subject: 'Nuevo mensaje web de ' + form.name,
+                    _template: 'table'
                 })
             })
 
