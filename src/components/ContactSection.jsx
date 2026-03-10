@@ -68,8 +68,7 @@ export default function ContactSection() {
                     {/* Form */}
                     <ScrollReveal delay={100}>
                         <form ref={formRef} onSubmit={handleSubmit} className="glass rounded-3xl p-8 space-y-5 relative overflow-hidden">
-                            {/* Decorative background glow */}
-                            <div className="absolute -top-20 -right-20 w-40 h-40 bg-accent/20 rounded-full blur-3xl pointer-events-none" />
+                            {/* Decorative background glow removed as per user request */}
 
                             <div className="grid sm:grid-cols-2 gap-5 relative z-10">
                                 <div className="group">
@@ -84,7 +83,7 @@ export default function ContactSection() {
                                                 handleChange(e)
                                             }
                                         }}
-                                        className="w-full px-5 py-4 rounded-xl font-medium outline-none transition-all duration-300 text-white bg-white/5 border-2 border-white/10 focus:bg-white/10 focus:border-accent hover:border-white/20"
+                                        className="input-field"
                                         placeholder="Ej. Juan Pérez"
                                         autoComplete="off"
                                         required
@@ -106,7 +105,7 @@ export default function ContactSection() {
                                                     handleChange(e)
                                                 }
                                             }}
-                                            className="w-full pr-5 pl-14 py-4 rounded-xl font-mono font-medium outline-none transition-all duration-300 text-white bg-white/5 border-2 border-white/10 focus:bg-white/10 focus:border-accent hover:border-white/20"
+                                            className="input-field !pl-14 !font-sans tracking-wide"
                                             placeholder="55683682"
                                             autoComplete="off"
                                             required
@@ -125,7 +124,7 @@ export default function ContactSection() {
                                         name="email"
                                         value={form.email}
                                         onChange={handleChange}
-                                        className="w-full pr-5 pl-12 py-4 rounded-xl font-medium outline-none transition-all duration-300 text-white bg-white/5 border-2 border-white/10 focus:bg-white/10 focus:border-accent hover:border-white/20 shadow-inner"
+                                        className="input-field !pl-12"
                                         placeholder="tu@correo.com"
                                         required
                                     />
@@ -138,7 +137,7 @@ export default function ContactSection() {
                                     value={form.message}
                                     onChange={handleChange}
                                     rows={4}
-                                    className="w-full px-5 py-4 rounded-xl font-medium outline-none transition-all duration-300 text-white resize-none bg-white/5 border-2 border-white/10 focus:bg-white/10 focus:border-accent hover:border-white/20 leading-relaxed"
+                                    className="input-field resize-none"
                                     placeholder="¿De dónde hacia dónde quieres enviar tu paquete?"
                                     required
                                 />
