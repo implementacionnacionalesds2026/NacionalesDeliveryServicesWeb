@@ -15,12 +15,6 @@ const services = [
         color: 'from-accent to-accent-dark',
     },
     {
-        icon: MapPin,
-        title: 'Rastreo en Tiempo Real',
-        desc: 'Sigue tu paquete paso a paso con nuestro sistema de rastreo y notificaciones.',
-        color: 'from-purple-500 to-indigo-600',
-    },
-    {
         icon: Shield,
         title: 'Paquetería Segura',
         desc: 'Manejo con cuidado y empaque protector. Tu paquete llega como lo enviaste.',
