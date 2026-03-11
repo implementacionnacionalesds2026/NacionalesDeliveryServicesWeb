@@ -42,7 +42,7 @@ export default function TestimonialsSection() {
     const t = testimonials[current]
 
     return (
-        <section id="nosotros" className="py-24 relative">
+        <section className="py-24 relative">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <ScrollReveal>
                     <div className="text-center mb-12">

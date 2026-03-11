@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar'
 import HeroSection from '../components/HeroSection'
+import AboutSection from '../components/AboutSection'
 import ServicesSection from '../components/ServicesSection'
 import RoutesSection from '../components/RoutesSection'
 import StatsSection from '../components/StatsSection'
@@ -15,6 +16,7 @@ export default function HomePage() {
             <Navbar />
             <HeroSection />
             <ServicesSection />
+            <AboutSection />
             <RoutesSection />
             <StatsSection />
             <TestimonialsSection />
