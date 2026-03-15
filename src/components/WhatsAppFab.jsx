@@ -41,6 +41,7 @@ export default function WhatsAppFab() {
     const { config } = useAdmin()
     const { number, message: defaultMessage } = config.whatsapp
     const [isOpen, setIsOpen] = useState(false)
+    const [hasBeenOpened, setHasBeenOpened] = useState(false)
     const [inputValue, setInputValue] = useState('')
     const [showEmojis, setShowEmojis] = useState(false)
     const widgetRef = useRef(null)
@@ -60,6 +61,7 @@ export default function WhatsAppFab() {
     // Smooth Toggle with haptic feel
     const toggleOpen = useCallback(() => {
         if (!isOpen) {
+            setHasBeenOpened(true)
             notificationAudio.currentTime = 0
             notificationAudio.play().catch(() => {})
         }
@@ -84,12 +86,18 @@ export default function WhatsAppFab() {
 
     return (
         <div className="fixed bottom-6 right-6 z-[9999] font-sans select-none antialiased" ref={widgetRef}>
-            {/* Chat Window */}
+            {/* Chat Window - Extreme Optimization: Lazy Render & GPU Containment */}
             <div
                 className={`absolute bottom-24 right-0 w-[315px] max-w-[90vw] overflow-hidden rounded-[2.5rem] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.4)] transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) transform-gpu ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-12 pointer-events-none'
                     } bg-white flex flex-col will-change-transform`}
-                style={{ height: '490px' }}
+                style={{ 
+                    height: '490px', 
+                    contain: 'content',
+                    display: !isOpen && !hasBeenOpened ? 'none' : 'flex' 
+                }}
             >
+                {hasBeenOpened && (
+                    <>
                 {/* Header - Optimized WhatsApp Green */}
                 <div className="bg-[#075E54] p-5 flex items-center justify-between shadow-[0_4px_12px_rgba(0,0,0,0.1)] relative shrink-0 z-20">
                     <div className="flex items-center gap-4 relative">
@@ -206,6 +214,8 @@ export default function WhatsAppFab() {
                         </button>
                     </div>
                 </div>
+                    </>
+                )}
             </div>
 
             {/* Bottom Controls - Optimized Flexbox Centering */}
