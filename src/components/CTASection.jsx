@@ -43,7 +43,7 @@ export default function CTASection() {
                             >
                                 <WhatsAppIcon className="w-5 h-5 mr-1" /> Cotizar Envío <ArrowRight className="w-5 h-5" />
                             </a>
-                            <a href="tel:55683683" className="btn-secondary !text-lg">
+                            <a href="tel:55683682" className="btn-secondary !text-lg">
                                 <Phone className="w-5 h-5" /> Llamar Ahora
                             </a>
                         </div>
