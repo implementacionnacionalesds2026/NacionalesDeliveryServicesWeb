@@ -197,10 +197,18 @@ export default function WhatsAppFab() {
     }, [])
 
     return (
-        <div className="fixed bottom-6 right-6 z-[9999] font-sans select-none antialiased" ref={widgetRef} style={{ contain: 'layout' }}>
+        <div 
+            className="fixed bottom-[max(24px,env(safe-area-inset-bottom,24px))] right-[max(24px,env(safe-area-inset-right,24px))] z-[9999] font-sans select-none antialiased sm:bottom-6 sm:right-6 md:bottom-8 md:right-8" 
+            ref={widgetRef} 
+            style={{ 
+                contain: 'layout',
+                marginBottom: 'env(safe-area-inset-bottom, 0px)', // Extra fallback for system bars
+                paddingBottom: '2px' // Micro-adjustment for gesture bars
+            }}
+        >
             {/* Chat Window */}
             <div
-                className={`absolute bottom-24 right-0 w-[350px] max-w-[90vw] overflow-hidden rounded-[2.5rem] shadow-xl transition-all duration-300 ease-out transform-gpu ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-8 pointer-events-none'
+                className={`absolute bottom-[calc(100%+8px)] right-0 w-[350px] max-w-[90vw] overflow-hidden rounded-[2.5rem] shadow-xl transition-all duration-300 ease-out transform-gpu ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-8 pointer-events-none'
                     } bg-white flex flex-col`}
                 style={{ 
                     height: '490px', 
