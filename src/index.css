@@ -44,16 +44,12 @@ body {
 
 /* ===== GLASSMORPHISM ===== */
 .glass {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(10, 16, 53, 0.98);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .glass-light {
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.98);
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 

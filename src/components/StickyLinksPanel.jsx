@@ -33,7 +33,7 @@ export default function StickyLinksPanel() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group relative flex items-center justify-start h-12 w-12 hover:w-36 rounded-l-xl
-                      bg-primary-dark/80 backdrop-blur-md border border-white/10 border-r-0
+                      bg-primary-dark/95 border border-white/10 border-r-0
                       text-white/70 transition-all duration-300 overflow-hidden cursor-pointer shadow-lg"
                     onMouseEnter={(e) => {
                         e.currentTarget.style.backgroundColor = link.color;

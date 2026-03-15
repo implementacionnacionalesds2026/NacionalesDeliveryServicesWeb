@@ -45,7 +45,7 @@ export default function Navbar() {
             <nav
                 ref={navRef}
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                    ? 'py-2 bg-[#05081a]/95 backdrop-blur-xl shadow-2xl'
+                    ? 'py-2 bg-[#05081a]/98 shadow-xl'
                     : 'py-4 bg-transparent'
                     }`}
             >
@@ -53,7 +53,7 @@ export default function Navbar() {
                     <div className="flex items-center justify-between">
                         {/* Logo */}
                         <a href="#inicio" className="flex items-center gap-3 group">
-                            <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 p-1 backdrop-blur-sm border border-white/20 shadow-[0_0_15px_rgba(62,198,224,0.3)] group-hover:shadow-[0_0_25px_rgba(62,198,224,0.6)] group-hover:border-accent/50 transition-all duration-300 transform group-hover:-translate-y-1">
+                            <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 p-1 border border-white/20 shadow-[0_0_15px_rgba(62,198,224,0.3)] group-hover:shadow-[0_0_25px_rgba(62,198,224,0.6)] group-hover:border-accent/50 transition-all duration-300 transform group-hover:-translate-y-1">
                                 <img src="/images/logo.png" alt="Nacionales Logo" className="w-full h-full object-contain rounded-xl" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
                                 <Package className="w-full h-full text-accent hidden p-1" />
                             </div>
@@ -121,7 +121,7 @@ export default function Navbar() {
             {/* Mobile menu - Moved outside nav to avoid backdrop-blur stacking context bug */}
             <div
                 className={`lg:hidden fixed inset-0 z-50 transition-opacity duration-300 ${mobileOpen
-                    ? 'opacity-100 pointer-events-auto backdrop-blur-xl'
+                    ? 'opacity-100 pointer-events-auto'
                     : 'opacity-0 pointer-events-none'
                     }`}
                 style={{ backgroundColor: mobileOpen ? 'rgba(5, 8, 26, 0.95)' : 'transparent' }}

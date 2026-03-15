@@ -49,7 +49,7 @@ export default function HeroSection() {
 
                     {/* LEFT CONTENT */}
                     <div className={`transition-all duration-1000 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 md:glass border border-accent/30 text-xs sm:text-sm text-accent font-medium mb-8 shadow-none md:shadow-[0_0_20px_rgba(62,198,224,0.2)]">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0a1035]/90 border border-accent/30 text-xs sm:text-sm text-accent font-medium mb-8 shadow-none">
                             <span className="relative flex h-2 w-2 sm:h-3 sm:w-3">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-full w-full bg-accent"></span>
@@ -110,7 +110,7 @@ export default function HeroSection() {
                             <img
                                 src="/images/logo.png"
                                 alt="Nacionales Logo"
-                                className="relative z-20 w-full h-full object-contain filter drop-shadow-[0_20px_50px_rgba(62,198,224,0.4)]"
+                                className="relative z-20 w-full h-full object-contain transform-gpu"
                             />
 
                             {/* Decorative rotating ring */}
