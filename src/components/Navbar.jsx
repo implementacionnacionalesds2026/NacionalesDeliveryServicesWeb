@@ -44,10 +44,7 @@ export default function Navbar() {
         <>
             <nav
                 ref={navRef}
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                    ? 'py-2 bg-[#05081a]/98 shadow-xl'
-                    : 'py-4 bg-transparent'
-                    }`}
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[#0a1035] border-b border-white/5 shadow-xl ${scrolled ? 'py-2' : 'py-4'}`}
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between">
@@ -124,10 +121,10 @@ export default function Navbar() {
                     ? 'opacity-100 pointer-events-auto'
                     : 'opacity-0 pointer-events-none'
                     }`}
-                style={{ backgroundColor: mobileOpen ? 'rgba(5, 8, 26, 0.95)' : 'transparent' }}
+                style={{ backgroundColor: mobileOpen ? 'rgba(10, 16, 53, 0.98)' : 'transparent' }}
             >
                 {/* Clean, fast background with subtle transparency */}
-                <div className="absolute inset-0" style={{ backgroundColor: 'rgba(5, 8, 26, 0.8)' }} />
+                <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 16, 53, 0.9)' }} />
 
                 <div className="relative flex flex-col items-center justify-start pt-24 h-full gap-4 p-6 overflow-y-auto">
                     {/* Close button for mobile menu inside the overlay since it covers the navbar */}
