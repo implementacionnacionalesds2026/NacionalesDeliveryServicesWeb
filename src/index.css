@@ -270,3 +270,57 @@ body {
     border-color: #3EC6E0;
     box-shadow: 0 0 0 4px rgba(62, 198, 224, 0.15);
 }
+
+/* ===== ANIMATIONS ===== */
+@keyframes zoom-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slide-in-from-left {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-in-from-right {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-in {
+    animation-duration: 400ms;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.zoom-in { animation-name: zoom-in; }
+.fade-in { animation-name: fade-in; }
+.slide-in-from-left { animation-name: slide-in-from-left; }
+.slide-in-from-right { animation-name: slide-in-from-right; }
+
+.hover-scale-102:hover {
+    transform: scale(1.02);
+}
