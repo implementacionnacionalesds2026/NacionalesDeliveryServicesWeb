@@ -126,9 +126,9 @@ export default function Footer() {
                     <div>
                         <h4 className="text-white font-bold mb-4 text-sm">Contacto</h4>
                         <div className="space-y-3">
-                            <a href="tel:56836688" className="flex items-start gap-2 footer-link">
+                            <a href="tel:55683682" className="flex items-start gap-2 footer-link">
                                 <Phone className="w-4 h-4 mt-0.5 shrink-0" />
-                                <span>5683-6688 / 5271-3803</span>
+                                <span>5568-3682 / 5271-3803</span>
                             </a>
                             <a href="mailto:implementacionnacionalesds@gmail.com" className="flex items-start gap-2 footer-link">
                                 <Mail className="w-5 h-5 shrink-0 text-accent mt-0.5" />

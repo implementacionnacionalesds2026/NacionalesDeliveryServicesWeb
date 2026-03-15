@@ -105,7 +105,7 @@ export default function WhatsAppFab() {
                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75"></span>
                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-[#25D366]"></span>
                                 </span>
-                                <span className="text-white/90 font-bold text-[11px] uppercase tracking-[0.1em]">En línea ahora</span>
+                                <span className="text-white/90 font-bold text-[11px] tracking-[0.1em]">En línea</span>
                             </div>
                         </div>
                     </div>

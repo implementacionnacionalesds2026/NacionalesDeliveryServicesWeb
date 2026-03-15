@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { Send, Phone, MapPin, Mail } from 'lucide-react'
 import toast from 'react-hot-toast'
 import ScrollReveal from './ScrollReveal'
+import { useAdmin } from '../context/AdminContext'
 
 const WhatsAppIcon = ({ className }) => (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -10,6 +11,7 @@ const WhatsAppIcon = ({ className }) => (
 )
 
 export default function ContactSection() {
+    const { config } = useAdmin()
     const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
     const [sending, setSending] = useState(false)
     const formRef = useRef(null)
@@ -101,21 +103,21 @@ export default function ContactSection() {
                                         <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
                                             <span className="text-blue-200/50 text-sm font-semibold">+502</span>
                                         </div>
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            value={form.phone}
-                                            onChange={(e) => {
-                                                // Only allow up to 8 digits
-                                                if (/^[0-9]{0,8}$/.test(e.target.value)) {
-                                                    handleChange(e)
-                                                }
-                                            }}
-                                            className="input-field !pl-14 !font-sans tracking-wide"
-                                            placeholder="55683682"
-                                            autoComplete="off"
-                                            required
-                                        />
+                                            <input
+                                                type="tel"
+                                                name="phone"
+                                                value={form.phone}
+                                                onChange={(e) => {
+                                                    // Only allow up to 8 digits
+                                                    if (/^[0-9]{0,8}$/.test(e.target.value)) {
+                                                        handleChange(e)
+                                                    }
+                                                }}
+                                                className="input-field !pl-14 !font-sans tracking-wide"
+                                                placeholder="55683682"
+                                                autoComplete="off"
+                                                required
+                                            />
                                     </div>
                                 </div>
                             </div>
@@ -169,7 +171,7 @@ export default function ContactSection() {
                                 {
                                     icon: Phone,
                                     title: 'Teléfonos',
-                                    lines: ['5271-3803 (Huehue)', '3722-3693 (Chimaltenango)', '1358-3067 (Petén)', '5683-6688 (General)'],
+                                    lines: ['5271-3803 (Huehue)', '3722-3693 (Chimaltenango)', '1358-3067 (Petén)', '5568-3683 (General)'],
                                     color: 'bg-accent/10 text-accent',
                                 },
                                 {
@@ -202,7 +204,7 @@ export default function ContactSection() {
 
                             {/* WhatsApp CTA */}
                             <a
-                                href="https://wa.me/50256836688?text=Hola%21%20👋%20Vengo%20de%20la%20página%20web%20y%20necesito%20cotizar%20un%20envío%20📦.%20¿Me%20podrían%20dar%20información?"
+                                href={`https://wa.me/50255683683?text=${encodeURIComponent("Hola! 👋 Vengo de la página web y necesito cotizar un envío 📦. ¿Me podrían dar información?")}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-4 p-6 rounded-2xl bg-green-500/10 border border-green-500/20 hover:border-green-500/50 transition-all group"

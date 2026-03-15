@@ -5,18 +5,18 @@ const defaultConfig = {
         { id: 2, text: '📍 Servicio puerta a puerta — Guatemala, Huehuetenango, Chimaltenango y Petén. ¡Cotiza ahora!', active: true, color: 'primary' },
     ],
     whatsapp: {
-        number: '50255683683',
+        number: '50255683682',
         message: 'Hola! 👋 Quiero cotizar un envío 📦. ¿Me podrían ayudar?',
     },
     socialLinks: {
         facebook: 'https://www.facebook.com/profile.php?id=61586422649312',
         instagram: 'https://www.instagram.com/nacionalesdelivery/',
         tiktok: 'https://www.tiktok.com/@nacionales.delive',
-        whatsapp: '50255683683',
+        whatsapp: '50255683682',
         youtube: 'https://www.youtube.com/@NacionalesDS',
     },
     stickyLinks: [
-        { id: 1, label: 'WhatsApp', color: '#25D366', icon: 'whatsapp', url: 'https://wa.me/50255683683', active: true },
+        { id: 1, label: 'WhatsApp', color: '#25D366', icon: 'whatsapp', url: 'https://wa.me/50255683682', active: true },
         { id: 2, label: 'Facebook', color: '#1877F2', icon: 'facebook', url: 'https://www.facebook.com/profile.php?id=61586422649312', active: true },
         { id: 3, label: 'Instagram', color: '#E4405F', icon: 'instagram', url: 'https://www.instagram.com/nacionalesdelivery/', active: true },
         { id: 4, label: 'TikTok', color: '#000000', icon: 'tiktok', url: 'https://www.tiktok.com/@nacionales.delive', active: true },
