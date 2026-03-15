@@ -101,23 +101,23 @@ export default function ContactSection() {
                                     <label className="text-sm text-blue-300 font-semibold mb-1.5 block">Teléfono (WhatsApp) *</label>
                                     <div className="relative">
                                         <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                                            <span className="text-blue-200/50 text-sm font-semibold">+502</span>
+                                            <span className="text-[#070b24]/60 text-sm font-bold">+502</span>
                                         </div>
-                                            <input
-                                                type="tel"
-                                                name="phone"
-                                                value={form.phone}
-                                                onChange={(e) => {
-                                                    // Only allow up to 8 digits
-                                                    if (/^[0-9]{0,8}$/.test(e.target.value)) {
-                                                        handleChange(e)
-                                                    }
-                                                }}
-                                                className="input-field !pl-14 !font-sans tracking-wide"
-                                                placeholder="55683682"
-                                                autoComplete="off"
-                                                required
-                                            />
+                                        <input
+                                            type="tel"
+                                            name="phone"
+                                            value={form.phone}
+                                            onChange={(e) => {
+                                                // Only allow up to 8 digits
+                                                if (/^[0-9]{0,8}$/.test(e.target.value)) {
+                                                    handleChange(e)
+                                                }
+                                            }}
+                                            className="input-field !pl-14 !font-sans tracking-wide"
+                                            placeholder="55683682"
+                                            autoComplete="off"
+                                            required
+                                        />
                                     </div>
                                 </div>
                             </div>
