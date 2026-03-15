@@ -160,8 +160,8 @@ export default function WhatsAppFab() {
                     </div>
                 </div>
 
-                {/* Input Area - Glassmorphism v3 */}
-                <div className="p-4 bg-white/80 backdrop-blur-xl flex flex-col gap-3 border-t border-gray-100 shrink-0 relative z-30">
+                {/* Input Area - Branded WhatsApp Green */}
+                <div className="p-4 bg-[#075E54] flex flex-col gap-3 border-t border-white/10 shadow-[0_-10px_25px_rgba(0,0,0,0.1)] shrink-0 relative z-30">
                     {/* Emoji Panel with hardware accel */}
                     {showEmojis && (
                         <div className="absolute bottom-full mb-3 left-4 right-4 bg-white/98 backdrop-blur-2xl rounded-[2rem] shadow-[0_-20px_50px_rgba(0,0,0,0.1)] border border-white p-5 grid grid-cols-6 gap-2.5 animate-in zoom-in-95 duration-300 transform-gpu z-50">
@@ -186,7 +186,7 @@ export default function WhatsAppFab() {
                     <div className="flex items-center gap-3">
                         <button
                             onClick={() => setShowEmojis(!showEmojis)}
-                            className={`p-2.5 transition-all rounded-2xl active:scale-90 ${showEmojis ? 'text-[#3EC6E0] bg-[#E6F4F7]' : 'text-gray-400 hover:text-[#3EC6E0] hover:bg-gray-50'}`}
+                            className={`p-2.5 transition-all rounded-2xl active:scale-90 ${showEmojis ? 'text-white bg-white/20' : 'text-white/60 hover:text-white hover:bg-white/10'}`}
                         >
                             <Smile size={28} strokeWidth={2.5} />
                         </button>
@@ -198,7 +198,7 @@ export default function WhatsAppFab() {
                                 value={inputValue}
                                 onChange={(e) => setInputValue(e.target.value)}
                                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                                className="w-full bg-gray-50/50 border-2 border-transparent focus:border-[#3EC6E0] focus:bg-white py-3.5 px-5 rounded-2xl text-[14.5px] text-gray-800 outline-none transition-all font-bold placeholder:text-gray-400 shadow-inner group-hover:bg-gray-100/50"
+                                className="w-full bg-[#05443d] border-2 border-transparent focus:border-[#25D366] focus:bg-[#065048] py-3.5 px-5 rounded-2xl text-[14.5px] text-white outline-none transition-all font-bold placeholder:text-white/30 shadow-inner"
                             />
                         </div>
 
@@ -206,8 +206,8 @@ export default function WhatsAppFab() {
                             onClick={handleSend}
                             disabled={!inputValue.trim()}
                             className={`p-4 rounded-2xl transition-all duration-500 shadow-xl transform-gpu ${inputValue.trim()
-                                ? 'bg-[#3EC6E0] text-white shadow-[#3EC6E0]/30 hover:-translate-y-1 active:scale-90'
-                                : 'bg-gray-100 text-gray-300 cursor-not-allowed shadow-none scale-100'
+                                ? 'bg-[#25D366] text-white shadow-[#25D366]/30 hover:-translate-y-1 active:scale-90'
+                                : 'bg-white/10 text-white/20 cursor-not-allowed shadow-none scale-100'
                                 } flex items-center justify-center`}
                         >
                             <Send size={24} strokeWidth={2.5} />
