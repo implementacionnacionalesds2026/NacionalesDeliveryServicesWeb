@@ -36,9 +36,10 @@ export function AdminProvider({ children }) {
                 if (parsed.announcements) {
                     parsed.announcements = parsed.announcements.filter(a => a.id !== 1)
                 }
-                // Force update social links to the new official links from defaultConfig
+                // Force update social links and WhatsApp number to the new official ones
                 parsed.socialLinks = defaultConfig.socialLinks
                 parsed.stickyLinks = defaultConfig.stickyLinks
+                parsed.whatsapp = defaultConfig.whatsapp
 
                 return parsed
             }

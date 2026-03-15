@@ -93,8 +93,8 @@ export default function WhatsAppFab() {
                 {/* Header - Optimized WhatsApp Green */}
                 <div className="bg-[#075E54] p-5 flex items-center justify-between shadow-[0_4px_12px_rgba(0,0,0,0.1)] relative shrink-0 z-20">
                     <div className="flex items-center gap-4 relative">
-                        {/* Profile Photo - Refined Company Blue */}
-                        <div className="w-12 h-12 rounded-full bg-[#3EC6E0] p-1.5 shadow-inner flex items-center justify-center border-2 border-white/20 relative overflow-hidden group">
+                        {/* Profile Photo - Darker Company Blue for Contrast */}
+                        <div className="w-12 h-12 rounded-full bg-[#0a1035] p-1.5 shadow-inner flex items-center justify-center border-2 border-white/20 relative overflow-hidden group">
                             <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent pointer-events-none" />
                             <img src="/images/logo.png" alt="NDS Logo" className="w-full h-full object-contain brightness-110 relative z-10 transition-transform group-hover:scale-110" />
                         </div>

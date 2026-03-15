@@ -38,7 +38,7 @@ export default function Navbar() {
     }, [mobileOpen])
 
     const whatsappNumber = config.whatsapp.number
-    const telNumber = '55683683'
+    const telNumber = '55683682'
 
     return (
         <>
@@ -151,7 +151,7 @@ export default function Navbar() {
 
                     <div className={`mt-8 flex flex-col gap-4 items-center transition-all duration-300 delay-100 ${mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
                         <a href={`tel:${telNumber}`} className="flex items-center gap-2 text-accent font-semibold text-lg">
-                            <Phone className="w-5 h-5" /> 5568-3683
+                            <Phone className="w-5 h-5" /> 5568-3682
                         </a>
                         <a
                             href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(config.whatsapp.message)}`}
