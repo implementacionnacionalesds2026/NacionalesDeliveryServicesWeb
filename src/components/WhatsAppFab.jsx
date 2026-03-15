@@ -201,11 +201,11 @@ export default function WhatsAppFab() {
                 </div>
             </div>
 
-            {/* Contenedor del Botón y Tooltip para alineación perfecta */}
-            <div className="relative flex items-center justify-end h-[80px]">
-                {/* Tooltip con Pulso */}
+            {/* Contenedor del Botón y Tooltip con Flexbox Puro para alineación perfecta */}
+            <div className="flex items-center justify-end gap-3 h-[80px]">
+                {/* Tooltip con Pulso - Ya no es absolute para centrarse mejor via flexbox */}
                 {!isOpen && (
-                    <div className="absolute right-[96px] top-1/2 -translate-y-1/2 px-6 py-3.5 rounded-2xl bg-[#0a1035] text-white text-[14px] font-black shadow-2xl animate-in fade-in slide-in-from-right duration-700 whitespace-nowrap border border-white/10 hidden md:flex items-center gap-3 z-0">
+                    <div className="px-6 py-3.5 rounded-2xl bg-[#0a1035] text-white text-[14px] font-black shadow-2xl animate-in fade-in slide-in-from-right duration-700 whitespace-nowrap border border-white/10 hidden md:flex items-center gap-3 z-0">
                         <div className="relative flex h-3 w-3">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-[#25D366]"></span>
@@ -217,7 +217,7 @@ export default function WhatsAppFab() {
                 {/* Botón FAB - Logo WhatsApp */}
                 <button
                     onClick={toggleOpen}
-                    className={`flex items-center justify-center w-[80px] h-[80px] rounded-full shadow-[0_15px_35px_-5px_rgba(37,211,102,0.5)] transition-all duration-500 transform relative z-10 ${isOpen 
+                    className={`flex items-center justify-center w-[80px] h-[80px] rounded-full shadow-[0_15px_35px_-5px_rgba(37,211,102,0.5)] transition-all duration-500 transform relative z-10 shrink-0 ${isOpen 
                         ? 'rotate-[135deg] bg-white text-[#ff5a5a] scale-90' 
                         : 'bg-[#25D366] text-white hover:scale-105 hover:shadow-[0_20px_45px_-10px_rgba(37,211,102,0.6)]'
                         }`}
