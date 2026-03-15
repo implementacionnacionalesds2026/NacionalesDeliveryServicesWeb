@@ -202,10 +202,10 @@ export default function WhatsAppFab() {
             </div>
 
             {/* Contenedor del Botón y Tooltip con Flexbox Puro para alineación perfecta */}
-            <div className="flex items-center justify-end gap-3 h-[80px]">
-                {/* Tooltip con Pulso - Ya no es absolute para centrarse mejor via flexbox */}
+            <div className="flex items-center justify-end gap-3 h-[72px] md:h-[80px]">
+                {/* Tooltip con Pulso - Oculto en móviles según comportamiento actual */}
                 {!isOpen && (
-                    <div className="px-6 py-3.5 rounded-2xl bg-[#0a1035] text-white text-[14px] font-black shadow-2xl animate-in fade-in slide-in-from-right duration-700 whitespace-nowrap border border-white/10 hidden md:flex items-center gap-3 z-0">
+                    <div className="px-6 py-3.5 rounded-2xl bg-[#0a1035] text-white text-[14px] font-black shadow-2xl animate-in fade-in slide-in-from-right duration-700 whitespace-nowrap border border-white/10 hidden md:flex items-center gap-3 z-0 will-change-transform">
                         <div className="relative flex h-3 w-3">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-[#25D366]"></span>
@@ -217,15 +217,15 @@ export default function WhatsAppFab() {
                 {/* Botón FAB - Logo WhatsApp */}
                 <button
                     onClick={toggleOpen}
-                    className={`flex items-center justify-center w-[80px] h-[80px] rounded-full shadow-[0_15px_35px_-5px_rgba(37,211,102,0.5)] transition-all duration-500 transform relative z-10 shrink-0 ${isOpen 
+                    className={`flex items-center justify-center w-[72px] h-[72px] md:w-[80px] md:h-[80px] rounded-full shadow-[0_15px_35px_-5px_rgba(37,211,102,0.5)] transition-all duration-500 transform relative z-10 shrink-0 will-change-transform ${isOpen 
                         ? 'rotate-[135deg] bg-white text-[#ff5a5a] scale-90' 
-                        : 'bg-[#25D366] text-white hover:scale-105 hover:shadow-[0_20px_45px_-10px_rgba(37,211,102,0.6)]'
+                        : 'bg-[#25D366] text-white hover:scale-105 active:scale-95 shadow-xl sm:shadow-2xl'
                         }`}
                 >
-                    {isOpen ? <X size={44} strokeWidth={3} /> : <WhatsAppIcon className="w-11 h-11" />}
+                    {isOpen ? <X size={40} strokeWidth={3} className="md:w-11 md:h-11" /> : <WhatsAppIcon className="w-9 h-9 md:w-11 md:h-11" />}
                     
                     {!isOpen && (
-                        <div className="absolute top-1 right-1 w-7 h-7 bg-[#3EC6E0] border-[4px] border-white rounded-full flex items-center justify-center text-[12px] font-black text-white shadow-lg animate-bounce">
+                        <div className="absolute top-1 right-1 w-6 h-6 md:w-7 md:h-7 bg-[#3EC6E0] border-[3px] md:border-[4px] border-white rounded-full flex items-center justify-center text-[10px] md:text-[12px] font-black text-white shadow-lg animate-bounce">
                             1
                         </div>
                     )}
