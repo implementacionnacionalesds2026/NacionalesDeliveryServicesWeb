@@ -200,7 +200,7 @@ export default function WhatsAppFab() {
         <div className="fixed bottom-6 right-6 z-[9999] font-sans select-none antialiased" ref={widgetRef} style={{ contain: 'layout' }}>
             {/* Chat Window */}
             <div
-                className={`absolute bottom-24 right-0 w-[315px] max-w-[90vw] overflow-hidden rounded-[2.5rem] shadow-xl transition-all duration-300 ease-out transform-gpu ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-8 pointer-events-none'
+                className={`absolute bottom-24 right-0 w-[350px] max-w-[90vw] overflow-hidden rounded-[2.5rem] shadow-xl transition-all duration-300 ease-out transform-gpu ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-8 pointer-events-none'
                     } bg-white flex flex-col`}
                 style={{ 
                     height: '490px', 
