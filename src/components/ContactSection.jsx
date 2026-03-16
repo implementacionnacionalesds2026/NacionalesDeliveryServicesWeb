@@ -171,7 +171,7 @@ export default function ContactSection() {
                                 {
                                     icon: Phone,
                                     title: 'Teléfonos',
-                                    lines: ['5271-3803 (Huehue)', '3722-3693 (Chimaltenango)', '1358-3067 (Petén)', '5568-3682 (General)'],
+                                    lines: ['5271-3803 (Huehue)', '3722-3693 (Chimaltenango)', '3158-3067 (Petén)', '5568-3682 (General)'],
                                     color: 'bg-accent/10 text-accent',
                                 },
                                 {
