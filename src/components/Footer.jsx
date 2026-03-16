@@ -5,14 +5,13 @@ const footerLinks = {
     servicios: [
         { label: 'Envío Nacional', href: '#servicios' },
         { label: 'Mensajería Express', href: '#servicios' },
-        { label: 'Rastreo de Paquetes', href: '#rastreo' },
         { label: 'Recolección a Domicilio', href: '#servicios' },
         { label: 'Logística Empresarial', href: '#servicios' },
     ],
     rutas: [
-        { label: 'Guatemala ↔ Huehuetenango', href: '#rutas' },
-        { label: 'Guatemala ↔ Chimaltenango', href: '#rutas' },
-        { label: 'Guatemala ↔ Petén', href: '#rutas' },
+        { label: 'Guatemala - Huehuetenango', href: '#rutas' },
+        { label: 'Guatemala - Chimaltenango', href: '#rutas' },
+        { label: 'Guatemala - Petén', href: '#rutas' },
     ],
     empresa: [
         { label: 'Sobre Nosotros', href: '#nosotros' },
@@ -130,9 +129,9 @@ export default function Footer() {
                                 <Phone className="w-4 h-4 mt-0.5 shrink-0" />
                                 <span>5568-3682 / 5271-3803</span>
                             </a>
-                            <a href="mailto:implementacionnacionalesds@gmail.com" className="flex items-start gap-2 footer-link">
+                            <a href="mailto:nacionalesdelivery@gmail.com" className="flex items-start gap-2 footer-link">
                                 <Mail className="w-5 h-5 shrink-0 text-accent mt-0.5" />
-                                <span>implementacionnacionalesds@gmail.com</span>
+                                <span>nacionalesdelivery@gmail.com</span>
                             </a>
                             <div className="flex items-start gap-2 text-blue-300 text-sm">
                                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
@@ -145,7 +144,7 @@ export default function Footer() {
                 {/* Bottom */}
                 <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <p className="text-blue-400 text-xs text-center sm:text-left">
-                        © {year} Nacionales Delivery Services. Todos los derechos reservados. Hecho con amor en Guatemala
+                        © {year} Nacionales Delivery Services. Todos los derechos reservados. Hecho en Guatemala
                     </p>
                     <button
                         onClick={scrollTop}
