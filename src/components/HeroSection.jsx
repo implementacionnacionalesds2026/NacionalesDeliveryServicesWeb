@@ -71,7 +71,7 @@ export default function HeroSection() {
 
                         <div className="flex flex-col sm:flex-row gap-4 mb-8 md:mb-10">
                             <a
-                                href={`https://wa.me/${config.whatsapp.number}?text=${encodeURIComponent(config.whatsapp.message)}`}
+                                href={`https://api.whatsapp.com/send?phone=${config.whatsapp.number}&text=${encodeURIComponent(config.whatsapp.message)}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="btn-primary !px-6 !py-3 sm:!px-8 sm:!py-4 !text-base sm:!text-lg !rounded-2xl group flex justify-center shadow-lg md:shadow-[0_10px_40px_-10px_rgba(62,198,224,0.5)]"

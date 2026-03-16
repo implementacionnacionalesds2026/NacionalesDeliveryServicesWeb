@@ -204,7 +204,7 @@ export default function ContactSection() {
 
                             {/* WhatsApp CTA */}
                             <a
-                                href={`https://wa.me/50255683682?text=${encodeURIComponent("Hola! 👋 Vengo de la página web y necesito cotizar un envío 📦. ¿Me podrían dar información?")}`}
+                                href={`https://api.whatsapp.com/send?phone=50255683682&text=${encodeURIComponent("Hola! 👋 Vengo de la página web y necesito cotizar un envío 📦. ¿Me podrían dar información?")}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-4 p-6 rounded-2xl bg-green-500/10 border border-green-500/20 hover:border-green-500/50 transition-all group"

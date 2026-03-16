@@ -182,7 +182,8 @@ export default function WhatsAppFab() {
 
     const handleSend = useCallback(() => {
         const finalMessage = inputValue || defaultMessage
-        const url = `https://wa.me/${number}?text=${encodeURIComponent(finalMessage)}`
+        // Use official API for better web/desktop compatibility
+        const url = `https://api.whatsapp.com/send?phone=${number}&text=${encodeURIComponent(finalMessage)}`
         window.open(url, '_blank')
         setIsOpen(false)
     }, [inputValue, defaultMessage, number])

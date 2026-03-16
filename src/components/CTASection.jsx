@@ -36,7 +36,7 @@ export default function CTASection() {
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <a
-                                href={`https://wa.me/${config.whatsapp.number}?text=${encodeURIComponent(config.whatsapp.message)}`}
+                                href={`https://api.whatsapp.com/send?phone=${config.whatsapp.number}&text=${encodeURIComponent(config.whatsapp.message)}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="btn-primary !text-lg"

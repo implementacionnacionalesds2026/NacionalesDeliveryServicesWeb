@@ -85,7 +85,7 @@ export default function Footer() {
                             <SocialIcon type="facebook" url={config.socialLinks.facebook} />
                             <SocialIcon type="instagram" url={config.socialLinks.instagram} />
                             <SocialIcon type="tiktok" url={config.socialLinks.tiktok} />
-                            <SocialIcon type="whatsapp" url={`https://wa.me/${config.socialLinks.whatsapp}`} />
+                            <SocialIcon type="whatsapp" url={`https://api.whatsapp.com/send?phone=${config.socialLinks.whatsapp}`} />
                             <SocialIcon type="youtube" url={config.socialLinks.youtube} />
                         </div>
                     </div>
