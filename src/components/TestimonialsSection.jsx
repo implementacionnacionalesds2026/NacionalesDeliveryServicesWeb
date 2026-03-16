@@ -18,13 +18,6 @@ const testimonials = [
         route: 'Guate → Petén',
     },
     {
-        name: 'Ana Pérez',
-        location: 'Chimaltenango',
-        text: 'El rastreo en tiempo real me da mucha tranquilidad. Sé exactamente en qué parte del camino va mi paquete. Gracias NDS!',
-        rating: 5,
-        route: 'Guate → Chimaltenango',
-    },
-    {
         name: 'Roberto García',
         location: 'Guatemala',
         text: 'Como negocio, el servicio de recolección es fundamental. Me recogen los paquetes y los entregan sin complicaciones. Excelente.',
