@@ -188,7 +188,7 @@ export default function RoutesSection() {
                                         <a
                                             href={`https://api.whatsapp.com/send?phone=502${route.phone.replace(/[‑\s]/g, '').replace(/-/g, '')}&text=${encodeURIComponent(
                                                 selections[route.to]?.origin && selections[route.to]?.dest
-                                                    ? `Hola! 👋 Quiero cotizar un envío en ${route.to === 'de Guatemala' ? 'la ciudad' : 'el departamento'} de ${route.to} de ${selections[route.to].origin} a ${selections[route.to].dest} 📦`
+                                                    ? `Hola! 👋 Quiero cotizar un envío en ${route.to === 'Ciudad de Guatemala' ? 'la' : 'el departamento de'} ${route.to} de ${selections[route.to].origin} a ${selections[route.to].dest} 📦`
                                                     : selections[route.to]?.origin
                                                         ? `Hola! 👋 Quiero cotizar un envío desde ${selections[route.to].origin} en la ruta ${route.to} 📦`
                                                         : `Hola! 👋 Quiero cotizar un envío de Guatemala a ${route.to} 📦`
