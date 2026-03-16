@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { MapPin, ArrowRight, Phone } from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
 
@@ -54,6 +55,34 @@ const routes = [
 ]
 
 export default function RoutesSection() {
+    const [selections, setSelections] = useState({}) // { 'Ciudad de Guatemala': { origin: 'Zona 1', dest: 'Palin' } }
+
+    const handlePlaceClick = (routeTo, place) => {
+        setSelections(prev => {
+            const current = prev[routeTo] || { origin: null, dest: null }
+
+            // Toggle Logic:
+            // 1. If clicked place is current origin -> Clear ALL (since dest depends on origin)
+            if (current.origin === place) {
+                return { ...prev, [routeTo]: { origin: null, dest: null } }
+            }
+
+            // 2. If clicked place is current destination -> Clear only destination
+            if (current.dest === place) {
+                return { ...prev, [routeTo]: { ...current, dest: null } }
+            }
+
+            // 3. Selection flow:
+            // - If no origin OR both already selected -> Start fresh with origin
+            if (!current.origin || (current.origin && current.dest)) {
+                return { ...prev, [routeTo]: { origin: place, dest: null } }
+            }
+
+            // - If has origin but no dest -> Set as destination
+            return { ...prev, [routeTo]: { ...current, dest: place } }
+        })
+    }
+
     return (
         <section id="rutas" className="py-24 relative overflow-hidden">
             <div className="absolute inset-0 grid-pattern opacity-50" />
@@ -91,20 +120,59 @@ export default function RoutesSection() {
                                     </div>
                                 </div>
 
+                                <div className="px-6 md:px-8 mt-6">
+                                    <div className="flex items-center gap-3 p-3 rounded-xl bg-accent/5 border border-accent/20">
+                                        <MapPin className="w-4 h-4 text-lime-400 animate-bounce" />
+                                        <p className="text-sm font-bold text-white tracking-wide">
+                                            {selections[route.to]?.origin && selections[route.to]?.dest
+                                                ? (
+                                                    <span>
+                                                        Desde <span className="text-lime-400">{selections[route.to].origin}</span> a <span className="text-lime-400">{selections[route.to].dest}</span>
+                                                    </span>
+                                                )
+                                                : selections[route.to]?.origin
+                                                    ? (
+                                                        <span>
+                                                            Desde: <span className="text-lime-400">{selections[route.to].origin}</span> ...
+                                                        </span>
+                                                    )
+                                                    : 'Selecciona tu ruta para cotizar'
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+
                                 {/* Places */}
                                 <div className={`p-6 ${i === 0 ? 'md:p-8' : ''} flex-1 flex flex-col`}>
-                                    <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-3">Municipios y zonas que atendemos</p>
-                                    
+                                    <div className="flex items-center justify-between mb-3">
+                                        <p className="text-xs font-semibold text-accent uppercase tracking-wider">Municipios y zonas que atendemos</p>
+                                    </div>
+
                                     <div className="overflow-y-auto max-h-[160px] custom-scrollbar pr-2 mb-6 transform-gpu">
                                         <div className="flex flex-wrap gap-2">
-                                            {route.places.map((p) => (
-                                                <span
-                                                    key={p}
-                                                    className="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-blue-200 border border-white/10 hover:border-accent/40 hover:text-white transition-all capitalize whitespace-nowrap"
-                                                >
-                                                    {p}
-                                                </span>
-                                            ))}
+                                            {route.places.map((p) => {
+                                                const sel = selections[route.to] || {}
+                                                const isOrigin = sel.origin === p
+                                                const isDest = sel.dest === p
+
+                                                return (
+                                                    <button
+                                                        key={p}
+                                                        onClick={() => handlePlaceClick(route.to, p)}
+                                                        className={`px-3 py-1 rounded-full text-xs font-medium border transition-all capitalize whitespace-nowrap flex items-center gap-1.5
+                                                            ${isOrigin
+                                                                ? 'bg-accent/20 border-accent text-white shadow-[0_0_12px_rgba(62,198,224,0.3)] ring-1 ring-accent/50'
+                                                                : isDest
+                                                                    ? 'bg-purple-500/20 border-purple-400 text-white shadow-[0_0_12px_rgba(192,132,252,0.3)] ring-1 ring-purple-400/50'
+                                                                    : 'bg-white/5 text-blue-200 border-white/10 hover:border-accent/40 hover:text-white'
+                                                            }`}
+                                                    >
+                                                        {isOrigin && <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />}
+                                                        {isDest && <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />}
+                                                        {p}
+                                                    </button>
+                                                )
+                                            })}
                                         </div>
                                     </div>
 
@@ -118,7 +186,13 @@ export default function RoutesSection() {
                                             Llamar al {route.phone}
                                         </a>
                                         <a
-                                            href={`https://api.whatsapp.com/send?phone=502${route.phone.replace(/[‑\s]/g, '').replace(/-/g, '')}&text=${encodeURIComponent(`Hola! 👋 Quiero cotizar un envío de Guatemala a ${route.to} 📦`)}`}
+                                            href={`https://api.whatsapp.com/send?phone=502${route.phone.replace(/[‑\s]/g, '').replace(/-/g, '')}&text=${encodeURIComponent(
+                                                selections[route.to]?.origin && selections[route.to]?.dest
+                                                    ? `Hola! 👋 Quiero cotizar un envío en ${route.to === 'Ciudad de Guatemala' ? 'la ciudad' : 'el departamento'} de ${route.to} de ${selections[route.to].origin} a ${selections[route.to].dest} 📦`
+                                                    : selections[route.to]?.origin
+                                                        ? `Hola! 👋 Quiero cotizar un envío desde ${selections[route.to].origin} en la ruta ${route.to} 📦`
+                                                        : `Hola! 👋 Quiero cotizar un envío de Guatemala a ${route.to} 📦`
+                                            )}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-accent/30 bg-accent/5 text-accent hover:bg-accent/20 transition-all font-bold text-sm"
