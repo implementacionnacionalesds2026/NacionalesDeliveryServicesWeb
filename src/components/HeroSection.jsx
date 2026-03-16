@@ -69,22 +69,30 @@ export default function HeroSection() {
                             Somos tu aliado logístico. Envíos exprés, seguros y monitoreados a <span className="text-white font-medium">Guatemala, Huehuetenango, Chimaltenango y Petén</span>. Confía tus paquetes a los expertos desde <span className="inline-block px-2 py-0.5 rounded-md bg-accent/20 text-accent font-bold">Q20</span>.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4 mb-8 md:mb-10">
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-8 md:mb-10 w-full">
                             <a
                                 href={`https://api.whatsapp.com/send?phone=${config.whatsapp.number}&text=${encodeURIComponent(config.whatsapp.message)}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn-primary !px-6 !py-3 sm:!px-8 sm:!py-4 !text-base sm:!text-lg !rounded-2xl group flex justify-center shadow-lg md:shadow-[0_10px_40px_-10px_rgba(62,198,224,0.5)]"
+                                className="btn-primary flex-1 sm:flex-none justify-center !px-6 !py-3 !text-sm sm:!text-base !rounded-xl group shadow-lg md:shadow-[0_10px_40px_-10px_rgba(62,198,224,0.5)]"
                             >
-                                <WhatsAppIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                                Cotizar mi Envío
+                                <WhatsAppIcon className="w-4 h-4 mr-1.5 group-hover:scale-110 transition-transform" />
+                                Cotizar Envío
                             </a>
+
+                            <a
+                                href="#promociones"
+                                className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm sm:text-base btn-promo-desktop"
+                            >
+                                Promos
+                            </a>
+
                             <a
                                 href="#servicios"
-                                className="btn-secondary !px-6 !py-3 sm:!px-8 sm:!py-4 !text-base sm:!text-lg !rounded-2xl group flex justify-center bg-white/5 hover:bg-white/10 border-white/10"
+                                className="btn-secondary flex-1 sm:flex-none justify-center !px-6 !py-3 !text-sm sm:text-base !rounded-xl group bg-white/5 hover:bg-white/10 border-white/10"
                             >
                                 Ver Servicios
-                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                             </a>
                         </div>
 

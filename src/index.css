@@ -320,3 +320,30 @@ body {
 .hover-scale-102:hover {
     transform: scale(1.02);
 }
+
+/* ===== PROMO BUTTON ANIMATION ===== */
+@keyframes shimmer-sweep {
+    0% { transform: translateX(-150%) skewX(-15deg); }
+    100% { transform: translateX(150%) skewX(-15deg); }
+}
+
+.btn-promo-desktop {
+    @apply relative overflow-hidden bg-lime-400 text-[#070b24] font-extrabold transition-all duration-300 shadow-[0_0_20px_rgba(163,230,53,0.4)] hover:bg-lime-300 hover:scale-105;
+}
+
+.btn-promo-desktop::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer-sweep 2.5s infinite;
+    pointer-events: none;
+}

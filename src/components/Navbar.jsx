@@ -73,7 +73,7 @@ export default function Navbar() {
                                     href={link.href}
                                     className={`px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${
                                         link.label === 'Promociones' 
-                                            ? 'text-[#070b24] bg-lime-400 hover:bg-lime-300 shadow-[0_0_15px_rgba(163,230,53,0.3)] animate-pulse' 
+                                            ? 'btn-promo-desktop' 
                                             : 'text-blue-200 hover:text-white hover:bg-white/10'
                                     }`}
                                 >
@@ -148,7 +148,7 @@ export default function Navbar() {
                                 mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                             } ${
                                 link.label === 'Promociones'
-                                    ? 'text-lime-400 animate-pulse underline decoration-lime-400 decoration-2 underline-offset-8'
+                                    ? 'btn-promo-desktop px-8 py-3 w-full text-center mt-2 mb-2 rounded-xl text-lg'
                                     : 'text-white hover:text-accent'
                             }`}
                         >
