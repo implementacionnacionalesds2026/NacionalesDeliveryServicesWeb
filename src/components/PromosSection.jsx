@@ -13,8 +13,8 @@ export default function PromosSection() {
     const [selectedPackage, setSelectedPackage] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
 
-    const handlePackageClick = (pkgName, pkgPrice, pkgQty) => {
-        setSelectedPackage({ name: pkgName, price: pkgPrice, qty: pkgQty })
+    const handlePackageClick = (pkgName, pkgPrice, pkgQty, isRecoleccion = false) => {
+        setSelectedPackage({ name: pkgName, price: pkgPrice, qty: pkgQty, isRecoleccion })
         setIsModalOpen(true)
     }
 
@@ -51,127 +51,150 @@ export default function PromosSection() {
                     </div>
                 </ScrollReveal>
 
-                {/* Linear Layout: Offers Stacked */}
-                <div className="space-y-6 lg:space-y-8 mb-16">
-                    {/* Oferta 1: 20 guías */}
-                    <ScrollReveal delay={100}>
-                        <button 
-                            onClick={() => handlePackageClick('¡Pensando en Vos!', 25, 20)}
-                            className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-accent/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(62,198,224,0.2)]"
-                        >
-                            <div className="absolute -right-10 -top-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/30 transition-all duration-500" />
-                            <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-accent/30 transition-all duration-500">
-                                <Package className="w-12 h-12 text-accent animate-float-cute" />
-                            </div>
-                            <div className="flex-1 text-center md:text-left">
-                                <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-accent/20 transition-colors">
-                                    Ideal para Iniciar
-                                </span>
-                                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-accent transition-colors">Paquete ¡Pensando en Vos!</h3>
-                                <p className="text-blue-300">Da el primer paso para realizar tus envíos de forma inteligente.</p>
-                            </div>
-                            <div className="text-center md:text-right md:border-l border-white/10 md:pl-8">
-                                <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-accent mr-1">Q</span>25.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
-                                <div className="inline-block px-4 py-1.5 bg-accent/20 border border-accent/30 text-white rounded-lg font-bold text-sm tracking-widest shadow-[0_0_15px_rgba(62,198,224,0.2)]">
-                                    ¡20 GUÍAS!
-                                </div>
-                                <div className="mt-3 text-xs text-accent font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
-                                    Seleccionar Ruta &rarr;
-                                </div>
-                            </div>
-                        </button>
-                    </ScrollReveal>
+                <div className="space-y-12 mb-16">
+                    {/* SECTION 1: ENVÍOS CON RECOLECCIÓN */}
+                    <div>
+                        <div className="flex items-center gap-4 mb-8">
+                            <div className="h-px bg-white/20 flex-1" />
+                            <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-widest px-4 border-2 border-white/20 rounded-full py-2 bg-white/5 flex items-center gap-2">
+                                Envíos con Recolección <Truck className="w-5 h-5 text-lime-400 inline-block mb-1" />
+                            </h3>
+                            <div className="h-px bg-white/20 flex-1" />
+                        </div>
+                        <div className="space-y-6 lg:space-y-8">
+                            {/* Oferta: 25 guías (Basic) */}
+                            <ScrollReveal delay={100}>
+                                <button 
+                                    onClick={() => handlePackageClick('Basic', 25, 25, true)}
+                                    className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-yellow-400/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.2)]"
+                                >
+                                    <div className="absolute -right-10 -top-10 w-32 h-32 bg-yellow-400/10 rounded-full blur-3xl group-hover:bg-yellow-400/30 transition-all duration-500" />
+                                    <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-yellow-400/30 transition-all duration-500">
+                                        <Package className="w-12 h-12 text-yellow-400 animate-float-cute" style={{ animationDelay: '0.2s' }} />
+                                    </div>
+                                    <div className="flex-1 text-center md:text-left">
+                                        <span className="inline-block px-3 py-1 bg-yellow-400/10 text-yellow-400 text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-yellow-400/20 transition-colors">
+                                            Recolección Incluida
+                                        </span>
+                                        <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-yellow-400 transition-colors">Paquete Basic</h3>
+                                        <p className="text-blue-300">Perfecto para empezar a enviar de forma recurrente y segura a un gran precio.</p>
+                                    </div>
+                                    <div className="text-center md:text-right md:border-l border-white/10 md:pl-8">
+                                        <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-yellow-400 mr-1">Q</span>25.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
+                                        <div className="inline-block px-4 py-1.5 bg-yellow-400/20 border border-yellow-400/30 text-white rounded-lg font-bold text-sm tracking-widest shadow-[0_0_15px_rgba(250,204,21,0.2)]">
+                                            ¡25 GUÍAS!
+                                        </div>
+                                        <div className="mt-3 text-xs text-yellow-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
+                                            Seleccionar Ruta &rarr;
+                                        </div>
+                                    </div>
+                                </button>
+                            </ScrollReveal>
 
-                    {/* Oferta 2: 25 guías */}
-                    <ScrollReveal delay={150}>
-                        <button 
-                            onClick={() => handlePackageClick('Basic', 25, 25)}
-                            className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-yellow-400/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.2)]"
-                        >
-                            <div className="absolute -right-10 -top-10 w-32 h-32 bg-yellow-400/10 rounded-full blur-3xl group-hover:bg-yellow-400/30 transition-all duration-500" />
-                            <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-yellow-400/30 transition-all duration-500">
-                                <Package className="w-12 h-12 text-yellow-400 animate-float-cute" style={{ animationDelay: '0.2s' }} />
-                            </div>
-                            <div className="flex-1 text-center md:text-left">
-                                <span className="inline-block px-3 py-1 bg-yellow-400/10 text-yellow-400 text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-yellow-400/20 transition-colors">
-                                    Nivel 1
-                                </span>
-                                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-yellow-400 transition-colors">Paquete Basic</h3>
-                                <p className="text-blue-300">Perfecto para empezar a enviar de forma recurrente y segura.</p>
-                            </div>
-                            <div className="text-center md:text-right md:border-l border-white/10 md:pl-8">
-                                <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-yellow-400 mr-1">Q</span>25.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
-                                <div className="inline-block px-4 py-1.5 bg-yellow-400/20 border border-yellow-400/30 text-white rounded-lg font-bold text-sm tracking-widest shadow-[0_0_15px_rgba(250,204,21,0.2)]">
-                                    ¡25 GUÍAS!
-                                </div>
-                                <div className="mt-3 text-xs text-yellow-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
-                                    Seleccionar Ruta &rarr;
-                                </div>
-                            </div>
-                        </button>
-                    </ScrollReveal>
+                            {/* Oferta: 35 guías (Plus) */}
+                            <ScrollReveal delay={150}>
+                                <button 
+                                    onClick={() => handlePackageClick('Plus', 20, 35, true)}
+                                    className="w-full text-left glass rounded-3xl p-6 md:p-8 border-2 border-accent/50 hover:border-accent transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 shadow-[0_0_30px_rgba(62,198,224,0.15)] cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_15px_50px_-10px_rgba(62,198,224,0.4)]"
+                                >
+                                    <div className="absolute right-0 top-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/30 transition-all duration-500" />
+                                    {/* Popular Badge */}
+                                    <div className="absolute top-0 right-8 md:right-12 bg-accent text-[#070b24] text-xs font-black px-4 py-1 rounded-b-lg tracking-wider uppercase shadow-lg">
+                                        Más Popular
+                                    </div>
+                                    <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-accent/30 flex items-center justify-center shadow-[0_0_20px_rgba(62,198,224,0.3)] group-hover:scale-110 group-hover:border-accent transition-all duration-500">
+                                        <Package className="w-12 h-12 text-accent animate-float-cute" style={{ animationDelay: '0.6s' }} />
+                                    </div>
+                                    <div className="flex-1 text-center md:text-left mt-2 md:mt-0">
+                                        <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-xs font-black rounded-full mb-3 uppercase tracking-wider transition-colors">
+                                            Recolección Incluida
+                                        </span>
+                                        <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-accent transition-colors">Paquete Plus</h3>
+                                        <p className="text-blue-300">Aprovechá al máximo con recolección y obtené un excelente precio recurrente.</p>
+                                    </div>
+                                    <div className="text-center md:text-right md:border-l border-white/10 md:pl-8 z-10">
+                                        <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-accent mr-1">Q</span>20.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
+                                        <div className="inline-block px-4 py-1.5 bg-accent border border-accent text-[#070b24] rounded-lg font-black text-sm tracking-widest shadow-[0_0_15px_rgba(62,198,224,0.4)]">
+                                            ¡35 GUÍAS!
+                                        </div>
+                                        <div className="mt-3 text-xs text-accent font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
+                                            Seleccionar Ruta &rarr;
+                                        </div>
+                                    </div>
+                                </button>
+                            </ScrollReveal>
+                        </div>
+                    </div>
 
-                    {/* Oferta 3: 35 guías */}
-                    <ScrollReveal delay={200}>
-                        <button 
-                            onClick={() => handlePackageClick('Plus', 20, 35)}
-                            className="w-full text-left glass rounded-3xl p-6 md:p-8 border-2 border-accent/50 hover:border-accent transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 shadow-[0_0_30px_rgba(62,198,224,0.15)] cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_15px_50px_-10px_rgba(62,198,224,0.4)]"
-                        >
-                            <div className="absolute right-0 top-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/30 transition-all duration-500" />
-                            {/* Popular Badge */}
-                            <div className="absolute top-0 right-8 md:right-12 bg-accent text-[#070b24] text-xs font-black px-4 py-1 rounded-b-lg tracking-wider uppercase shadow-lg">
-                                Más Popular
-                            </div>
-                            <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-accent/30 flex items-center justify-center shadow-[0_0_20px_rgba(62,198,224,0.3)] group-hover:scale-110 group-hover:border-accent transition-all duration-500">
-                                <Package className="w-12 h-12 text-accent animate-float-cute" style={{ animationDelay: '0.6s' }} />
-                            </div>
-                            <div className="flex-1 text-center md:text-left mt-2 md:mt-0">
-                                <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-xs font-black rounded-full mb-3 uppercase tracking-wider transition-colors">
-                                    Nivel 2 (Buen Precio)
-                                </span>
-                                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-accent transition-colors">Paquete Plus</h3>
-                                <p className="text-blue-300">El equilibrio perfecto entre cantidad de guías y un excelente precio.</p>
-                            </div>
-                            <div className="text-center md:text-right md:border-l border-white/10 md:pl-8 z-10">
-                                <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-accent mr-1">Q</span>20.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
-                                <div className="inline-block px-4 py-1.5 bg-accent border border-accent text-[#070b24] rounded-lg font-black text-sm tracking-widest shadow-[0_0_15px_rgba(62,198,224,0.4)]">
-                                    ¡35 GUÍAS!
-                                </div>
-                                <div className="mt-3 text-xs text-accent font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
-                                    Seleccionar Ruta &rarr;
-                                </div>
-                            </div>
-                        </button>
-                    </ScrollReveal>
+                    {/* SECTION 2: SOLO ENVÍO */}
+                    <div>
+                        <div className="flex items-center gap-4 mb-8 pt-8">
+                            <div className="h-px bg-white/20 flex-1" />
+                            <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-widest px-4 border-2 border-white/20 rounded-full py-2 bg-white/5 flex items-center gap-2">
+                                Solo Envíos <Package className="w-5 h-5 text-lime-400 inline-block mb-1" />
+                            </h3>
+                            <div className="h-px bg-white/20 flex-1" />
+                        </div>
+                        <div className="space-y-6 lg:space-y-8">
+                            {/* Oferta: 20 guías (Pensando en Vos) */}
+                            <ScrollReveal delay={200}>
+                                <button 
+                                    onClick={() => handlePackageClick('¡Pensando en Vos!', 25, 20, false)}
+                                    className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-accent/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(62,198,224,0.2)]"
+                                >
+                                    <div className="absolute right-0 top-0 w-48 h-48 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/40 transition-all duration-500" />
+                                    <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-[0_0_15px_rgba(62,198,224,0.2)] group-hover:scale-110 group-hover:border-accent/30 transition-all duration-500">
+                                        <Package className="w-12 h-12 text-accent animate-float-cute" style={{ animationDelay: '0.4s' }} />
+                                    </div>
+                                    <div className="flex-1 text-center md:text-left">
+                                        <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-accent/20 transition-colors">
+                                            Ahorra Tiempo y Dinero
+                                        </span>
+                                        <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-accent transition-colors">Paquete ¡Pensando en Vos!</h3>
+                                        <p className="text-blue-300">Perfecto para envíos regulares. Dejanos tus paquetes y ahorrá en cada guía.</p>
+                                    </div>
+                                    <div className="text-center md:text-right md:border-l border-white/10 md:pl-8 z-10">
+                                        <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-accent mr-1">Q</span>25.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
+                                        <div className="inline-block px-4 py-1.5 bg-accent/20 border border-accent/30 text-white rounded-lg font-bold text-sm tracking-widest shadow-[0_0_15px_rgba(62,198,224,0.2)]">
+                                            ¡20 GUÍAS!
+                                        </div>
+                                        <div className="mt-3 text-xs text-accent font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
+                                            Seleccionar Ruta &rarr;
+                                        </div>
+                                    </div>
+                                </button>
+                            </ScrollReveal>
 
-                    {/* Oferta 4: 40 guías */}
-                    <ScrollReveal delay={250}>
-                        <button 
-                            onClick={() => handlePackageClick('¡Ponete Pilas!', 20, 40)}
-                            className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-yellow-400/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.2)]"
-                        >
-                            <div className="absolute right-0 top-0 w-48 h-48 bg-yellow-400/10 rounded-full blur-3xl group-hover:bg-yellow-400/30 transition-all duration-500" />
-                            <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-[0_0_15px_rgba(250,204,21,0.2)] group-hover:scale-110 group-hover:border-yellow-400/30 transition-all duration-500">
-                                <Package className="w-12 h-12 text-yellow-400 animate-float-cute" style={{ animationDelay: '0.4s' }} />
-                            </div>
-                            <div className="flex-1 text-center md:text-left">
-                                <span className="inline-block px-3 py-1 bg-yellow-400/10 text-yellow-400 text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-yellow-400/20 transition-colors">
-                                    Nivel 3 (Máximo Ahorro)
-                                </span>
-                                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-yellow-400 transition-colors">Paquete ¡Ponete Pilas!</h3>
-                                <p className="text-blue-300">El máximo ahorro para emprendedores exigentes y alta demanda.</p>
-                            </div>
-                            <div className="text-center md:text-right md:border-l border-white/10 md:pl-8 z-10">
-                                <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-yellow-400 mr-1">Q</span>20.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
-                                <div className="inline-block px-4 py-1.5 bg-yellow-400/20 border border-yellow-400/30 text-white rounded-lg font-black text-sm tracking-widest shadow-[0_0_15px_rgba(250,204,21,0.2)]">
-                                    ¡40 GUÍAS!
-                                </div>
-                                <div className="mt-3 text-xs text-yellow-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
-                                    Seleccionar Ruta &rarr;
-                                </div>
-                            </div>
-                        </button>
-                    </ScrollReveal>
+                            {/* Oferta: 40 guías (Ponete Pilas) */}
+                            <ScrollReveal delay={250}>
+                                <button 
+                                    onClick={() => handlePackageClick('¡Ponete Pilas!', 20, 40, false)}
+                                    className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-yellow-400/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.2)]"
+                                >
+                                    <div className="absolute right-0 top-0 w-48 h-48 bg-yellow-400/10 rounded-full blur-3xl group-hover:bg-yellow-400/30 transition-all duration-500" />
+                                    <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-[0_0_15px_rgba(250,204,21,0.2)] group-hover:scale-110 group-hover:border-yellow-400/30 transition-all duration-500">
+                                        <Package className="w-12 h-12 text-yellow-400 animate-float-cute" style={{ animationDelay: '0.6s' }} />
+                                    </div>
+                                    <div className="flex-1 text-center md:text-left">
+                                        <span className="inline-block px-3 py-1 bg-yellow-400/10 text-yellow-400 text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-yellow-400/20 transition-colors">
+                                            Ahorra Tiempo y Dinero
+                                        </span>
+                                        <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-yellow-400 transition-colors">Paquete ¡Ponete Pilas!</h3>
+                                        <p className="text-blue-300">Ideal si ya nos visitas constantemente. Compra por mayor y ahorra en todos tus envíos.</p>
+                                    </div>
+                                    <div className="text-center md:text-right md:border-l border-white/10 md:pl-8 z-10">
+                                        <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-yellow-400 mr-1">Q</span>20.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
+                                        <div className="inline-block px-4 py-1.5 bg-yellow-400/20 border border-yellow-400/30 text-white rounded-lg font-black text-sm tracking-widest shadow-[0_0_15px_rgba(250,204,21,0.2)]">
+                                            ¡40 GUÍAS!
+                                        </div>
+                                        <div className="mt-3 text-xs text-yellow-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
+                                            Seleccionar Ruta &rarr;
+                                        </div>
+                                    </div>
+                                </button>
+                            </ScrollReveal>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Linear Layout: Benefits Stacked Below */}
@@ -242,7 +265,7 @@ export default function PromosSection() {
                         </div>
 
                         <div className="grid gap-3">
-                            {routes.map((route) => (
+                            {(selectedPackage?.isRecoleccion ? routes.filter(r => r.id === 'guatemala' || r.id === 'huehue') : routes).map((route) => (
                                 <button
                                     key={route.id}
                                     onClick={() => handleRouteSelect(route)}
