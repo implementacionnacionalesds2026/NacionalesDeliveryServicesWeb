@@ -183,7 +183,7 @@ export default function ContactSection() {
                                 {
                                     icon: Mail,
                                     title: 'Correo',
-                                    lines: ['implementacionnacionalesds@gmail.com'],
+                                    lines: ['nacionalesdelivery@gmail.com'],
                                     color: 'bg-amber-500/10 text-amber-400',
                                 },
                             ].map((card) => (
