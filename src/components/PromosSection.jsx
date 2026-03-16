@@ -20,7 +20,7 @@ export default function PromosSection() {
 
     const handleRouteSelect = (route) => {
         if (!selectedPackage) return
-        
+
         const message = `Hola! 👋 Me interesa el paquete "${selectedPackage.name}" (${selectedPackage.qty} guías por Q${selectedPackage.price} c/u) para envíos hacia *${route.name}*. ¿Me pueden dar más info?`
         const url = `https://api.whatsapp.com/send?phone=${route.phone}&text=${encodeURIComponent(message)}`
         window.open(url, '_blank')
@@ -56,15 +56,15 @@ export default function PromosSection() {
                     <div>
                         <div className="flex items-center gap-4 mb-8">
                             <div className="h-px bg-white/20 flex-1" />
-                            <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-widest px-4 border-2 border-white/20 rounded-full py-2 bg-white/5 flex items-center gap-2">
-                                Envíos con Recolección <Truck className="w-5 h-5 text-lime-400 inline-block mb-1" />
+                            <h3 className="text-xs sm:text-sm md:text-xl font-black text-white uppercase tracking-wider px-3 sm:px-4 md:px-6 border border-white/20 rounded-2xl md:rounded-full py-2 bg-white/5 flex items-center justify-center text-center shadow-lg gap-2">
+                                Ofertas en Servicios de Recolección y Envíos
                             </h3>
                             <div className="h-px bg-white/20 flex-1" />
                         </div>
                         <div className="space-y-6 lg:space-y-8">
                             {/* Oferta: 25 guías (Basic) */}
                             <ScrollReveal delay={100}>
-                                <button 
+                                <button
                                     onClick={() => handlePackageClick('Basic', 25, 25, true)}
                                     className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-yellow-400/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.2)]"
                                 >
@@ -93,7 +93,7 @@ export default function PromosSection() {
 
                             {/* Oferta: 35 guías (Plus) */}
                             <ScrollReveal delay={150}>
-                                <button 
+                                <button
                                     onClick={() => handlePackageClick('Plus', 20, 35, true)}
                                     className="w-full text-left glass rounded-3xl p-6 md:p-8 border-2 border-accent/50 hover:border-accent transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 shadow-[0_0_30px_rgba(62,198,224,0.15)] cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_15px_50px_-10px_rgba(62,198,224,0.4)]"
                                 >
@@ -130,15 +130,15 @@ export default function PromosSection() {
                     <div>
                         <div className="flex items-center gap-4 mb-8 pt-8">
                             <div className="h-px bg-white/20 flex-1" />
-                            <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-widest px-4 border-2 border-white/20 rounded-full py-2 bg-white/5 flex items-center gap-2">
-                                Solo Envíos <Package className="w-5 h-5 text-lime-400 inline-block mb-1" />
+                            <h3 className="text-xs sm:text-sm md:text-xl font-black text-white uppercase tracking-wider px-3 sm:px-4 md:px-6 border border-white/20 rounded-2xl md:rounded-full py-2 bg-white/5 flex items-center justify-center text-center shadow-lg gap-2">
+                                Ofertas en servicios de Envio
                             </h3>
                             <div className="h-px bg-white/20 flex-1" />
                         </div>
                         <div className="space-y-6 lg:space-y-8">
                             {/* Oferta: 20 guías (Pensando en Vos) */}
                             <ScrollReveal delay={200}>
-                                <button 
+                                <button
                                     onClick={() => handlePackageClick('¡Pensando en Vos!', 25, 20, false)}
                                     className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-accent/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(62,198,224,0.2)]"
                                 >
@@ -167,7 +167,7 @@ export default function PromosSection() {
 
                             {/* Oferta: 40 guías (Ponete Pilas) */}
                             <ScrollReveal delay={250}>
-                                <button 
+                                <button
                                     onClick={() => handlePackageClick('¡Ponete Pilas!', 20, 40, false)}
                                     className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-yellow-400/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.2)]"
                                 >
@@ -201,9 +201,9 @@ export default function PromosSection() {
                 <ScrollReveal delay={300}>
                     <div className="glass rounded-3xl p-8 border border-white/10 relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent pointer-events-none" />
-                        
+
                         <h3 className="text-xl md:text-2xl font-bold text-white mb-6 text-center">Beneficios Incluidos</h3>
-                        
+
                         <div className="grid sm:grid-cols-2 gap-6 relative z-10">
                             <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all">
                                 <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center shrink-0">
@@ -240,14 +240,14 @@ export default function PromosSection() {
             {isModalOpen && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
                     {/* Backdrop */}
-                    <div 
+                    <div
                         className="absolute inset-0 bg-[#060b22]/90 backdrop-blur-md"
                         onClick={() => setIsModalOpen(false)}
                     />
-                    
+
                     {/* Modal Content */}
                     <div className="relative glass border border-white/10 bg-gradient-to-br from-[#0a1035] to-[#060b22] rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-[0_0_50px_rgba(163,230,53,0.1)] animate-in zoom-in duration-300">
-                        <button 
+                        <button
                             onClick={() => setIsModalOpen(false)}
                             className="absolute top-4 right-4 p-2 text-blue-300 hover:text-white hover:bg-white/10 rounded-full transition-colors"
                         >
