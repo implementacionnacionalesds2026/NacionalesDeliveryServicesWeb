@@ -142,14 +142,39 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom */}
-                <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <p className="text-blue-400 text-xs text-center sm:text-left">
-                        © {year} Nacionales Delivery Services. Todos los derechos reservados. Hecho en Guatemala
+                <div className="border-t border-white/10 pt-6 flex flex-col items-center justify-center gap-4 relative">
+                    <div className="sm:absolute sm:left-0 flex items-center gap-2 order-2 sm:order-1 text-[9px] tracking-widest uppercase">
+                        <span className="text-blue-500/40 flex items-center gap-1">
+                            Desarrollado por
+                        </span>
+                        <div className="flex gap-1.5">
+                            <a
+                                href="https://developer-portfolio-eta-ivory.vercel.app/home"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-accent/50 hover:text-accent hover:bg-accent/10 hover:border-accent/30 transition-all duration-300 backdrop-blur-sm font-bold opacity-50 hover:opacity-100"
+                            >
+                                Yeysoon
+                            </a>
+                            <a
+                                href="http://portfoliolibnibarriospinto.s3-website.us-east-2.amazonaws.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-accent/50 hover:text-accent hover:bg-accent/10 hover:border-accent/30 transition-all duration-300 backdrop-blur-sm font-bold opacity-50 hover:opacity-100"
+                            >
+                                Libni
+                            </a>
+                        </div>
+                    </div>
+
+                    <p className="text-blue-400 text-xs text-center order-1 sm:order-2">
+                        © {year} Nacionales Delivery Services. Todos los derechos reservados.
                     </p>
+
                     <button
                         onClick={scrollTop}
-                        className="w-10 h-10 rounded-xl glass flex items-center justify-center
-                       hover:bg-accent/20 hover:text-accent transition-all"
+                        className="sm:absolute sm:right-0 w-10 h-10 rounded-xl glass flex items-center justify-center
+                       hover:bg-accent/20 hover:text-accent transition-all order-3"
                         aria-label="Ir arriba"
                     >
                         <ArrowUp className="w-5 h-5" />
