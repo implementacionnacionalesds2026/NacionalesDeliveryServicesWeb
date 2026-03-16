@@ -57,25 +57,25 @@ export default function PromosSection() {
                     <ScrollReveal delay={100}>
                         <button 
                             onClick={() => handlePackageClick('¡Pensando en Vos!', 25, 20)}
-                            className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-lime-400/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(163,230,53,0.2)]"
+                            className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-accent/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(62,198,224,0.2)]"
                         >
-                            <div className="absolute -right-10 -top-10 w-32 h-32 bg-lime-400/10 rounded-full blur-3xl group-hover:bg-lime-400/30 transition-all duration-500" />
-                            <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-lime-400/30 transition-all duration-500">
-                                <Package className="w-12 h-12 text-lime-400 animate-float-cute" />
+                            <div className="absolute -right-10 -top-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/30 transition-all duration-500" />
+                            <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-accent/30 transition-all duration-500">
+                                <Package className="w-12 h-12 text-accent animate-float-cute" />
                             </div>
                             <div className="flex-1 text-center md:text-left">
-                                <span className="inline-block px-3 py-1 bg-lime-400/10 text-lime-400 text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-lime-400/20 transition-colors">
+                                <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-accent/20 transition-colors">
                                     Ideal para Iniciar
                                 </span>
-                                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-lime-400 transition-colors">Paquete ¡Pensando en Vos!</h3>
+                                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-accent transition-colors">Paquete ¡Pensando en Vos!</h3>
                                 <p className="text-blue-300">Da el primer paso para realizar tus envíos de forma inteligente.</p>
                             </div>
                             <div className="text-center md:text-right md:border-l border-white/10 md:pl-8">
-                                <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-lime-400 mr-1">Q</span>25.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
+                                <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-accent mr-1">Q</span>25.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
                                 <div className="inline-block px-4 py-1.5 bg-accent/20 border border-accent/30 text-white rounded-lg font-bold text-sm tracking-widest shadow-[0_0_15px_rgba(62,198,224,0.2)]">
                                     ¡20 GUÍAS!
                                 </div>
-                                <div className="mt-3 text-xs text-lime-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
+                                <div className="mt-3 text-xs text-accent font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
                                     Seleccionar Ruta &rarr;
                                 </div>
                             </div>
@@ -86,25 +86,25 @@ export default function PromosSection() {
                     <ScrollReveal delay={150}>
                         <button 
                             onClick={() => handlePackageClick('Basic', 25, 25)}
-                            className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-lime-400/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(163,230,53,0.2)]"
+                            className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-yellow-400/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.2)]"
                         >
-                            <div className="absolute -right-10 -top-10 w-32 h-32 bg-lime-400/10 rounded-full blur-3xl group-hover:bg-lime-400/30 transition-all duration-500" />
-                            <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-lime-400/30 transition-all duration-500">
-                                <Package className="w-12 h-12 text-lime-400 animate-float-cute" style={{ animationDelay: '0.2s' }} />
+                            <div className="absolute -right-10 -top-10 w-32 h-32 bg-yellow-400/10 rounded-full blur-3xl group-hover:bg-yellow-400/30 transition-all duration-500" />
+                            <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-yellow-400/30 transition-all duration-500">
+                                <Package className="w-12 h-12 text-yellow-400 animate-float-cute" style={{ animationDelay: '0.2s' }} />
                             </div>
                             <div className="flex-1 text-center md:text-left">
-                                <span className="inline-block px-3 py-1 bg-lime-400/10 text-lime-400 text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-lime-400/20 transition-colors">
+                                <span className="inline-block px-3 py-1 bg-yellow-400/10 text-yellow-400 text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-yellow-400/20 transition-colors">
                                     Nivel 1
                                 </span>
-                                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-lime-400 transition-colors">Paquete Basic</h3>
+                                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-yellow-400 transition-colors">Paquete Basic</h3>
                                 <p className="text-blue-300">Perfecto para empezar a enviar de forma recurrente y segura.</p>
                             </div>
                             <div className="text-center md:text-right md:border-l border-white/10 md:pl-8">
-                                <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-lime-400 mr-1">Q</span>25.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
-                                <div className="inline-block px-4 py-1.5 bg-accent/20 border border-accent/30 text-white rounded-lg font-bold text-sm tracking-widest shadow-[0_0_15px_rgba(62,198,224,0.2)]">
+                                <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-yellow-400 mr-1">Q</span>25.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
+                                <div className="inline-block px-4 py-1.5 bg-yellow-400/20 border border-yellow-400/30 text-white rounded-lg font-bold text-sm tracking-widest shadow-[0_0_15px_rgba(250,204,21,0.2)]">
                                     ¡25 GUÍAS!
                                 </div>
-                                <div className="mt-3 text-xs text-lime-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
+                                <div className="mt-3 text-xs text-yellow-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
                                     Seleccionar Ruta &rarr;
                                 </div>
                             </div>
@@ -115,29 +115,29 @@ export default function PromosSection() {
                     <ScrollReveal delay={200}>
                         <button 
                             onClick={() => handlePackageClick('Plus', 20, 35)}
-                            className="w-full text-left glass rounded-3xl p-6 md:p-8 border-2 border-lime-400/50 hover:border-lime-400 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 shadow-[0_0_30px_rgba(163,230,53,0.15)] cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_15px_50px_-10px_rgba(163,230,53,0.4)]"
+                            className="w-full text-left glass rounded-3xl p-6 md:p-8 border-2 border-accent/50 hover:border-accent transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 shadow-[0_0_30px_rgba(62,198,224,0.15)] cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_15px_50px_-10px_rgba(62,198,224,0.4)]"
                         >
-                            <div className="absolute right-0 top-0 w-64 h-64 bg-lime-400/10 rounded-full blur-3xl group-hover:bg-lime-400/30 transition-all duration-500" />
+                            <div className="absolute right-0 top-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/30 transition-all duration-500" />
                             {/* Popular Badge */}
-                            <div className="absolute top-0 right-8 md:right-12 bg-lime-400 text-[#070b24] text-xs font-black px-4 py-1 rounded-b-lg tracking-wider uppercase shadow-lg">
+                            <div className="absolute top-0 right-8 md:right-12 bg-accent text-[#070b24] text-xs font-black px-4 py-1 rounded-b-lg tracking-wider uppercase shadow-lg">
                                 Más Popular
                             </div>
-                            <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-lime-400/30 flex items-center justify-center shadow-[0_0_20px_rgba(163,230,53,0.3)] group-hover:scale-110 group-hover:border-lime-400 transition-all duration-500">
-                                <Package className="w-12 h-12 text-lime-400 animate-float-cute" style={{ animationDelay: '0.6s' }} />
+                            <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-accent/30 flex items-center justify-center shadow-[0_0_20px_rgba(62,198,224,0.3)] group-hover:scale-110 group-hover:border-accent transition-all duration-500">
+                                <Package className="w-12 h-12 text-accent animate-float-cute" style={{ animationDelay: '0.6s' }} />
                             </div>
                             <div className="flex-1 text-center md:text-left mt-2 md:mt-0">
-                                <span className="inline-block px-3 py-1 bg-lime-400/20 text-lime-400 text-xs font-black rounded-full mb-3 uppercase tracking-wider transition-colors">
+                                <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-xs font-black rounded-full mb-3 uppercase tracking-wider transition-colors">
                                     Nivel 2 (Buen Precio)
                                 </span>
-                                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-lime-400 transition-colors">Paquete Plus</h3>
+                                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-accent transition-colors">Paquete Plus</h3>
                                 <p className="text-blue-300">El equilibrio perfecto entre cantidad de guías y un excelente precio.</p>
                             </div>
                             <div className="text-center md:text-right md:border-l border-white/10 md:pl-8 z-10">
-                                <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-lime-400 mr-1">Q</span>20.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
-                                <div className="inline-block px-4 py-1.5 bg-lime-400 border border-lime-400 text-[#070b24] rounded-lg font-black text-sm tracking-widest shadow-[0_0_15px_rgba(163,230,53,0.4)]">
+                                <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-accent mr-1">Q</span>20.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
+                                <div className="inline-block px-4 py-1.5 bg-accent border border-accent text-[#070b24] rounded-lg font-black text-sm tracking-widest shadow-[0_0_15px_rgba(62,198,224,0.4)]">
                                     ¡35 GUÍAS!
                                 </div>
-                                <div className="mt-3 text-xs text-lime-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
+                                <div className="mt-3 text-xs text-accent font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
                                     Seleccionar Ruta &rarr;
                                 </div>
                             </div>
@@ -148,25 +148,25 @@ export default function PromosSection() {
                     <ScrollReveal delay={250}>
                         <button 
                             onClick={() => handlePackageClick('¡Ponete Pilas!', 20, 40)}
-                            className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-accent/40 hover:border-accent transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(62,198,224,0.3)]"
+                            className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-yellow-400/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.2)]"
                         >
-                            <div className="absolute right-0 top-0 w-48 h-48 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/40 transition-all duration-500" />
-                            <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-accent/40 flex items-center justify-center shadow-[0_0_15px_rgba(62,198,224,0.3)] group-hover:scale-110 group-hover:border-accent transition-all duration-500">
-                                <Package className="w-12 h-12 text-accent animate-float-cute" style={{ animationDelay: '0.4s' }} />
+                            <div className="absolute right-0 top-0 w-48 h-48 bg-yellow-400/10 rounded-full blur-3xl group-hover:bg-yellow-400/30 transition-all duration-500" />
+                            <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-[0_0_15px_rgba(250,204,21,0.2)] group-hover:scale-110 group-hover:border-yellow-400/30 transition-all duration-500">
+                                <Package className="w-12 h-12 text-yellow-400 animate-float-cute" style={{ animationDelay: '0.4s' }} />
                             </div>
                             <div className="flex-1 text-center md:text-left">
-                                <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-accent/20 transition-colors">
+                                <span className="inline-block px-3 py-1 bg-yellow-400/10 text-yellow-400 text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-yellow-400/20 transition-colors">
                                     Nivel 3 (Máximo Ahorro)
                                 </span>
-                                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-accent transition-colors">Paquete ¡Ponete Pilas!</h3>
+                                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-yellow-400 transition-colors">Paquete ¡Ponete Pilas!</h3>
                                 <p className="text-blue-300">El máximo ahorro para emprendedores exigentes y alta demanda.</p>
                             </div>
                             <div className="text-center md:text-right md:border-l border-white/10 md:pl-8 z-10">
-                                <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-accent mr-1">Q</span>20.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
-                                <div className="inline-block px-4 py-1.5 bg-accent border border-accent text-[#070b24] rounded-lg font-black text-sm tracking-widest shadow-[0_0_15px_rgba(62,198,224,0.3)]">
+                                <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-yellow-400 mr-1">Q</span>20.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
+                                <div className="inline-block px-4 py-1.5 bg-yellow-400/20 border border-yellow-400/30 text-white rounded-lg font-black text-sm tracking-widest shadow-[0_0_15px_rgba(250,204,21,0.2)]">
                                     ¡40 GUÍAS!
                                 </div>
-                                <div className="mt-3 text-xs text-accent font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
+                                <div className="mt-3 text-xs text-yellow-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
                                     Seleccionar Ruta &rarr;
                                 </div>
                             </div>

@@ -93,7 +93,7 @@ export default function RoutesSection() {
                             <MapPin className="w-4 h-4" /> Nuestras Rutas
                         </div>
                         <h2 className="section-title">
-                            Conectamos <span className="gradient-text">todo Guatemala</span>
+                            Conectamos <span className="gradient-text"> a toda Guatemala</span>
                         </h2>
                         <p className="section-subtitle">
                             Servicio de recolección y entrega puerta a puerta. Rapidez que nos une.
