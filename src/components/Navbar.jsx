@@ -13,6 +13,7 @@ const navLinks = [
     { label: 'Inicio', href: '#inicio' },
     { label: 'Servicios', href: '#servicios' },
     { label: 'Rutas', href: '#rutas' },
+    { label: 'Promociones', href: '#promociones' },
     { label: 'Nosotros', href: '#nosotros' },
     { label: 'Contacto', href: '#contacto' },
 ]
@@ -70,8 +71,11 @@ export default function Navbar() {
                                 <a
                                     key={link.href}
                                     href={link.href}
-                                    className="px-4 py-2 text-sm font-medium text-blue-200 hover:text-white
-                           rounded-xl hover:bg-white/10 transition-all duration-300"
+                                    className={`px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${
+                                        link.label === 'Promociones' 
+                                            ? 'text-[#070b24] bg-lime-400 hover:bg-lime-300 shadow-[0_0_15px_rgba(163,230,53,0.3)] animate-pulse' 
+                                            : 'text-blue-200 hover:text-white hover:bg-white/10'
+                                    }`}
                                 >
                                     {link.label}
                                 </a>
@@ -140,7 +144,13 @@ export default function Navbar() {
                             key={link.href}
                             href={link.href}
                             onClick={() => setMobileOpen(false)}
-                            className={`text-2xl font-semibold text-white hover:text-accent transition-all duration-300 ${mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+                            className={`text-2xl font-semibold transition-all duration-300 ${
+                                mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                            } ${
+                                link.label === 'Promociones'
+                                    ? 'text-lime-400 animate-pulse underline decoration-lime-400 decoration-2 underline-offset-8'
+                                    : 'text-white hover:text-accent'
+                            }`}
                         >
                             {link.label}
                         </a>
