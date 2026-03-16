@@ -61,7 +61,7 @@ export default function PromosSection() {
                         >
                             <div className="absolute -right-10 -top-10 w-32 h-32 bg-lime-400/10 rounded-full blur-3xl group-hover:bg-lime-400/30 transition-all duration-500" />
                             <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-lime-400/30 transition-all duration-500">
-                                <Package className="w-12 h-12 text-lime-400 group-hover:animate-bounce" />
+                                <Package className="w-12 h-12 text-lime-400 animate-float-cute" />
                             </div>
                             <div className="flex-1 text-center md:text-left">
                                 <span className="inline-block px-3 py-1 bg-lime-400/10 text-lime-400 text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-lime-400/20 transition-colors">
@@ -90,7 +90,7 @@ export default function PromosSection() {
                         >
                             <div className="absolute -right-10 -top-10 w-32 h-32 bg-lime-400/10 rounded-full blur-3xl group-hover:bg-lime-400/30 transition-all duration-500" />
                             <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-lime-400/30 transition-all duration-500">
-                                <Package className="w-12 h-12 text-lime-400 group-hover:animate-bounce" />
+                                <Package className="w-12 h-12 text-lime-400 animate-float-cute" style={{ animationDelay: '0.2s' }} />
                             </div>
                             <div className="flex-1 text-center md:text-left">
                                 <span className="inline-block px-3 py-1 bg-lime-400/10 text-lime-400 text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-lime-400/20 transition-colors">
@@ -123,7 +123,7 @@ export default function PromosSection() {
                                 Más Popular
                             </div>
                             <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-lime-400/30 flex items-center justify-center shadow-[0_0_20px_rgba(163,230,53,0.3)] group-hover:scale-110 group-hover:border-lime-400 transition-all duration-500">
-                                <Package className="w-12 h-12 text-lime-400 group-hover:animate-bounce" />
+                                <Package className="w-12 h-12 text-lime-400 animate-float-cute" style={{ animationDelay: '0.6s' }} />
                             </div>
                             <div className="flex-1 text-center md:text-left mt-2 md:mt-0">
                                 <span className="inline-block px-3 py-1 bg-lime-400/20 text-lime-400 text-xs font-black rounded-full mb-3 uppercase tracking-wider transition-colors">
@@ -152,7 +152,7 @@ export default function PromosSection() {
                         >
                             <div className="absolute right-0 top-0 w-48 h-48 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/40 transition-all duration-500" />
                             <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-accent/40 flex items-center justify-center shadow-[0_0_15px_rgba(62,198,224,0.3)] group-hover:scale-110 group-hover:border-accent transition-all duration-500">
-                                <Package className="w-12 h-12 text-accent group-hover:animate-bounce" />
+                                <Package className="w-12 h-12 text-accent animate-float-cute" style={{ animationDelay: '0.4s' }} />
                             </div>
                             <div className="flex-1 text-center md:text-left">
                                 <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-accent/20 transition-colors">
