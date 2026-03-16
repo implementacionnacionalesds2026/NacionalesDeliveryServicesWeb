@@ -42,7 +42,11 @@ const routes = [
     {
         from: 'Guatemala',
         to: 'Petén',
-        places: ['San Benito', 'Santa Elena-Flores', 'San José', 'San Andrés', 'Sacpuy', 'San Antonio', 'Belén', 'Purusila', 'Santa Ana', 'El Limón', 'La Pita'],
+        places: [
+            'San Benito', 'Santa Elena', 'Ciudad Flores', 'San José', 'San Andrés', 'Sacpuy', 'San Antonio', 'Belén', 'Purusila', 'Santa Ana', 'El Limón', 'La Pita',
+            'La Libertad', 'San Francisco', 'Dolores', 'San Luis', 'Sayaxché', 'Melchor de Mencos', 'Poptún', 'Las Cruces', 'El Chal',
+            'Ixpanpajul', 'Remate', 'Ixlú', 'Uaxactún', 'Tikal'
+        ],
         phone: '3158‑3067',
         price: 'Desde Q35',
         address: '',
@@ -88,17 +92,20 @@ export default function RoutesSection() {
                                 </div>
 
                                 {/* Places */}
-                                <div className="p-6 md:p-8 flex-1 flex flex-col">
+                                <div className={`p-6 ${i === 0 ? 'md:p-8' : ''} flex-1 flex flex-col`}>
                                     <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-3">Municipios y zonas que atendemos</p>
-                                    <div className="flex flex-wrap gap-2 mb-6">
-                                        {route.places.map((p) => (
-                                            <span
-                                                key={p}
-                                                className="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-blue-200 border border-white/10 hover:border-accent/40 hover:text-white transition-all capitalize"
-                                            >
-                                                {p}
-                                            </span>
-                                        ))}
+                                    
+                                    <div className="overflow-y-auto max-h-[160px] custom-scrollbar pr-2 mb-6 transform-gpu">
+                                        <div className="flex flex-wrap gap-2">
+                                            {route.places.map((p) => (
+                                                <span
+                                                    key={p}
+                                                    className="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-blue-200 border border-white/10 hover:border-accent/40 hover:text-white transition-all capitalize whitespace-nowrap"
+                                                >
+                                                    {p}
+                                                </span>
+                                            ))}
+                                        </div>
                                     </div>
 
                                     {/* Action Buttons */}
