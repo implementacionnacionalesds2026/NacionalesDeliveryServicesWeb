@@ -28,7 +28,7 @@ const routes = [
         from: 'Guatemala',
         to: 'Petén',
         places: ['San Benito', 'Santa Elena-Flores', 'San José', 'San Andrés', 'Sacpuy', 'San Antonio', 'Belén', 'Purusila', 'Santa Ana', 'El Limón', 'La Pita'],
-        phone: '1358‑3067',
+        phone: '3158‑3067',
         price: 'Desde Q35',
         address: '',
     },
