@@ -217,7 +217,7 @@ export default function ContactSection() {
                                 {[
                                     { name: 'Facebook', icon: Facebook, color: 'text-blue-500', bg: 'bg-blue-500/10', url: 'https://www.facebook.com/profile.php?id=61586422649312' },
                                     { name: 'Instagram', icon: Instagram, color: 'text-pink-500', bg: 'bg-pink-500/10', url: 'https://www.instagram.com/nacionalesdelivery/' },
-                                    { name: 'TikTok', customIcon: <TikTokIcon className="w-5 h-5 text-white" />, color: 'text-white', bg: 'bg-white/10', url: 'https://www.tiktok.com/@nacionalesdelivery3' },
+                                    { name: 'TikTok', customIcon: <TikTokIcon className="w-5 h-5 text-white" />, color: 'text-white', bg: 'bg-white/10', url: 'https://www.tiktok.com/@nacionales.delive' },
                                     { name: 'YouTube', icon: Youtube, color: 'text-red-500', bg: 'bg-red-500/10', url: 'https://www.youtube.com/@NacionalesDS' }
                                 ].map(social => (
                                     <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="glass rounded-xl p-4 flex flex-col items-center justify-center gap-2 hover:border-accent/50 transition-all group hover:scale-105">
