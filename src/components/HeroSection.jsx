@@ -80,19 +80,17 @@ export default function HeroSection() {
                                 Cotizar Envío
                             </a>
 
-                            <a
-                                href="#promociones"
+                            <button
                                 onClick={(e) => {
                                     e.preventDefault();
                                     document.querySelector('#promociones')?.scrollIntoView({ behavior: 'smooth' });
                                 }}
-                                className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm sm:text-base btn-promo-desktop"
+                                className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm sm:text-base btn-promo-desktop bg-transparent border-none appearance-none"
                             >
                                 Promos
-                            </a>
+                            </button>
 
-                            <a
-                                href="#servicios"
+                            <button
                                 onClick={(e) => {
                                     e.preventDefault();
                                     document.querySelector('#servicios')?.scrollIntoView({ behavior: 'smooth' });
@@ -101,7 +99,7 @@ export default function HeroSection() {
                             >
                                 Ver Servicios
                                 <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
-                            </a>
+                            </button>
                         </div>
 
                         {/* Micro-Features */}

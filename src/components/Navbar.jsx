@@ -61,7 +61,7 @@ export default function Navbar() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between">
                         {/* Logo */}
-                        <a href="#inicio" onClick={(e) => handleNavClick(e, '#inicio')} className="cursor-pointer flex items-center gap-3 group">
+                        <button onClick={(e) => handleNavClick(e, '#inicio')} className="cursor-pointer flex items-center gap-3 group bg-transparent border-none p-0 text-left">
                             <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 p-1 border border-white/20 shadow-[0_0_15px_rgba(62,198,224,0.3)] group-hover:shadow-[0_0_25px_rgba(62,198,224,0.6)] group-hover:border-accent/50 transition-all duration-300 transform group-hover:-translate-y-1">
                                 <img src="/images/logo.png" alt="Nacionales Logo" className="w-full h-full object-contain rounded-xl" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
                                 <Package className="w-full h-full text-accent hidden p-1" />
@@ -74,23 +74,22 @@ export default function Navbar() {
                                     Delivery Services
                                 </p>
                             </div>
-                        </a>
+                        </button>
 
                         {/* Desktop nav */}
                         <div className="hidden lg:flex items-center gap-2">
                             {navLinks.map((link) => (
-                                <a
+                                <button
                                     key={link.href}
-                                    href={link.href}
                                     onClick={(e) => handleNavClick(e, link.href)}
-                                    className={`cursor-pointer px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${
+                                    className={`cursor-pointer px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 bg-transparent border-none ${
                                         link.label === 'Promociones' 
                                             ? 'btn-promo-desktop' 
                                             : 'text-blue-200 hover:text-white hover:bg-white/10'
                                     }`}
                                 >
                                     {link.label}
-                                </a>
+                                </button>
                             ))}
                         </div>
 
@@ -152,20 +151,19 @@ export default function Navbar() {
                     </button>
 
                     {navLinks.map((link) => (
-                        <a
+                        <button
                             key={link.href}
-                            href={link.href}
                             onClick={(e) => handleNavClick(e, link.href)}
-                            className={`cursor-pointer text-2xl font-semibold transition-all duration-300 ${
+                            className={`cursor-pointer text-2xl font-semibold transition-all duration-300 bg-transparent border-none w-full text-center ${
                                 mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                             } ${
                                 link.label === 'Promociones'
-                                    ? 'btn-promo-desktop px-8 py-3 w-full text-center mt-2 mb-2 rounded-xl text-lg'
+                                    ? 'btn-promo-desktop px-8 py-3 mt-2 mb-2 rounded-xl text-lg'
                                     : 'text-white hover:text-accent'
                             }`}
                         >
                             {link.label}
-                        </a>
+                        </button>
                     ))}
 
                     <div className={`mt-8 flex flex-col gap-4 items-center transition-all duration-300 delay-100 ${mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
