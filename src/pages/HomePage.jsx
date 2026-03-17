@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import HeroSection from '../components/HeroSection'
 import AboutSection from '../components/AboutSection'
@@ -12,6 +14,21 @@ import CTASection from '../components/CTASection'
 import Footer from '../components/Footer'
 
 export default function HomePage() {
+    const location = useLocation();
+
+    useEffect(() => {
+        const path = location.pathname.replace('/', '');
+        if (path && path !== 'admin') {
+            const element = document.getElementById(path);
+            if (element) {
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        } else if (path === '' || path === 'inicio') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }, [location.pathname]);
     return (
         <div className="bg-main">
             <Navbar />

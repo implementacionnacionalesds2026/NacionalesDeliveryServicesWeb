@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { Menu, X, Package, Phone } from 'lucide-react'
 import { useAdmin } from '../context/AdminContext'
 
@@ -10,12 +11,12 @@ const WhatsAppIcon = ({ className }) => (
 )
 
 const navLinks = [
-    { label: 'Inicio', href: '#inicio' },
-    { label: 'Servicios', href: '#servicios' },
-    { label: 'Rutas', href: '#rutas' },
-    { label: 'Promociones', href: '#promociones' },
-    { label: 'Nosotros', href: '#nosotros' },
-    { label: 'Contacto', href: '#contacto' },
+    { label: 'Inicio', path: '/inicio' },
+    { label: 'Servicios', path: '/servicios' },
+    { label: 'Rutas', path: '/rutas' },
+    { label: 'Promociones', path: '/promociones' },
+    { label: 'Nosotros', path: '/nosotros' },
+    { label: 'Contacto', path: '/contacto' },
 ]
 
 export default function Navbar() {
@@ -38,12 +39,12 @@ export default function Navbar() {
         }
     }, [mobileOpen])
 
-    const handleNavClick = (e, href) => {
-        e.preventDefault();
-        const element = document.querySelector(href);
+    const handleNavClick = (path) => {
+        const id = path.replace('/', '');
+        const element = document.getElementById(id);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
-        } else if (href === '#inicio') {
+        } else if (id === 'inicio' || id === '') {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         if (mobileOpen) setMobileOpen(false);
@@ -61,7 +62,7 @@ export default function Navbar() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between">
                         {/* Logo */}
-                        <button onClick={(e) => handleNavClick(e, '#inicio')} className="cursor-pointer flex items-center gap-3 group bg-transparent border-none p-0 text-left">
+                        <Link to="/inicio" onClick={() => handleNavClick('/inicio')} className="cursor-pointer flex items-center gap-3 group bg-transparent border-none p-0 text-left">
                             <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 p-1 border border-white/20 shadow-[0_0_15px_rgba(62,198,224,0.3)] group-hover:shadow-[0_0_25px_rgba(62,198,224,0.6)] group-hover:border-accent/50 transition-all duration-300 transform group-hover:-translate-y-1">
                                 <img src="/images/logo.png" alt="Nacionales Logo" className="w-full h-full object-contain rounded-xl" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
                                 <Package className="w-full h-full text-accent hidden p-1" />
@@ -74,14 +75,15 @@ export default function Navbar() {
                                     Delivery Services
                                 </p>
                             </div>
-                        </button>
+                        </Link>
 
                         {/* Desktop nav */}
                         <div className="hidden lg:flex items-center gap-2">
                             {navLinks.map((link) => (
-                                <button
-                                    key={link.href}
-                                    onClick={(e) => handleNavClick(e, link.href)}
+                                <Link
+                                    key={link.path}
+                                    to={link.path}
+                                    onClick={() => handleNavClick(link.path)}
                                     className={`cursor-pointer px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 bg-transparent border-none ${
                                         link.label === 'Promociones' 
                                             ? 'btn-promo-desktop' 
@@ -89,7 +91,7 @@ export default function Navbar() {
                                     }`}
                                 >
                                     {link.label}
-                                </button>
+                                </Link>
                             ))}
                         </div>
 
@@ -151,10 +153,11 @@ export default function Navbar() {
                     </button>
 
                     {navLinks.map((link) => (
-                        <button
-                            key={link.href}
-                            onClick={(e) => handleNavClick(e, link.href)}
-                            className={`cursor-pointer text-2xl font-semibold transition-all duration-300 bg-transparent border-none w-full text-center ${
+                        <Link
+                            key={link.path}
+                            to={link.path}
+                            onClick={() => handleNavClick(link.path)}
+                            className={`cursor-pointer text-2xl font-semibold transition-all duration-300 bg-transparent border-none w-full text-center block ${
                                 mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                             } ${
                                 link.label === 'Promociones'
@@ -163,7 +166,7 @@ export default function Navbar() {
                             }`}
                         >
                             {link.label}
-                        </button>
+                        </Link>
                     ))}
 
                     <div className={`mt-8 flex flex-col gap-4 items-center transition-all duration-300 delay-100 ${mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>

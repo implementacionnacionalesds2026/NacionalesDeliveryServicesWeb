@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { ArrowRight, MapPin, Truck, Bike, Star, Clock, ShieldCheck } from 'lucide-react'
 import { useAdmin } from '../context/AdminContext'
 
@@ -80,26 +81,26 @@ export default function HeroSection() {
                                 Cotizar Envío
                             </a>
 
-                            <button
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    document.querySelector('#promociones')?.scrollIntoView({ behavior: 'smooth' });
+                            <Link
+                                to="/promociones"
+                                onClick={() => {
+                                    document.getElementById('promociones')?.scrollIntoView({ behavior: 'smooth' });
                                 }}
-                                className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm sm:text-base btn-promo-desktop bg-transparent border-none appearance-none"
+                                className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm sm:text-base btn-promo-desktop appearance-none block text-center"
                             >
                                 Promos
-                            </button>
+                            </Link>
 
-                            <button
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    document.querySelector('#servicios')?.scrollIntoView({ behavior: 'smooth' });
+                            <Link
+                                to="/servicios"
+                                onClick={() => {
+                                    document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' });
                                 }}
-                                className="btn-secondary flex-1 sm:flex-none justify-center !px-6 !py-3 !text-sm sm:text-base !rounded-xl group bg-white/5 hover:bg-white/10 border-white/10"
+                                className="btn-secondary flex-1 sm:flex-none flex items-center justify-center !px-6 !py-3 !text-sm sm:text-base !rounded-xl group bg-white/5 hover:bg-white/10 border-white/10"
                             >
                                 Ver Servicios
                                 <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
-                            </button>
+                            </Link>
                         </div>
 
                         {/* Micro-Features */}

@@ -1,22 +1,23 @@
+import { Link } from 'react-router-dom'
 import { Package, Phone, Mail, MapPin, ArrowUp } from 'lucide-react'
 import { useAdmin } from '../context/AdminContext'
 
 const footerLinks = {
     servicios: [
-        { label: 'Envío Nacional', href: '#servicios' },
-        { label: 'Mensajería Express', href: '#servicios' },
-        { label: 'Recolección a Domicilio', href: '#servicios' },
-        { label: 'Logística Empresarial', href: '#servicios' },
+        { label: 'Envío Nacional', path: '/servicios' },
+        { label: 'Mensajería Express', path: '/servicios' },
+        { label: 'Recolección a Domicilio', path: '/servicios' },
+        { label: 'Logística Empresarial', path: '/servicios' },
     ],
     rutas: [
-        { label: 'Guatemala - Huehuetenango', href: '#rutas' },
-        { label: 'Guatemala - Chimaltenango', href: '#rutas' },
-        { label: 'Guatemala - Petén', href: '#rutas' },
+        { label: 'Guatemala - Huehuetenango', path: '/rutas' },
+        { label: 'Guatemala - Chimaltenango', path: '/rutas' },
+        { label: 'Guatemala - Petén', path: '/rutas' },
     ],
     empresa: [
-        { label: 'Sobre Nosotros', href: '#nosotros' },
-        { label: 'Preguntas Frecuentes', href: '#nosotros' },
-        { label: 'Contacto', href: '#contacto' },
+        { label: 'Sobre Nosotros', path: '/nosotros' },
+        { label: 'Preguntas Frecuentes', path: '/nosotros' },
+        { label: 'Contacto', path: '/contacto' },
     ],
 }
 
@@ -95,15 +96,15 @@ export default function Footer() {
                         <ul className="space-y-2">
                             {footerLinks.servicios.map((l) => (
                                 <li key={l.label}>
-                                    <button
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            document.querySelector(l.href)?.scrollIntoView({ behavior: 'smooth' });
+                                    <Link
+                                        to={l.path}
+                                        onClick={() => {
+                                            document.getElementById(l.path.replace('/', ''))?.scrollIntoView({ behavior: 'smooth' });
                                         }}
-                                        className="footer-link cursor-pointer bg-transparent border-none appearance-none p-0 text-left"
+                                        className="footer-link block"
                                     >
                                         {l.label}
-                                    </button>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -115,15 +116,15 @@ export default function Footer() {
                         <ul className="space-y-2">
                             {footerLinks.rutas.map((l) => (
                                 <li key={l.label}>
-                                    <button
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            document.querySelector(l.href)?.scrollIntoView({ behavior: 'smooth' });
+                                    <Link
+                                        to={l.path}
+                                        onClick={() => {
+                                            document.getElementById(l.path.replace('/', ''))?.scrollIntoView({ behavior: 'smooth' });
                                         }}
-                                        className="footer-link cursor-pointer bg-transparent border-none appearance-none p-0 text-left"
+                                        className="footer-link block"
                                     >
                                         {l.label}
-                                    </button>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -131,15 +132,15 @@ export default function Footer() {
                         <ul className="space-y-2">
                             {footerLinks.empresa.map((l) => (
                                 <li key={l.label}>
-                                    <button
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            document.querySelector(l.href)?.scrollIntoView({ behavior: 'smooth' });
+                                    <Link
+                                        to={l.path}
+                                        onClick={() => {
+                                            document.getElementById(l.path.replace('/', ''))?.scrollIntoView({ behavior: 'smooth' });
                                         }}
-                                        className="footer-link cursor-pointer bg-transparent border-none appearance-none p-0 text-left"
+                                        className="footer-link block"
                                     >
                                         {l.label}
-                                    </button>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
