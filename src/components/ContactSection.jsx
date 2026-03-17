@@ -39,16 +39,17 @@ export default function ContactSection() {
         try {
             const emailjs = await import('@emailjs/browser')
             await emailjs.sendForm(
-                'service_kjussrr',
-                'template_kc6cfd8',
+                'service_y8iprvq',
+                'template_ly1glxa',
                 formRef.current,
-                'ru6akFUJJ-xcgtGS_'
+                'WQOkf1agxIufzKoyH'
             )
             toast.success('¡Mensaje enviado con éxito! Te contactaremos pronto 📬')
             setForm({ name: '', email: '', phone: '', message: '' })
         } catch (error) {
             console.error('EmailJS Error:', error)
-            toast.error('Ocurrió un error al enviar el mensaje. Intenta por WhatsApp.')
+            const errorMsg = error.text || error.message || 'Desconocido'
+            toast.error(`Error EmailJS: ${errorMsg}. Por favor envíame captura de esto.`)
         } finally {
             setSending(false)
         }
