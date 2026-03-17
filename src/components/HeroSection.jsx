@@ -82,6 +82,10 @@ export default function HeroSection() {
 
                             <a
                                 href="#promociones"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document.querySelector('#promociones')?.scrollIntoView({ behavior: 'smooth' });
+                                }}
                                 className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm sm:text-base btn-promo-desktop"
                             >
                                 Promos
@@ -89,6 +93,10 @@ export default function HeroSection() {
 
                             <a
                                 href="#servicios"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document.querySelector('#servicios')?.scrollIntoView({ behavior: 'smooth' });
+                                }}
                                 className="btn-secondary flex-1 sm:flex-none justify-center !px-6 !py-3 !text-sm sm:text-base !rounded-xl group bg-white/5 hover:bg-white/10 border-white/10"
                             >
                                 Ver Servicios

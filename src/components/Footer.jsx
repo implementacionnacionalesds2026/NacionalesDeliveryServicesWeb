@@ -95,7 +95,16 @@ export default function Footer() {
                         <ul className="space-y-2">
                             {footerLinks.servicios.map((l) => (
                                 <li key={l.label}>
-                                    <a href={l.href} className="footer-link">{l.label}</a>
+                                    <a
+                                        href={l.href}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            document.querySelector(l.href)?.scrollIntoView({ behavior: 'smooth' });
+                                        }}
+                                        className="footer-link cursor-pointer"
+                                    >
+                                        {l.label}
+                                    </a>
                                 </li>
                             ))}
                         </ul>
@@ -107,7 +116,16 @@ export default function Footer() {
                         <ul className="space-y-2">
                             {footerLinks.rutas.map((l) => (
                                 <li key={l.label}>
-                                    <a href={l.href} className="footer-link">{l.label}</a>
+                                    <a
+                                        href={l.href}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            document.querySelector(l.href)?.scrollIntoView({ behavior: 'smooth' });
+                                        }}
+                                        className="footer-link cursor-pointer"
+                                    >
+                                        {l.label}
+                                    </a>
                                 </li>
                             ))}
                         </ul>
@@ -115,7 +133,16 @@ export default function Footer() {
                         <ul className="space-y-2">
                             {footerLinks.empresa.map((l) => (
                                 <li key={l.label}>
-                                    <a href={l.href} className="footer-link">{l.label}</a>
+                                    <a
+                                        href={l.href}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            document.querySelector(l.href)?.scrollIntoView({ behavior: 'smooth' });
+                                        }}
+                                        className="footer-link cursor-pointer"
+                                    >
+                                        {l.label}
+                                    </a>
                                 </li>
                             ))}
                         </ul>

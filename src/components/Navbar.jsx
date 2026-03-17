@@ -38,6 +38,17 @@ export default function Navbar() {
         }
     }, [mobileOpen])
 
+    const handleNavClick = (e, href) => {
+        e.preventDefault();
+        const element = document.querySelector(href);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        } else if (href === '#inicio') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        if (mobileOpen) setMobileOpen(false);
+    };
+
     const whatsappNumber = config.whatsapp.number
     const telNumber = '55683682'
 
@@ -50,7 +61,7 @@ export default function Navbar() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between">
                         {/* Logo */}
-                        <a href="#inicio" className="flex items-center gap-3 group">
+                        <a href="#inicio" onClick={(e) => handleNavClick(e, '#inicio')} className="cursor-pointer flex items-center gap-3 group">
                             <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 p-1 border border-white/20 shadow-[0_0_15px_rgba(62,198,224,0.3)] group-hover:shadow-[0_0_25px_rgba(62,198,224,0.6)] group-hover:border-accent/50 transition-all duration-300 transform group-hover:-translate-y-1">
                                 <img src="/images/logo.png" alt="Nacionales Logo" className="w-full h-full object-contain rounded-xl" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
                                 <Package className="w-full h-full text-accent hidden p-1" />
@@ -71,7 +82,8 @@ export default function Navbar() {
                                 <a
                                     key={link.href}
                                     href={link.href}
-                                    className={`px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${
+                                    onClick={(e) => handleNavClick(e, link.href)}
+                                    className={`cursor-pointer px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${
                                         link.label === 'Promociones' 
                                             ? 'btn-promo-desktop' 
                                             : 'text-blue-200 hover:text-white hover:bg-white/10'
@@ -143,8 +155,8 @@ export default function Navbar() {
                         <a
                             key={link.href}
                             href={link.href}
-                            onClick={() => setMobileOpen(false)}
-                            className={`text-2xl font-semibold transition-all duration-300 ${
+                            onClick={(e) => handleNavClick(e, link.href)}
+                            className={`cursor-pointer text-2xl font-semibold transition-all duration-300 ${
                                 mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                             } ${
                                 link.label === 'Promociones'
