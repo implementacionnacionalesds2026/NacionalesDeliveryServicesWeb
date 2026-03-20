@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import LoadingScreen from './components/LoadingScreen'
 import { Toaster } from 'react-hot-toast'
 import { AdminProvider } from './context/AdminContext'
 import HomePage from './pages/HomePage'
@@ -9,8 +11,13 @@ import BackgroundAnimation from './components/BackgroundAnimation'
 
 
 export default function App() {
+    const [isLoading, setIsLoading] = useState(true);
+
     return (
-        <AdminProvider>
+        <>
+            {isLoading && <LoadingScreen onFinish={() => setIsLoading(false)} />}
+
+            <AdminProvider>
             <BrowserRouter>
                 <Toaster
                     position="top-right"
@@ -44,5 +51,6 @@ export default function App() {
                 </Routes>
             </BrowserRouter>
         </AdminProvider>
+        </>
     )
 }
