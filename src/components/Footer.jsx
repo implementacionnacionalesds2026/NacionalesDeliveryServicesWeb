@@ -146,21 +146,32 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Contact info */}
                     <div>
-                        <h4 className="text-white font-bold mb-4 text-sm">Contacto</h4>
-                        <div className="space-y-3">
-                            <a href="tel:55683682" className="flex items-start gap-2 footer-link">
-                                <Phone className="w-4 h-4 mt-0.5 shrink-0" />
-                                <span>5568-3682 / 5271-3803</span>
-                            </a>
-                            <a href="mailto:nacionalesdelivery@gmail.com" className="flex items-start gap-2 footer-link">
-                                <Mail className="w-5 h-5 shrink-0 text-accent mt-0.5" />
-                                <span>nacionalesdelivery@gmail.com</span>
-                            </a>
-                            <div className="flex items-start gap-2 text-blue-300 text-sm">
-                                <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                                <span>3a Calle A9-21, Zona 21, Ciudad de Guatemala</span>
+                        <div className="space-y-4">
+                            {[
+                                { city: 'Guatemala', addr: '3a Calle A9-21, Zona 21', tel: '5568-3682' },
+                                { city: 'Huehuetenango', addr: '4ta Calle Zona 9, Zaculei Central', tel: '5271-3803' },
+                                { city: 'Chimaltenango', addr: 'Diagonal 2 5-69 Zona 2, Tecpán', tel: '3722-3693' },
+                                { city: 'Petén', addr: '3 Calle 8-18 Zona 2, Santa Elena', tel: '3158-3067' }
+                            ].map((s) => (
+                                <div key={s.city} className="flex flex-col gap-1">
+                                    <p className="text-white font-bold text-xs first-lette tracking-wider text-[14px]">{s.city}</p>
+                                    <div className="flex items-start gap-2 text-blue-300 text-[13px]">
+                                        <MapPin className="w-4 h-4 mt-0.5 shrink-0 opacity-70" />
+                                        <span>{s.addr}</span>
+                                    </div>
+                                    <a href={`tel:${s.tel.replace('-', '')}`} className="flex items-center gap-2 footer-link text-[13px] w-fit">
+                                        <Phone className="w-3.5 h-3.5" />
+                                        <span>{s.tel}</span>
+                                    </a>
+                                </div>
+                            ))}
+
+                            <div className="pt-2">
+                                <a href="mailto:nacionalesdelivery@gmail.com" className="flex items-center gap-2 footer-link text-[13px]">
+                                    <Mail className="w-4 h-4" />
+                                    <span>nacionalesdelivery@gmail.com</span>
+                                </a>
                             </div>
                         </div>
                     </div>
