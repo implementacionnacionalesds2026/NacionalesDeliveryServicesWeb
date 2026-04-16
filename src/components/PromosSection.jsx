@@ -265,7 +265,7 @@ export default function PromosSection() {
                         </div>
 
                         <div className="grid gap-3">
-                            {(selectedPackage?.isRecoleccion ? routes.filter(r => r.id === 'guatemala' || r.id === 'huehue') : routes).map((route) => (
+                            {(selectedPackage?.isRecoleccion ? routes.filter(r => r.id === 'guatemala') : routes).map((route) => (
                                 <button
                                     key={route.id}
                                     onClick={() => handleRouteSelect(route)}
