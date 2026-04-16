@@ -100,7 +100,7 @@ export default function PromosSection() {
                                     <div className="absolute right-0 top-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/30 transition-all duration-500" />
                                     {/* Popular Badge */}
                                     <div className="absolute top-0 right-8 md:right-12 bg-accent text-[#070b24] text-xs font-black px-4 py-1 rounded-b-lg tracking-wider uppercase shadow-lg">
-                                        Más Popular
+                                        Valido Unicamente en Ciudad de Guatemala
                                     </div>
                                     <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-accent/30 flex items-center justify-center shadow-[0_0_20px_rgba(62,198,224,0.3)] group-hover:scale-110 group-hover:border-accent transition-all duration-500">
                                         <Package className="w-12 h-12 text-accent animate-float-cute" style={{ animationDelay: '0.6s' }} />
