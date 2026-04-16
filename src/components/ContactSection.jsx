@@ -176,55 +176,73 @@ export default function ContactSection() {
                             {/* Contact cards */}
                             {[
                                 {
-                                    icon: Phone,
-                                    title: 'Teléfonos',
-                                    lines: ['5271-3803 (Huehue)', '3722-3693 (Chimaltenango)', '3158-3067 (Petén)', '5568-3682 (General)'],
-                                    color: 'bg-accent/10 text-accent',
-                                    colSpan: 'sm:col-span-1'
+                                    city: 'GUATEMALA (CENTRAL)',
+                                    addr: '3a Calle A9-21, Zona 21',
+                                    tel: '5568-3682',
+                                    color: 'bg-accent/10 text-accent'
                                 },
                                 {
-                                    icon: MapPin,
-                                    title: 'Oficinas',
-                                    lines: ['3a Calle A9-21, Zona 21, Ciudad de Guatemala', '4ta Calle Zona 9, Zaculei Central, Huehuetenango'],
-                                    color: 'bg-purple-500/10 text-purple-400',
-                                    colSpan: 'sm:col-span-1'
+                                    city: 'HUEHUETENANGO',
+                                    addr: '4ta Calle Zona 9, Central',
+                                    tel: '5271-3803',
+                                    color: 'bg-accent/10 text-accent'
                                 },
                                 {
-                                    icon: Mail,
-                                    title: 'Correo',
-                                    lines: ['nacionalesdelivery@gmail.com'],
-                                    color: 'bg-amber-500/10 text-amber-400',
-                                    colSpan: 'sm:col-span-2'
+                                    city: 'CHIMALTENANGO',
+                                    addr: 'Diagonal 2 5-69 Zona 2, Tecpán',
+                                    tel: '3722-3693',
+                                    color: 'bg-accent/10 text-accent'
                                 },
-                            ].map((card) => (
-                                <div key={card.title} className={`glass rounded-2xl p-6 hover:border-accent/30 transition-all group flex flex-col justify-center ${card.colSpan || ''}`}>
-                                    <div className="flex items-start gap-4">
-                                        <div className={`w-12 h-12 rounded-xl ${card.color} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform`}>
-                                            <card.icon className="w-6 h-6" />
+                                {
+                                    city: 'PETÉN',
+                                    addr: '3 Calle 8-18 Zona 2, Santa Elena',
+                                    tel: '3158-3067',
+                                    color: 'bg-accent/10 text-accent'
+                                },
+                            ].map((office) => (
+                                <div key={office.city} className="glass rounded-2xl p-5 hover:border-accent/30 transition-all group flex flex-col gap-3">
+                                    <div className="flex items-center gap-3">
+                                        <div className={`w-10 h-10 rounded-xl ${office.color} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform`}>
+                                            <MapPin className="w-5 h-5" />
                                         </div>
-                                        <div>
-                                            <p className="text-white font-bold mb-1">{card.title}</p>
-                                            {card.lines.map((line, i) => (
-                                                <p key={i} className="text-blue-300 text-sm">{line}</p>
-                                            ))}
-                                        </div>
+                                        <p className="text-white font-bold text-xs tracking-wider uppercase">{office.city}</p>
+                                    </div>
+                                    <div className="space-y-2 pl-1">
+                                        <p className="text-blue-300 text-xs leading-relaxed opacity-80">{office.addr}</p>
+                                        <a href={`tel:${office.tel.replace('-', '')}`} className="flex items-center gap-2 text-white font-semibold text-xs hover:text-accent transition-colors">
+                                            <Phone className="w-3.5 h-3.5 text-accent" />
+                                            <span>{office.tel}</span>
+                                        </a>
                                     </div>
                                 </div>
                             ))}
 
+                            {/* Email Card - Wide */}
+                            <div className="sm:col-span-2 glass rounded-2xl p-6 hover:border-accent/30 transition-all group flex items-center gap-5">
+                                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-lg">
+                                    <Mail className="w-6 h-6" />
+                                </div>
+                                <div className="flex flex-col">
+                                    <p className="text-white font-bold text-sm mb-0.5">Correo Electrónico</p>
+                                    <a href="mailto:nacionalesdelivery@gmail.com" className="text-blue-300 text-sm hover:text-accent transition-colors truncate">
+                                        nacionalesdelivery@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+
                             {/* Social Media Grid */}
-                            <div className="grid grid-cols-2 gap-4 sm:col-span-2">
+                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:col-span-2">
                                 {[
-                                    { name: 'Facebook', icon: Facebook, color: 'text-blue-500', bg: 'bg-blue-500/10', url: 'https://www.facebook.com/profile.php?id=61586422649312' },
-                                    { name: 'Instagram', icon: Instagram, color: 'text-pink-500', bg: 'bg-pink-500/10', url: 'https://www.instagram.com/nacionalesdelivery/' },
-                                    { name: 'TikTok', customIcon: <TikTokIcon className="w-5 h-5 text-white" />, color: 'text-white', bg: 'bg-white/10', url: 'https://www.tiktok.com/@nacionales.delive' },
-                                    { name: 'YouTube', icon: Youtube, color: 'text-red-500', bg: 'bg-red-500/10', url: 'https://www.youtube.com/@NacionalesDS' }
+                                    { name: 'Facebook', icon: Facebook, url: 'https://www.facebook.com/profile.php?id=61586422649312' },
+                                    { name: 'Instagram', icon: Instagram, url: 'https://www.instagram.com/nacionalesdelivery/' },
+                                    { name: 'TikTok', customIcon: <TikTokIcon className="w-5 h-5 text-accent" />, url: 'https://www.tiktok.com/@nacionales.delive' },
+                                    { name: 'YouTube', icon: Youtube, url: 'https://www.youtube.com/@NacionalesDS' }
                                 ].map(social => (
                                     <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="glass rounded-xl p-4 flex flex-col items-center justify-center gap-2 hover:border-accent/50 transition-all group hover:scale-105">
-                                        <div className={`w-10 h-10 rounded-lg ${social.bg} ${social.color} flex items-center justify-center transition-transform`}>
+                                        <div className="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center transition-transform">
                                             {social.icon ? <social.icon className="w-5 h-5" /> : social.customIcon}
                                         </div>
-                                        <span className="text-blue-200 text-xs font-semibold group-hover:text-white transition-colors">{social.name}</span>
+                                        <span className="text-blue-200 text-[10px] font-bold tracking-widest uppercase group-hover:text-white transition-colors">{social.name}</span>
                                     </a>
                                 ))}
                             </div>
