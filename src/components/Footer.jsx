@@ -155,7 +155,7 @@ export default function Footer() {
                                 { city: 'Petén', addr: '3 Calle 8-18 Zona 2, Santa Elena', tel: '3158-3067' }
                             ].map((s) => (
                                 <div key={s.city} className="flex flex-col gap-1">
-                                    <p className="text-white font-bold text-xs first-lette tracking-wider text-[14px]">{s.city}</p>
+                                    <p className="text-white font-bold text-xs first-lette tracking-wider text-[14.6px]">{s.city}</p>
                                     <div className="flex items-start gap-2 text-blue-300 text-[13px]">
                                         <MapPin className="w-4 h-4 mt-0.5 shrink-0 opacity-70" />
                                         <span>{s.addr}</span>
