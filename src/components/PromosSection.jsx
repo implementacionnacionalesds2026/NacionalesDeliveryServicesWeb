@@ -10,6 +10,15 @@ const routes = [
 ]
 
 
+const NEW_NORMAL_PACKAGES = [
+    { name: 'Paquete Micro', qty: 15, perEnvio: 36, total: 540 },
+    { name: 'Paquete Petit', qty: 25, perEnvio: 34, total: 850 },
+    { name: 'Paquete Básico', qty: 50, perEnvio: 32, total: 1600 },
+    { name: 'Paquete Plus', qty: 100, perEnvio: 30, total: 3000 },
+    { name: 'Paquete Gold', qty: 200, perEnvio: 28, total: 5600 },
+    { name: 'Paquete Platino', qty: 400, perEnvio: 24, total: 9600 },
+]
+
 const PROMO_CATEGORIES = {
     RECOLECCION: 'recoleccion',
     NORMAL: 'normal'
@@ -44,12 +53,9 @@ export default function PromosSection() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <ScrollReveal>
                     <div className="text-center mb-12">
-                        <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full glass border border-lime-400/30 text-lime-400 font-black text-xs uppercase tracking-widest mb-6 shadow-[0_0_20px_rgba(163,230,53,0.15)]">
-                            <Zap className="w-3.5 h-3.5 fill-lime-400" /> Ofertas Exclusivas 2026
-                        </div>
                         <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase mb-6 leading-tight">
                             Nuestros Mejores <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-lime-300 to-lime-500">
+                            <span className="text-yellow-400">
                                 Paquetes de Envío
                             </span>
                         </h2>
@@ -68,7 +74,7 @@ export default function PromosSection() {
                                 }`}
                         >
                             <Package className="w-4 h-4" />
-                            Envíos Normales
+                            Envíos
                         </button>
                         <button
                             onClick={() => setActiveTab(PROMO_CATEGORIES.RECOLECCION)}
@@ -88,89 +94,103 @@ export default function PromosSection() {
                 </div>
 
                 {/* Content Area */}
-                <div className="grid lg:grid-cols-2 gap-8 mb-20 min-h-[400px]">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20 min-h-[400px]">
                     {activeTab === PROMO_CATEGORIES.NORMAL ? (
                         <>
                             {/* NORMAL SHIPMENT PACKAGES */}
-                            <ScrollReveal delay={100}>
+                            {NEW_NORMAL_PACKAGES.map((pkg, idx) => (
+                                <ScrollReveal key={pkg.name} delay={(idx + 1) * 100}>
+                                    <div className="group h-full">
+                                        <div className="relative h-full glass border border-white/10 rounded-[2rem] p-6 md:p-8 transition-all duration-500 hover:border-accent/50 hover:shadow-[0_20px_50px_rgba(62,198,224,0.15)] flex flex-col">
+                                            <div className="mb-6">
+                                                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase">{pkg.name}</h3>
+                                                <p className="text-blue-200/70 text-xs leading-relaxed max-w-xs">
+                                                    Ahorro garantizado en envíos por volumen. Gestión eficiente y segura.
+                                                </p>
+                                            </div>
+
+                                            <div className="mt-auto pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                                <div className="flex items-baseline gap-1">
+                                                    <span className="text-lg text-accent font-black">Q</span>
+                                                    <span className="text-5xl font-black text-white tracking-tighter">{pkg.perEnvio.toFixed(2)}</span>
+                                                    <span className="text-blue-300/60 font-bold ml-1 text-xs uppercase">c/u</span>
+                                                </div>
+                                                <div className="text-center sm:text-right">
+                                                    <div className="text-xl font-black text-white mb-1">¡{pkg.qty} GUÍAS!</div>
+                                                    <p className="text-blue-400 text-[9px] font-bold uppercase tracking-widest">Q{pkg.total} Total</p>
+                                                </div>
+                                            </div>
+
+                                            <button
+                                                onClick={() => handlePackageClick(pkg.name, pkg.perEnvio, pkg.qty, false)}
+                                                className="mt-8 w-full py-4 rounded-xl bg-white/10 text-white border border-white/10 font-black uppercase tracking-widest text-xs transition-all duration-300 hover:bg-accent hover:text-[#060b22] hover:border-accent flex items-center justify-center gap-2"
+                                            >
+                                                LO QUIERO <ChevronRight className="w-3 h-3" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </ScrollReveal>
+                            ))}
+
+                            <ScrollReveal delay={700}>
                                 <div className="group h-full">
-                                    <div className="relative h-full glass border border-white/10 rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 hover:border-accent/50 hover:shadow-[0_20px_50px_rgba(62,198,224,0.15)] flex flex-col">
-                                        <div className="absolute top-0 right-12 bg-blue-500 text-white px-6 py-2 rounded-b-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">
-
-                                        </div>
-                                        <div className="absolute top-8 right-8 w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center border border-accent/20 group-hover:scale-110 group-hover:bg-accent/20 transition-all duration-500 mt-4">
-                                            <Package className="w-7 h-7 text-accent" />
-                                        </div>
-
-                                        <div className="mb-8">
-                                            <span className="inline-block px-4 py-1 bg-accent/10 text-accent text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4 border border-accent/20">
-                                                Ideal para Inicio
-                                            </span>
-                                            <h3 className="text-3xl md:text-4xl font-black text-white mb-2 uppercase">Pensando en Vos</h3>
-                                            <p className="text-blue-200/70 text-sm leading-relaxed max-w-xs">
+                                    <div className="relative h-full glass border border-white/10 rounded-[2rem] p-6 md:p-8 transition-all duration-500 hover:border-accent/50 hover:shadow-[0_20px_50px_rgba(62,198,224,0.15)] flex flex-col">
+                                        <div className="mb-6">
+                                            <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase">Pensando en Vos</h3>
+                                            <p className="text-blue-200/70 text-xs leading-relaxed max-w-xs">
                                                 Tú dejas los paquetes, nosotros nos encargamos del resto. Envíos regulares con ahorro real.
                                             </p>
                                         </div>
 
-                                        <div className="mt-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+                                        <div className="mt-auto pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
                                             <div className="flex items-baseline gap-1">
-                                                <span className="text-xl text-accent font-black">Q</span>
-                                                <span className="text-6xl font-black text-white tracking-tighter">25.00</span>
-                                                <span className="text-blue-300/60 font-bold ml-1 text-sm uppercase">c/u</span>
+                                                <span className="text-lg text-accent font-black">Q</span>
+                                                <span className="text-5xl font-black text-white tracking-tighter">25.00</span>
+                                                <span className="text-blue-300/60 font-bold ml-1 text-xs uppercase">c/u</span>
                                             </div>
                                             <div className="text-center sm:text-right">
-                                                <div className="text-2xl font-black text-white mb-1">¡20 GUÍAS!</div>
-                                                <p className="text-blue-400 text-[10px] font-bold uppercase tracking-widest">Envíos Normales</p>
+                                                <div className="text-xl font-black text-white mb-1">¡20 GUÍAS!</div>
+                                                <p className="text-blue-400 text-[9px] font-bold uppercase tracking-widest">Envíos</p>
                                             </div>
                                         </div>
 
                                         <button
                                             onClick={() => handlePackageClick('¡Pensando en Vos!', 25, 20, false)}
-                                            className="mt-10 w-full py-5 rounded-2xl bg-white/10 text-white border border-white/10 font-black uppercase tracking-widest text-sm transition-all duration-300 hover:bg-accent hover:text-[#060b22] hover:border-accent flex items-center justify-center gap-3"
+                                            className="mt-8 w-full py-4 rounded-xl bg-white/10 text-white border border-white/10 font-black uppercase tracking-widest text-xs transition-all duration-300 hover:bg-accent hover:text-[#060b22] hover:border-accent flex items-center justify-center gap-2"
                                         >
-                                            LO QUIERO <ChevronRight className="w-4 h-4" />
+                                            LO QUIERO <ChevronRight className="w-3 h-3" />
                                         </button>
                                     </div>
                                 </div>
                             </ScrollReveal>
 
-                            <ScrollReveal delay={200}>
+                            <ScrollReveal delay={800}>
                                 <div className="group h-full">
-                                    <div className="relative h-full glass border border-white/10 rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 hover:border-yellow-400/50 hover:shadow-[0_20px_50px_rgba(250,204,21,0.15)] flex flex-col">
-                                        <div className="absolute top-0 right-12 bg-yellow-400 text-[#060b22] px-6 py-2 rounded-b-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">
-
-                                        </div>
-                                        <div className="absolute top-8 right-8 w-14 h-14 bg-yellow-400/10 rounded-2xl flex items-center justify-center border border-yellow-400/20 group-hover:scale-110 group-hover:bg-yellow-400/20 transition-all duration-500 mt-4">
-                                            <Zap className="w-7 h-7 text-yellow-400" />
-                                        </div>
-
-                                        <div className="mb-8">
-                                            <span className="inline-block px-4 py-1 bg-yellow-400/10 text-yellow-400 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4 border border-yellow-400/20">
-                                                Alta Demanda
-                                            </span>
-                                            <h3 className="text-3xl md:text-4xl font-black text-white mb-2 uppercase">¡Ponete Pilas!</h3>
-                                            <p className="text-blue-200/70 text-sm leading-relaxed max-w-xs">
+                                    <div className="relative h-full glass border border-white/10 rounded-[2rem] p-6 md:p-8 transition-all duration-500 hover:border-accent/50 hover:shadow-[0_20px_50px_rgba(62,198,224,0.15)] flex flex-col">
+                                        <div className="mb-6">
+                                            <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase">¡Ponete Pilas!</h3>
+                                            <p className="text-blue-200/70 text-xs leading-relaxed max-w-xs">
                                                 Si envías constantemente, este es tu paquete. El precio más bajo por mayor.
                                             </p>
                                         </div>
 
-                                        <div className="mt-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+                                        <div className="mt-auto pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
                                             <div className="flex items-baseline gap-1">
-                                                <span className="text-xl text-yellow-400 font-black">Q</span>
-                                                <span className="text-6xl font-black text-white tracking-tighter">20.00</span>
-                                                <span className="text-blue-300/60 font-bold ml-1 text-sm uppercase">c/u</span>
+                                                <span className="text-lg text-accent font-black">Q</span>
+                                                <span className="text-5xl font-black text-white tracking-tighter">20.00</span>
+                                                <span className="text-blue-300/60 font-bold ml-1 text-xs uppercase">c/u</span>
                                             </div>
                                             <div className="text-center sm:text-right">
-                                                <div className="text-2xl font-black text-white mb-1">¡40 GUÍAS!</div>
-                                                <p className="text-yellow-400 text-[10px] font-bold uppercase tracking-widest">Envíos Normales</p>
+                                                <div className="text-xl font-black text-white mb-1">¡40 GUÍAS!</div>
+                                                <p className="text-blue-400 text-[9px] font-bold uppercase tracking-widest">Envíos</p>
                                             </div>
                                         </div>
 
                                         <button
                                             onClick={() => handlePackageClick('¡Ponete Pilas!', 20, 40, false)}
-                                            className="mt-10 w-full py-5 rounded-2xl bg-yellow-400 text-[#060b22] font-black uppercase tracking-widest text-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] flex items-center justify-center gap-3"
+                                            className="mt-8 w-full py-4 rounded-xl bg-white/10 text-white border border-white/10 font-black uppercase tracking-widest text-xs transition-all duration-300 hover:bg-accent hover:text-[#060b22] hover:border-accent flex items-center justify-center gap-2"
                                         >
-                                            LO QUIERO <ChevronRight className="w-4 h-4" />
+                                            LO QUIERO <ChevronRight className="w-3 h-3" />
                                         </button>
                                     </div>
                                 </div>
@@ -181,41 +201,41 @@ export default function PromosSection() {
                             {/* RECOLECCION PACKAGES */}
                             <ScrollReveal delay={100}>
                                 <div className="group h-full">
-                                    <div className="relative h-full glass border border-white/10 rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 hover:border-lime-400/50 hover:shadow-[0_20px_50px_rgba(163,230,53,0.15)] flex flex-col">
-                                        <div className="absolute top-0 right-12 bg-lime-400 text-[#060b22] px-6 py-2 rounded-b-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">
+                                    <div className="relative h-full glass border border-white/10 rounded-[2rem] p-6 md:p-8 transition-all duration-500 hover:border-lime-400/50 hover:shadow-[0_20px_50px_rgba(163,230,53,0.15)] flex flex-col">
+                                        <div className="absolute top-0 right-10 bg-lime-400 text-[#060b22] px-5 py-2 rounded-b-xl text-[9px] font-black uppercase tracking-widest shadow-xl">
                                             Solo Ciudad de Guatemala
                                         </div>
-                                        <div className="absolute top-8 right-8 w-14 h-14 bg-lime-400/10 rounded-2xl flex items-center justify-center border border-lime-400/20 group-hover:scale-110 group-hover:bg-lime-400/20 transition-all duration-500 mt-4">
-                                            <Star className="w-7 h-7 text-lime-400 fill-lime-400/20" />
+                                        <div className="absolute top-6 right-6 w-12 h-12 bg-lime-400/10 rounded-2xl flex items-center justify-center border border-lime-400/20 group-hover:scale-110 group-hover:bg-lime-400/20 transition-all duration-500 mt-4">
+                                            <Star className="w-6 h-6 text-lime-400 fill-lime-400/20" />
                                         </div>
 
-                                        <div className="mb-8">
-                                            <span className="inline-block px-4 py-1 bg-lime-400/10 text-lime-400 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4 border border-lime-400/20">
+                                        <div className="mb-6">
+                                            <span className="inline-block px-3 py-1 bg-lime-400/10 text-lime-400 text-[9px] font-black uppercase tracking-[0.2em] rounded-full mb-3 border border-lime-400/20">
                                                 Plan Emprendedor
                                             </span>
-                                            <h3 className="text-3xl md:text-4xl font-black text-white mb-2 uppercase">Paquete Basic</h3>
-                                            <p className="text-blue-200/70 text-sm leading-relaxed max-w-xs">
+                                            <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase">Paquete Basic</h3>
+                                            <p className="text-blue-200/70 text-xs leading-relaxed max-w-xs">
                                                 Ideal para negocios que están escalando. Recolección segura a un precio imbatible.
                                             </p>
                                         </div>
 
-                                        <div className="mt-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+                                        <div className="mt-auto pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
                                             <div className="flex items-baseline gap-1">
-                                                <span className="text-xl text-lime-400 font-black">Q</span>
-                                                <span className="text-6xl font-black text-white tracking-tighter">25.00</span>
-                                                <span className="text-blue-300/60 font-bold ml-1 text-sm uppercase">c/u</span>
+                                                <span className="text-lg text-lime-400 font-black">Q</span>
+                                                <span className="text-5xl font-black text-white tracking-tighter">25.00</span>
+                                                <span className="text-blue-300/60 font-bold ml-1 text-xs uppercase">c/u</span>
                                             </div>
                                             <div className="text-center sm:text-right">
-                                                <div className="text-2xl font-black text-white mb-1">¡25 GUÍAS!</div>
-                                                <p className="text-blue-400 text-[10px] font-bold uppercase tracking-widest">Incluye Recolección</p>
+                                                <div className="text-xl font-black text-white mb-1">¡25 GUÍAS!</div>
+                                                <p className="text-blue-400 text-[9px] font-bold uppercase tracking-widest">Incluye Recolección</p>
                                             </div>
                                         </div>
 
                                         <button
                                             onClick={() => handlePackageClick('Basic', 25, 25, true)}
-                                            className="mt-10 w-full btn-promo-desktop py-5 rounded-2xl flex items-center justify-center gap-3 text-sm"
+                                            className="mt-8 w-full btn-promo-desktop py-4 rounded-xl flex items-center justify-center gap-2 text-xs"
                                         >
-                                            SOLICITAR PAQUETE <ChevronRight className="w-4 h-4" />
+                                            SOLICITAR PAQUETE <ChevronRight className="w-3 h-3" />
                                         </button>
                                     </div>
                                 </div>
@@ -223,38 +243,38 @@ export default function PromosSection() {
 
                             <ScrollReveal delay={200}>
                                 <div className="group h-full">
-                                    <div className="relative h-full glass border-2 border-accent/50 rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 hover:border-accent hover:shadow-[0_20px_50px_rgba(62,198,224,0.3)] flex flex-col bg-accent/5">
-                                        <div className="absolute top-0 right-12 bg-accent text-[#060b22] px-6 py-2 rounded-b-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">
+                                    <div className="relative h-full glass border-2 border-accent/50 rounded-[2rem] p-6 md:p-8 transition-all duration-500 hover:border-accent hover:shadow-[0_20px_50px_rgba(62,198,224,0.3)] flex flex-col bg-accent/5">
+                                        <div className="absolute top-0 right-10 bg-accent text-[#060b22] px-5 py-2 rounded-b-xl text-[9px] font-black uppercase tracking-widest shadow-xl">
                                             Solo Ciudad de Guatemala
                                         </div>
 
-                                        <div className="mb-8">
-                                            <span className="inline-block px-4 py-1 bg-accent/20 text-accent text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4 border border-accent/30">
+                                        <div className="mb-6">
+                                            <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-[9px] font-black uppercase tracking-[0.2em] rounded-full mb-3 border border-accent/30">
                                                 Plan Profesional
                                             </span>
-                                            <h3 className="text-3xl md:text-4xl font-black text-white mb-2 uppercase">Paquete Plus</h3>
-                                            <p className="text-blue-200/70 text-sm leading-relaxed max-w-xs">
+                                            <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase">Paquete Plus</h3>
+                                            <p className="text-blue-200/70 text-xs leading-relaxed max-w-xs">
                                                 Específicamente diseñado para Ciudad de Guatemala. Máximo ahorro y eficiencia.
                                             </p>
                                         </div>
 
-                                        <div className="mt-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+                                        <div className="mt-auto pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
                                             <div className="flex items-baseline gap-1">
-                                                <span className="text-xl text-accent font-black">Q</span>
-                                                <span className="text-6xl font-black text-white tracking-tighter">20.00</span>
-                                                <span className="text-blue-300/60 font-bold ml-1 text-sm uppercase">c/u</span>
+                                                <span className="text-lg text-accent font-black">Q</span>
+                                                <span className="text-5xl font-black text-white tracking-tighter">20.00</span>
+                                                <span className="text-blue-300/60 font-bold ml-1 text-xs uppercase">c/u</span>
                                             </div>
                                             <div className="text-center sm:text-right">
-                                                <div className="text-2xl font-black text-white mb-1">¡35 GUÍAS!</div>
-                                                <p className="text-accent text-[10px] font-bold uppercase tracking-widest">Sólo Ciudad Capital</p>
+                                                <div className="text-xl font-black text-white mb-1">¡35 GUÍAS!</div>
+                                                <p className="text-accent text-[9px] font-bold uppercase tracking-widest">Sólo Ciudad Capital</p>
                                             </div>
                                         </div>
 
                                         <button
                                             onClick={() => handlePackageClick('Plus', 20, 35, true)}
-                                            className="mt-10 w-full py-5 rounded-2xl bg-accent text-[#060b22] font-black uppercase tracking-widest text-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(62,198,224,0.4)] flex items-center justify-center gap-3"
+                                            className="mt-8 w-full py-4 rounded-xl bg-accent text-[#060b22] font-black uppercase tracking-widest text-xs transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(62,198,224,0.4)] flex items-center justify-center gap-2"
                                         >
-                                            SOLICITAR PAQUETE <ChevronRight className="w-4 h-4" />
+                                            SOLICITAR PAQUETE <ChevronRight className="w-3 h-3" />
                                         </button>
                                     </div>
                                 </div>
