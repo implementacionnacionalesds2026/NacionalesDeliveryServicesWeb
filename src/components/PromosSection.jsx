@@ -205,10 +205,6 @@ export default function PromosSection() {
                                         <div className="absolute top-0 right-10 bg-lime-400 text-[#060b22] px-5 py-2 rounded-b-xl text-[9px] font-black uppercase tracking-widest shadow-xl">
                                             Solo Ciudad de Guatemala
                                         </div>
-                                        <div className="absolute top-6 right-6 w-12 h-12 bg-lime-400/10 rounded-2xl flex items-center justify-center border border-lime-400/20 group-hover:scale-110 group-hover:bg-lime-400/20 transition-all duration-500 mt-4">
-                                            <Star className="w-6 h-6 text-lime-400 fill-lime-400/20" />
-                                        </div>
-
                                         <div className="mb-6">
                                             <span className="inline-block px-3 py-1 bg-lime-400/10 text-lime-400 text-[9px] font-black uppercase tracking-[0.2em] rounded-full mb-3 border border-lime-400/20">
                                                 Plan Emprendedor
