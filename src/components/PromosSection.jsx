@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Package, Truck, ShieldCheck, Tag, MapPin, X, Info, Zap, Star, ChevronRight } from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
 
@@ -7,6 +7,46 @@ const routes = [
     { id: 'huehue', name: 'Huehuetenango', phone: '50252713803' },
     { id: 'chimaltenango', name: 'Chimaltenango', phone: '50237223693' },
     { id: 'peten', name: 'Petén', phone: '50231583067' }
+]
+
+const PRICING_PACKAGES = [
+    { name: 'Paquete Micro', qty: 15, total: 540, perEnvio: 36, type: 'normal' },
+    { name: 'Paquete Petit', qty: 25, total: 850, perEnvio: 34, type: 'normal' },
+    { name: 'Paquete Básico', qty: 50, total: 1600, perEnvio: 32, type: 'normal' },
+    { name: 'Paquete Plus', qty: 100, total: 3000, perEnvio: 30, type: 'normal' },
+    { name: 'Paquete Gold', qty: 200, total: 5600, perEnvio: 28, type: 'normal' },
+    { name: 'Paquete Platino', qty: 400, total: 9600, perEnvio: 24, type: 'normal' },
+]
+
+const SPECIAL_PACKAGES = [
+    {
+        name: 'Paquete ¡Pensando en vos!',
+        mainQty: 25,
+        details: [
+            {
+                note: 'No deben pasarse de 10 Lbs, no menos de 5 paquetes. (Si aplica departamentos)',
+                qty: '20 guías',
+                total: 500,
+                perEnvio: 25,
+                realQty: 20
+            }
+        ],
+        highlight: 'yellow'
+    },
+    {
+        name: 'Paquete ¡Ponete Pilas!',
+        mainQty: 20,
+        details: [
+            {
+                note: 'No deben pasarse de 10 Lbs. (Solamente aplica para ciudad capital)',
+                qty: '40 guías',
+                total: 800,
+                perEnvio: 20,
+                realQty: 40
+            }
+        ],
+        highlight: 'blue'
+    }
 ]
 
 const PROMO_CATEGORIES = {
@@ -262,8 +302,118 @@ export default function PromosSection() {
                     )}
                 </div>
 
+                {/* Full Pricing Table Section */}
+                <ScrollReveal delay={300}>
+                    <div className="mt-20 overflow-hidden rounded-[2.5rem] border border-white/10 glass shadow-2xl">
+                        <div className="p-8 md:p-12 bg-gradient-to-r from-blue-900/40 to-indigo-900/40 flex flex-col md:flex-row justify-between items-center gap-6 border-b border-white/10">
+                            <div>
+                                <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight mb-2">
+                                    Tarifa de Precios
+                                </h3>
+                                <p className="text-blue-300/60 font-bold text-xs uppercase tracking-[0.2em]">Nacionales Delivery Services 2026</p>
+                            </div>
+                            <img src="/images/logo.png" alt="NDS Logo" className="h-12 md:h-16 object-contain brightness-0 invert opacity-80" />
+                        </div>
+
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left border-collapse">
+                                <thead>
+                                    <tr className="bg-white/5 border-b border-white/10">
+                                        <th className="px-8 py-6 text-xs font-black text-blue-300 uppercase tracking-widest">Paquete</th>
+                                        <th className="px-8 py-6 text-xs font-black text-blue-300 uppercase tracking-widest text-center">Cantidad de envíos</th>
+                                        <th className="px-8 py-6 text-xs font-black text-blue-300 uppercase tracking-widest text-right">Precio con descuento</th>
+                                        <th className="px-8 py-6 text-xs font-black text-blue-300 uppercase tracking-widest text-right">Precio por envío</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-white/5">
+                                    {PRICING_PACKAGES.map((pkg, idx) => (
+                                        <tr 
+                                            key={idx} 
+                                            className="group hover:bg-white/5 transition-colors cursor-pointer"
+                                            onClick={() => handlePackageClick(pkg.name, pkg.perEnvio, pkg.qty, false)}
+                                        >
+                                            <td className="px-8 py-5">
+                                                <span className="text-white font-bold group-hover:text-accent transition-colors">{pkg.name}</span>
+                                            </td>
+                                            <td className="px-8 py-5 text-center">
+                                                <span className="text-blue-200/70 font-medium">{pkg.qty}</span>
+                                            </td>
+                                            <td className="px-8 py-5 text-right">
+                                                <span className="text-white font-black">Q.{pkg.total.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
+                                            </td>
+                                            <td className="px-8 py-5 text-right">
+                                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-accent/10 border border-accent/20">
+                                                    <span className="text-accent font-black text-sm">Q.{pkg.perEnvio.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))}
+
+                                    {/* Special Packages */}
+                                    {SPECIAL_PACKAGES.map((pkg, idx) => (
+                                        <React.Fragment key={`special-${idx}`}>
+                                            <tr className="bg-white/[0.02]">
+                                                <td className="px-8 py-4">
+                                                    <span className="text-blue-300 font-black text-sm uppercase italic">{pkg.name}</span>
+                                                </td>
+                                                <td className="px-8 py-4 text-center">
+                                                    <span className="text-blue-300/60 font-bold">{pkg.mainQty}</span>
+                                                </td>
+                                                <td className="px-8 py-4"></td>
+                                                <td className="px-8 py-4"></td>
+                                            </tr>
+                                            {pkg.details.map((detail, dIdx) => (
+                                                <tr 
+                                                    key={`detail-${idx}-${dIdx}`}
+                                                    className={`${pkg.highlight === 'yellow' ? 'bg-yellow-400/5 hover:bg-yellow-400/10' : 'bg-accent/5 hover:bg-accent/10'} transition-colors cursor-pointer group`}
+                                                    onClick={() => handlePackageClick(pkg.name, detail.perEnvio, detail.realQty, false)}
+                                                >
+                                                    <td className="px-8 py-6">
+                                                        <div className="flex items-start gap-3">
+                                                            <div className={`mt-1 p-1 rounded-md ${pkg.highlight === 'yellow' ? 'bg-yellow-400/20 text-yellow-400' : 'bg-accent/20 text-accent'}`}>
+                                                                <ShieldCheck className="w-3 h-3" />
+                                                            </div>
+                                                            <p className="text-blue-200/80 text-xs leading-relaxed max-w-sm">
+                                                                <span className="font-bold text-white block mb-1">Nota:</span>
+                                                                {detail.note}
+                                                            </p>
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-8 py-6 text-center">
+                                                        <span className="text-white font-bold">{detail.qty}</span>
+                                                    </td>
+                                                    <td className="px-8 py-6 text-right">
+                                                        <span className="text-white font-black">Q.{detail.total.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
+                                                    </td>
+                                                    <td className="px-8 py-6 text-right">
+                                                        <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg ${pkg.highlight === 'yellow' ? 'bg-yellow-400/20 border-yellow-400/30 text-yellow-400' : 'bg-accent/20 border-accent/30 text-accent'}`}>
+                                                            <span className="font-black text-sm">Q.{detail.perEnvio.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </React.Fragment>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div className="p-6 bg-white/5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <p className="text-[10px] text-blue-300/40 font-bold uppercase tracking-widest">
+                                * Tarifas sujetas a cambios sin previo aviso. Aplican restricciones.
+                            </p>
+                            <button 
+                                onClick={() => setIsInfoModalOpen(true)}
+                                className="text-xs font-black text-accent hover:text-white transition-colors uppercase tracking-widest flex items-center gap-2"
+                            >
+                                <Info className="w-4 h-4" /> Ver Términos Detallados
+                            </button>
+                        </div>
+                    </div>
+                </ScrollReveal>
+
                 {/* Terms and conditions link moved below cards */}
-                <div className="flex justify-center mb-20 -mt-10">
+                <div className="flex justify-center mb-20 mt-12">
                     <button 
                         onClick={() => setIsInfoModalOpen(true)}
                         className="flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors text-xs font-black uppercase tracking-widest group glass px-6 py-3 rounded-xl border border-yellow-400/20"
