@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Package, Truck, ShieldCheck, Tag, MapPin, X } from 'lucide-react'
+import { Package, Truck, ShieldCheck, Tag, MapPin, X, Info, Zap, Star, ChevronRight } from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
 
 const routes = [
@@ -9,9 +9,16 @@ const routes = [
     { id: 'peten', name: 'Petén', phone: '50231583067' }
 ]
 
+const PROMO_CATEGORIES = {
+    RECOLECCION: 'recoleccion',
+    NORMAL: 'normal'
+}
+
 export default function PromosSection() {
+    const [activeTab, setActiveTab] = useState(PROMO_CATEGORIES.RECOLECCION)
     const [selectedPackage, setSelectedPackage] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
 
     const handlePackageClick = (pkgName, pkgPrice, pkgQty, isRecoleccion = false) => {
         setSelectedPackage({ name: pkgName, price: pkgPrice, qty: pkgQty, isRecoleccion })
@@ -29,255 +36,398 @@ export default function PromosSection() {
 
     return (
         <section id="promociones" className="py-24 relative overflow-hidden bg-gradient-to-b from-[#060b22] to-[#0a1035]">
-            {/* Background Effects */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-96 bg-accent/10 rounded-full blur-[100px]" />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+            {/* Ambient Background Lights */}
+            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-lime-400/5 rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <ScrollReveal>
-                    <div className="text-center mb-16">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-lime-400 font-bold mb-6 border border-lime-400/20 shadow-[0_0_15px_rgba(163,230,53,0.2)]">
-                            <Tag className="w-4 h-4 fill-lime-400" /> ¡PROMOCIÓN ESPECIAL!
+                    <div className="text-center mb-12">
+                        <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full glass border border-lime-400/30 text-lime-400 font-black text-xs uppercase tracking-widest mb-6 shadow-[0_0_20px_rgba(163,230,53,0.15)]">
+                            <Zap className="w-3.5 h-3.5 fill-lime-400" /> Ofertas Exclusivas 2026
                         </div>
-                        <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight uppercase mb-6 leading-tight">
-                            Promos del mes: <br className="hidden md:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-300 to-lime-500">
-                                Enviamos tu carga
+                        <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase mb-6 leading-tight">
+                            Nuestros Mejores <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-lime-300 to-lime-500">
+                                Paquetes de Envío
                             </span>
                         </h2>
-                        <p className="text-xl text-blue-200 uppercase font-semibold tracking-wider">
-                            Recolección y entrega el mismo día.
+                        <p className="text-lg text-blue-200/80 max-w-2xl mx-auto font-medium">
+                            Elegí el plan que mejor se adapte a tu negocio. Ahorrá tiempo y dinero con nuestras tarifas preferenciales.
                         </p>
                     </div>
                 </ScrollReveal>
 
-                <div className="space-y-12 mb-16">
-                    {/* SECTION 1: ENVÍOS CON RECOLECCIÓN */}
-                    <div>
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="h-px bg-white/20 flex-1" />
-                            <h3 className="text-xs sm:text-sm md:text-xl font-black text-white uppercase tracking-wider px-3 sm:px-4 md:px-6 border border-white/20 rounded-2xl md:rounded-full py-2 bg-white/5 flex items-center justify-center text-center shadow-lg gap-2">
-                                Ofertas en Servicios de Recolección y Envíos
-                            </h3>
-                            <div className="h-px bg-white/20 flex-1" />
-                        </div>
-                        <div className="space-y-6 lg:space-y-8">
-                            {/* Oferta: 25 guías (Basic) */}
-                            <ScrollReveal delay={100}>
-                                <button
-                                    onClick={() => handlePackageClick('Basic', 25, 25, true)}
-                                    className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-yellow-400/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.2)]"
-                                >
-                                    <div className="absolute -right-10 -top-10 w-32 h-32 bg-yellow-400/10 rounded-full blur-3xl group-hover:bg-yellow-400/30 transition-all duration-500" />
-                                    <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-yellow-400/30 transition-all duration-500">
-                                        <Package className="w-12 h-12 text-yellow-400 animate-float-cute" style={{ animationDelay: '0.2s' }} />
-                                    </div>
-                                    <div className="flex-1 text-center md:text-left">
-                                        <span className="inline-block px-3 py-1 bg-yellow-400/10 text-yellow-400 text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-yellow-400/20 transition-colors">
-                                            Recolección Incluida
-                                        </span>
-                                        <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-yellow-400 transition-colors">Paquete Basic</h3>
-                                        <p className="text-blue-300">Perfecto para empezar a enviar de forma recurrente y segura a un gran precio.</p>
-                                    </div>
-                                    <div className="text-center md:text-right md:border-l border-white/10 md:pl-8">
-                                        <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-yellow-400 mr-1">Q</span>25.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
-                                        <div className="inline-block px-4 py-1.5 bg-yellow-400/20 border border-yellow-400/30 text-white rounded-lg font-bold text-sm tracking-widest shadow-[0_0_15px_rgba(250,204,21,0.2)]">
-                                            ¡25 GUÍAS!
-                                        </div>
-                                        <div className="mt-3 text-xs text-yellow-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
-                                            Seleccionar Ruta &rarr;
-                                        </div>
-                                    </div>
-                                </button>
-                            </ScrollReveal>
+                {/* Tab Navigation */}
+                <div className="flex flex-col items-center mb-16 gap-4">
+                    <div className="inline-flex p-1.5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl relative">
+                        <button
+                            onClick={() => setActiveTab(PROMO_CATEGORIES.RECOLECCION)}
+                            className={`relative px-8 py-4 rounded-xl text-sm font-black uppercase tracking-wider transition-all duration-300 flex items-center gap-2 z-10 ${activeTab === PROMO_CATEGORIES.RECOLECCION ? 'text-[#060b22]' : 'text-blue-300 hover:text-white'
+                                }`}
+                        >
+                            <Truck className="w-4 h-4" />
+                            Recolección
+                        </button>
+                        <button
+                            onClick={() => setActiveTab(PROMO_CATEGORIES.NORMAL)}
+                            className={`relative px-8 py-4 rounded-xl text-sm font-black uppercase tracking-wider transition-all duration-300 flex items-center gap-2 z-10 ${activeTab === PROMO_CATEGORIES.NORMAL ? 'text-[#060b22]' : 'text-blue-300 hover:text-white'
+                                }`}
+                        >
+                            <Package className="w-4 h-4" />
+                            Envíos Normales
+                        </button>
 
-                            {/* Oferta: 35 guías (Plus) */}
-                            <ScrollReveal delay={150}>
-                                <button
-                                    onClick={() => handlePackageClick('Plus', 20, 35, true)}
-                                    className="w-full text-left glass rounded-3xl p-6 md:p-8 border-2 border-accent/50 hover:border-accent transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 shadow-[0_0_30px_rgba(62,198,224,0.15)] cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_15px_50px_-10px_rgba(62,198,224,0.4)]"
-                                >
-                                    <div className="absolute right-0 top-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/30 transition-all duration-500" />
-                                    {/* Popular Badge */}
-                                    <div className="absolute top-0 right-8 md:right-12 bg-accent text-[#070b24] text-xs font-black px-4 py-1 rounded-b-lg tracking-wider uppercase shadow-lg">
-                                        Valido Unicamente en Ciudad de Guatemala
-                                    </div>
-                                    <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-accent/30 flex items-center justify-center shadow-[0_0_20px_rgba(62,198,224,0.3)] group-hover:scale-110 group-hover:border-accent transition-all duration-500">
-                                        <Package className="w-12 h-12 text-accent animate-float-cute" style={{ animationDelay: '0.6s' }} />
-                                    </div>
-                                    <div className="flex-1 text-center md:text-left mt-2 md:mt-0">
-                                        <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-xs font-black rounded-full mb-3 uppercase tracking-wider transition-colors">
-                                            Recolección Incluida
-                                        </span>
-                                        <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-accent transition-colors">Paquete Plus</h3>
-                                        <p className="text-blue-300">Aprovechá al máximo con recolección y obtené un excelente precio recurrente.</p>
-                                    </div>
-                                    <div className="text-center md:text-right md:border-l border-white/10 md:pl-8 z-10">
-                                        <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-accent mr-1">Q</span>20.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
-                                        <div className="inline-block px-4 py-1.5 bg-accent border border-accent text-[#070b24] rounded-lg font-black text-sm tracking-widest shadow-[0_0_15px_rgba(62,198,224,0.4)]">
-                                            ¡35 GUÍAS!
-                                        </div>
-                                        <div className="mt-3 text-xs text-accent font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
-                                            Seleccionar Ruta &rarr;
-                                        </div>
-                                    </div>
-                                </button>
-                            </ScrollReveal>
-                        </div>
-                    </div>
-
-                    {/* SECTION 2: SOLO ENVÍO */}
-                    <div>
-                        <div className="flex items-center gap-4 mb-8 pt-8">
-                            <div className="h-px bg-white/20 flex-1" />
-                            <h3 className="text-xs sm:text-sm md:text-xl font-black text-white uppercase tracking-wider px-3 sm:px-4 md:px-6 border border-white/20 rounded-2xl md:rounded-full py-2 bg-white/5 flex items-center justify-center text-center shadow-lg gap-2">
-                                Ofertas en servicios de Envio
-                            </h3>
-                            <div className="h-px bg-white/20 flex-1" />
-                        </div>
-                        <div className="space-y-6 lg:space-y-8">
-                            {/* Oferta: 20 guías (Pensando en Vos) */}
-                            <ScrollReveal delay={200}>
-                                <button
-                                    onClick={() => handlePackageClick('¡Pensando en Vos!', 25, 20, false)}
-                                    className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-accent/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(62,198,224,0.2)]"
-                                >
-                                    <div className="absolute right-0 top-0 w-48 h-48 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/40 transition-all duration-500" />
-                                    <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-[0_0_15px_rgba(62,198,224,0.2)] group-hover:scale-110 group-hover:border-accent/30 transition-all duration-500">
-                                        <Package className="w-12 h-12 text-accent animate-float-cute" style={{ animationDelay: '0.4s' }} />
-                                    </div>
-                                    <div className="flex-1 text-center md:text-left">
-                                        <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-accent/20 transition-colors">
-                                            Ahorra Tiempo y Dinero
-                                        </span>
-                                        <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-accent transition-colors">Paquete ¡Pensando en Vos!</h3>
-                                        <p className="text-blue-300">Perfecto para envíos regulares. Dejanos tus paquetes y ahorrá en cada guía.</p>
-                                    </div>
-                                    <div className="text-center md:text-right md:border-l border-white/10 md:pl-8 z-10">
-                                        <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-accent mr-1">Q</span>25.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
-                                        <div className="inline-block px-4 py-1.5 bg-accent/20 border border-accent/30 text-white rounded-lg font-bold text-sm tracking-widest shadow-[0_0_15px_rgba(62,198,224,0.2)]">
-                                            ¡20 GUÍAS!
-                                        </div>
-                                        <div className="mt-3 text-xs text-accent font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
-                                            Seleccionar Ruta &rarr;
-                                        </div>
-                                    </div>
-                                </button>
-                            </ScrollReveal>
-
-                            {/* Oferta: 40 guías (Ponete Pilas) */}
-                            <ScrollReveal delay={250}>
-                                <button
-                                    onClick={() => handlePackageClick('¡Ponete Pilas!', 20, 40, false)}
-                                    className="w-full text-left glass rounded-3xl p-6 md:p-8 border border-white/10 hover:border-yellow-400/50 transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 cursor-pointer transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.2)]"
-                                >
-                                    <div className="absolute right-0 top-0 w-48 h-48 bg-yellow-400/10 rounded-full blur-3xl group-hover:bg-yellow-400/30 transition-all duration-500" />
-                                    <div className="w-24 h-24 shrink-0 rounded-2xl bg-gradient-to-br from-[#0a1035] to-[#060b22] border border-white/10 flex items-center justify-center shadow-[0_0_15px_rgba(250,204,21,0.2)] group-hover:scale-110 group-hover:border-yellow-400/30 transition-all duration-500">
-                                        <Package className="w-12 h-12 text-yellow-400 animate-float-cute" style={{ animationDelay: '0.6s' }} />
-                                    </div>
-                                    <div className="flex-1 text-center md:text-left">
-                                        <span className="inline-block px-3 py-1 bg-yellow-400/10 text-yellow-400 text-xs font-bold rounded-full mb-3 uppercase tracking-wider group-hover:bg-yellow-400/20 transition-colors">
-                                            Ahorra Tiempo y Dinero
-                                        </span>
-                                        <h3 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase group-hover:text-yellow-400 transition-colors">Paquete ¡Ponete Pilas!</h3>
-                                        <p className="text-blue-300">Ideal si ya nos visitas constantemente. Compra por mayor y ahorra en todos tus envíos.</p>
-                                    </div>
-                                    <div className="text-center md:text-right md:border-l border-white/10 md:pl-8 z-10">
-                                        <div className="text-4xl font-black text-white mb-1"><span className="text-2xl text-yellow-400 mr-1">Q</span>20.00 <span className="text-lg text-blue-300 font-medium">c/u</span></div>
-                                        <div className="inline-block px-4 py-1.5 bg-yellow-400/20 border border-yellow-400/30 text-white rounded-lg font-black text-sm tracking-widest shadow-[0_0_15px_rgba(250,204,21,0.2)]">
-                                            ¡40 GUÍAS!
-                                        </div>
-                                        <div className="mt-3 text-xs text-yellow-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center md:justify-end gap-1">
-                                            Seleccionar Ruta &rarr;
-                                        </div>
-                                    </div>
-                                </button>
-                            </ScrollReveal>
-                        </div>
+                        {/* Sliding Background */}
+                        <div
+                            className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-gradient-to-r from-lime-400 to-lime-500 rounded-xl transition-all duration-500 ease-out shadow-lg ${activeTab === PROMO_CATEGORIES.RECOLECCION ? 'left-1.5' : 'left-[calc(50%+4.5px)]'
+                                }`}
+                        />
                     </div>
                 </div>
 
-                {/* Linear Layout: Benefits Stacked Below */}
-                <ScrollReveal delay={300}>
-                    <div className="glass rounded-3xl p-8 border border-white/10 relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent pointer-events-none" />
+                {/* Content Area */}
+                <div className="grid lg:grid-cols-2 gap-8 mb-20 min-h-[400px]">
+                    {activeTab === PROMO_CATEGORIES.RECOLECCION ? (
+                        <>
+                            {/* RECOLECCION PACKAGES */}
+                            <ScrollReveal delay={100}>
+                                <div className="group h-full">
+                                    <div className="relative h-full glass border border-white/10 rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 hover:border-lime-400/50 hover:shadow-[0_20px_50px_rgba(163,230,53,0.15)] flex flex-col">
+                                        <div className="absolute top-0 right-12 bg-lime-400 text-[#060b22] px-6 py-2 rounded-b-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">
+                                            Solo Ciudad de Guatemala
+                                        </div>
+                                        <div className="absolute top-8 right-8 w-14 h-14 bg-lime-400/10 rounded-2xl flex items-center justify-center border border-lime-400/20 group-hover:scale-110 group-hover:bg-lime-400/20 transition-all duration-500 mt-4">
+                                            <Star className="w-7 h-7 text-lime-400 fill-lime-400/20" />
+                                        </div>
 
-                        <h3 className="text-xl md:text-2xl font-bold text-white mb-6 text-center">Beneficios Incluidos</h3>
+                                        <div className="mb-8">
+                                            <span className="inline-block px-4 py-1 bg-lime-400/10 text-lime-400 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4 border border-lime-400/20">
+                                                Plan Emprendedor
+                                            </span>
+                                            <h3 className="text-3xl md:text-4xl font-black text-white mb-2 uppercase">Paquete Basic</h3>
+                                            <p className="text-blue-200/70 text-sm leading-relaxed max-w-xs">
+                                                Ideal para negocios que están escalando. Recolección segura a un precio imbatible.
+                                            </p>
+                                        </div>
 
-                        <div className="grid sm:grid-cols-2 gap-6 relative z-10">
-                            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all">
-                                <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center shrink-0">
-                                    <Truck className="w-6 h-6 text-purple-400" />
-                                </div>
-                                <div>
-                                    <h4 className="text-white font-bold mb-1">Recolección y Entrega el Mismo Día</h4>
-                                    <p className="text-slate-300 text-sm leading-relaxed">Pasamos a recolectar tu paquete a la puerta de tu casa o negocio y lo entregamos directamente en las manos de tu cliente rápidamente.</p>
-                                </div>
-                            </div>
+                                        <div className="mt-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+                                            <div className="flex items-baseline gap-1">
+                                                <span className="text-xl text-lime-400 font-black">Q</span>
+                                                <span className="text-6xl font-black text-white tracking-tighter">25.00</span>
+                                                <span className="text-blue-300/60 font-bold ml-1 text-sm uppercase">c/u</span>
+                                            </div>
+                                            <div className="text-center sm:text-right">
+                                                <div className="text-2xl font-black text-white mb-1">¡25 GUÍAS!</div>
+                                                <p className="text-blue-400 text-[10px] font-bold uppercase tracking-widest">Incluye Recolección</p>
+                                            </div>
+                                        </div>
 
-                            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all">
-                                <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center shrink-0">
-                                    <ShieldCheck className="w-6 h-6 text-accent" />
+                                        <button
+                                            onClick={() => handlePackageClick('Basic', 25, 25, true)}
+                                            className="mt-10 w-full btn-promo-desktop py-5 rounded-2xl flex items-center justify-center gap-3 text-sm"
+                                        >
+                                            SOLICITAR PAQUETE <ChevronRight className="w-4 h-4" />
+                                        </button>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 className="text-white font-bold mb-1">Cero Costos Ocultos</h4>
-                                    <p className="text-slate-300 text-sm leading-relaxed"><span className="text-accent font-semibold">¡No se cobra extra!</span> Ni por la recolección inicial, ni por la devolución de paquetes en caso de que ocurra.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ScrollReveal>
+                            </ScrollReveal>
 
-                {/* Modales CTA and Custom Modal logic */}
-                <ScrollReveal delay={400}>
-                    <div className="mt-12 text-center">
-                        <p className="text-blue-200 mb-4 font-medium">Haz click en cualquiera de los paquetes arriba para seleccionar tu ruta y redirigir a WhatsApp.</p>
-                    </div>
-                </ScrollReveal>
+                            <ScrollReveal delay={200}>
+                                <div className="group h-full">
+                                    <div className="relative h-full glass border-2 border-accent/50 rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 hover:border-accent hover:shadow-[0_20px_50px_rgba(62,198,224,0.3)] flex flex-col bg-accent/5">
+                                        <div className="absolute top-0 right-12 bg-accent text-[#060b22] px-6 py-2 rounded-b-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">
+                                            Solo Ciudad de Guatemala
+                                        </div>
+
+                                        <div className="mb-8">
+                                            <span className="inline-block px-4 py-1 bg-accent/20 text-accent text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4 border border-accent/30">
+                                                Plan Profesional
+                                            </span>
+                                            <h3 className="text-3xl md:text-4xl font-black text-white mb-2 uppercase">Paquete Plus</h3>
+                                            <p className="text-blue-200/70 text-sm leading-relaxed max-w-xs">
+                                                Específicamente diseñado para Ciudad de Guatemala. Máximo ahorro y eficiencia.
+                                            </p>
+                                        </div>
+
+                                        <div className="mt-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+                                            <div className="flex items-baseline gap-1">
+                                                <span className="text-xl text-accent font-black">Q</span>
+                                                <span className="text-6xl font-black text-white tracking-tighter">20.00</span>
+                                                <span className="text-blue-300/60 font-bold ml-1 text-sm uppercase">c/u</span>
+                                            </div>
+                                            <div className="text-center sm:text-right">
+                                                <div className="text-2xl font-black text-white mb-1">¡35 GUÍAS!</div>
+                                                <p className="text-accent text-[10px] font-bold uppercase tracking-widest">Sólo Ciudad Capital</p>
+                                            </div>
+                                        </div>
+
+                                        <button
+                                            onClick={() => handlePackageClick('Plus', 20, 35, true)}
+                                            className="mt-10 w-full py-5 rounded-2xl bg-accent text-[#060b22] font-black uppercase tracking-widest text-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(62,198,224,0.4)] flex items-center justify-center gap-3"
+                                        >
+                                            SOLICITAR PAQUETE <ChevronRight className="w-4 h-4" />
+                                        </button>
+                                    </div>
+                                </div>
+                            </ScrollReveal>
+                        </>
+                    ) : (
+                        <>
+                            {/* NORMAL SHIPMENT PACKAGES */}
+                            <ScrollReveal delay={100}>
+                                <div className="group h-full">
+                                    <div className="relative h-full glass border border-white/10 rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 hover:border-accent/50 hover:shadow-[0_20px_50px_rgba(62,198,224,0.15)] flex flex-col">
+                                        <div className="absolute top-0 right-12 bg-blue-500 text-white px-6 py-2 rounded-b-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">
+                                            Todas las Rutas
+                                        </div>
+                                        <div className="absolute top-8 right-8 w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center border border-accent/20 group-hover:scale-110 group-hover:bg-accent/20 transition-all duration-500 mt-4">
+                                            <Package className="w-7 h-7 text-accent" />
+                                        </div>
+
+                                        <div className="mb-8">
+                                            <span className="inline-block px-4 py-1 bg-accent/10 text-accent text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4 border border-accent/20">
+                                                Ideal para Inicio
+                                            </span>
+                                            <h3 className="text-3xl md:text-4xl font-black text-white mb-2 uppercase">Pensando en Vos</h3>
+                                            <p className="text-blue-200/70 text-sm leading-relaxed max-w-xs">
+                                                Tú dejas los paquetes, nosotros nos encargamos del resto. Envíos regulares con ahorro real.
+                                            </p>
+                                        </div>
+
+                                        <div className="mt-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+                                            <div className="flex items-baseline gap-1">
+                                                <span className="text-xl text-accent font-black">Q</span>
+                                                <span className="text-6xl font-black text-white tracking-tighter">25.00</span>
+                                                <span className="text-blue-300/60 font-bold ml-1 text-sm uppercase">c/u</span>
+                                            </div>
+                                            <div className="text-center sm:text-right">
+                                                <div className="text-2xl font-black text-white mb-1">¡20 GUÍAS!</div>
+                                                <p className="text-blue-400 text-[10px] font-bold uppercase tracking-widest">Envíos Normales</p>
+                                            </div>
+                                        </div>
+
+                                        <button
+                                            onClick={() => handlePackageClick('¡Pensando en Vos!', 25, 20, false)}
+                                            className="mt-10 w-full py-5 rounded-2xl bg-white/10 text-white border border-white/10 font-black uppercase tracking-widest text-sm transition-all duration-300 hover:bg-accent hover:text-[#060b22] hover:border-accent flex items-center justify-center gap-3"
+                                        >
+                                            LO QUIERO <ChevronRight className="w-4 h-4" />
+                                        </button>
+                                    </div>
+                                </div>
+                            </ScrollReveal>
+
+                            <ScrollReveal delay={200}>
+                                <div className="group h-full">
+                                    <div className="relative h-full glass border border-white/10 rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 hover:border-yellow-400/50 hover:shadow-[0_20px_50px_rgba(250,204,21,0.15)] flex flex-col">
+                                        <div className="absolute top-0 right-12 bg-yellow-400 text-[#060b22] px-6 py-2 rounded-b-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">
+                                            Todas las Rutas
+                                        </div>
+                                        <div className="absolute top-8 right-8 w-14 h-14 bg-yellow-400/10 rounded-2xl flex items-center justify-center border border-yellow-400/20 group-hover:scale-110 group-hover:bg-yellow-400/20 transition-all duration-500 mt-4">
+                                            <Zap className="w-7 h-7 text-yellow-400" />
+                                        </div>
+
+                                        <div className="mb-8">
+                                            <span className="inline-block px-4 py-1 bg-yellow-400/10 text-yellow-400 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4 border border-yellow-400/20">
+                                                Alta Demanda
+                                            </span>
+                                            <h3 className="text-3xl md:text-4xl font-black text-white mb-2 uppercase">¡Ponete Pilas!</h3>
+                                            <p className="text-blue-200/70 text-sm leading-relaxed max-w-xs">
+                                                Si envías constantemente, este es tu paquete. El precio más bajo por mayor.
+                                            </p>
+                                        </div>
+
+                                        <div className="mt-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+                                            <div className="flex items-baseline gap-1">
+                                                <span className="text-xl text-yellow-400 font-black">Q</span>
+                                                <span className="text-6xl font-black text-white tracking-tighter">20.00</span>
+                                                <span className="text-blue-300/60 font-bold ml-1 text-sm uppercase">c/u</span>
+                                            </div>
+                                            <div className="text-center sm:text-right">
+                                                <div className="text-2xl font-black text-white mb-1">¡40 GUÍAS!</div>
+                                                <p className="text-yellow-400 text-[10px] font-bold uppercase tracking-widest">Envíos Normales</p>
+                                            </div>
+                                        </div>
+
+                                        <button
+                                            onClick={() => handlePackageClick('¡Ponete Pilas!', 20, 40, false)}
+                                            className="mt-10 w-full py-5 rounded-2xl bg-yellow-400 text-[#060b22] font-black uppercase tracking-widest text-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] flex items-center justify-center gap-3"
+                                        >
+                                            LO QUIERO <ChevronRight className="w-4 h-4" />
+                                        </button>
+                                    </div>
+                                </div>
+                            </ScrollReveal>
+                        </>
+                    )}
+                </div>
+
+                {/* Terms and conditions link moved below cards */}
+                <div className="flex justify-center mb-20 -mt-10">
+                    <button 
+                        onClick={() => setIsInfoModalOpen(true)}
+                        className="flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors text-xs font-black uppercase tracking-widest group glass px-6 py-3 rounded-xl border border-yellow-400/20"
+                    >
+                        <Info className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+                        Términos y Condiciones
+                    </button>
+                </div>
+
             </div>
 
-            {/* Modal for Route Selection */}
+            {/* Modal for Route Selection (Enhanced) */}
             {isModalOpen && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-                    {/* Backdrop */}
                     <div
-                        className="absolute inset-0 bg-[#060b22]/90 backdrop-blur-md"
+                        className="absolute inset-0 bg-[#060b22]/95 backdrop-blur-xl animate-in fade-in duration-500"
                         onClick={() => setIsModalOpen(false)}
                     />
 
-                    {/* Modal Content */}
-                    <div className="relative glass border border-white/10 bg-gradient-to-br from-[#0a1035] to-[#060b22] rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-[0_0_50px_rgba(163,230,53,0.1)] animate-in zoom-in duration-300">
+                    <div className="relative glass border border-white/20 bg-[#0a1035] rounded-[2.5rem] p-8 max-w-md w-full shadow-[0_0_80px_rgba(0,0,0,0.5)] animate-in zoom-in slide-in-from-bottom-8 duration-500 overflow-hidden">
+                        <div className="absolute -top-24 -right-24 w-48 h-48 bg-accent/10 rounded-full blur-[80px]" />
+
                         <button
                             onClick={() => setIsModalOpen(false)}
-                            className="absolute top-4 right-4 p-2 text-blue-300 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+                            className="absolute top-6 right-6 p-2 text-blue-300 hover:text-white hover:bg-white/10 rounded-full transition-colors z-10"
                         >
-                            <X className="w-5 h-5" />
+                            <X className="w-6 h-6" />
                         </button>
 
-                        <div className="text-center mb-8">
-                            <div className="w-16 h-16 bg-lime-400/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-lime-400/20 shadow-[0_0_20px_rgba(163,230,53,0.15)]">
-                                <MapPin className="w-8 h-8 text-lime-400" />
+                        <div className="text-center mb-8 relative z-10">
+                            <div className="w-20 h-20 bg-accent/10 rounded-3xl flex items-center justify-center mx-auto mb-6 border border-accent/30 shadow-[0_0_30px_rgba(62,198,224,0.15)]">
+                                <MapPin className="w-10 h-10 text-accent animate-bounce" />
                             </div>
-                            <h3 className="text-2xl font-black text-white mb-2">Selecciona tu Ruta</h3>
-                            <p className="text-blue-200">
-                                Estás eligiendo el <strong className="text-lime-400 text-lg uppercase tracking-wider block mt-2 mb-2 font-black">Paquete {selectedPackage?.name}</strong> ¿Hacia dónde envías principalmente?
+                            <h3 className="text-3xl font-black text-white mb-2 uppercase">Destino del Envío</h3>
+                            <p className="text-blue-200/70 text-sm">
+                                Estás eligiendo el <strong className="text-accent font-black">{selectedPackage?.name}</strong>. <br />
+                                Seleccioná la ruta principal para continuar.
                             </p>
                         </div>
 
-                        <div className="grid gap-3">
+                        <div className="grid gap-4 relative z-10">
                             {(selectedPackage?.isRecoleccion ? routes.filter(r => r.id === 'guatemala') : routes).map((route) => (
                                 <button
                                     key={route.id}
                                     onClick={() => handleRouteSelect(route)}
-                                    className="w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 hover:border-lime-400/50 hover:bg-lime-400/10 transition-all group flex items-center justify-between"
+                                    className="w-full group p-5 rounded-2xl border border-white/10 bg-white/5 hover:border-accent hover:bg-accent/5 transition-all flex items-center justify-between overflow-hidden relative"
                                 >
-                                    <span className="font-bold text-slate-300 group-hover:text-white">{route.name}</span>
-                                    <span className="opacity-0 group-hover:opacity-100 transition-opacity text-lime-400 flex items-center gap-2 text-sm font-black tracking-wider">
-                                        Continuar
-                                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
-                                    </span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                                    <span className="font-black text-slate-300 group-hover:text-white tracking-wider uppercase text-sm">{route.name}</span>
+                                    <div className="flex items-center gap-2 text-accent font-black text-[10px] tracking-widest opacity-60 group-hover:opacity-100 transition-opacity uppercase">
+                                        WhatsApp <ChevronRight className="w-3 h-3" />
+                                    </div>
                                 </button>
                             ))}
+                        </div>
+
+                        <p className="mt-8 text-center text-blue-300/40 text-[10px] font-bold uppercase tracking-[0.2em]">
+                            Se abrirá una nueva pestaña de WhatsApp
+                        </p>
+                    </div>
+                </div>
+            )}
+
+            {/* Info Modal for T&C and Differences */}
+            {isInfoModalOpen && (
+                <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
+                    <div
+                        className="absolute inset-0 bg-[#060b22]/98 backdrop-blur-2xl animate-in fade-in duration-500"
+                        onClick={() => setIsInfoModalOpen(false)}
+                    />
+
+                    <div className="relative glass border border-white/20 bg-[#0a1035] rounded-[2.5rem] p-8 sm:p-12 max-w-2xl w-full shadow-[0_0_100px_rgba(62,198,224,0.1)] animate-in zoom-in slide-in-from-bottom-12 duration-500 overflow-y-auto max-h-[90vh]">
+                        <button
+                            onClick={() => setIsInfoModalOpen(false)}
+                            className="absolute top-8 right-8 p-2 text-blue-300 hover:text-white hover:bg-white/10 rounded-full transition-colors z-10"
+                        >
+                            <X className="w-6 h-6" />
+                        </button>
+
+                        <div className="mb-10 text-center">
+                            <div className="w-20 h-20 bg-lime-400/10 rounded-3xl flex items-center justify-center mx-auto mb-6 border border-lime-400/20">
+                                <Info className="w-10 h-10 text-lime-400" />
+                            </div>
+                            <h3 className="text-4xl font-black text-white mb-2 uppercase tracking-tighter">Términos y Condiciones</h3>
+                            <p className="text-blue-300/60 font-bold uppercase tracking-widest text-xs">Diferencias entre servicios</p>
+                        </div>
+
+                        <div className="space-y-10">
+                            {/* Benefits section moved inside modal */}
+                            <div className="p-8 rounded-3xl bg-white/5 border border-white/10 relative overflow-hidden">
+                                <div className="grid md:grid-cols-3 gap-8 items-center">
+                                    <div className="md:col-span-1">
+                                        <h4 className="text-xl font-black text-white mb-2 uppercase tracking-tighter leading-none">
+                                            Todos nuestros <br />
+                                            <span className="text-accent">Planes Incluyen:</span>
+                                        </h4>
+                                        <p className="text-blue-200/60 text-[10px]">Estándares de calidad premium en cada envío.</p>
+                                    </div>
+
+                                    <div className="md:col-span-2 grid grid-cols-2 gap-4">
+                                        <div className="flex flex-col items-center text-center p-4 rounded-2xl bg-white/5 border border-white/5">
+                                            <Truck className="w-6 h-6 text-lime-400 mb-2" />
+                                            <h5 className="text-white font-black text-[10px] uppercase tracking-widest mb-1">Entrega Inmediata</h5>
+                                            <p className="text-blue-200/70 text-[9px] leading-tight">Recolección y entrega el mismo día.</p>
+                                        </div>
+
+                                        <div className="flex flex-col items-center text-center p-4 rounded-2xl bg-white/5 border border-white/5">
+                                            <ShieldCheck className="w-6 h-6 text-accent mb-2" />
+                                            <h5 className="text-white font-black text-[10px] uppercase tracking-widest mb-1">Garantía Total</h5>
+                                            <p className="text-blue-200/70 text-[9px] leading-tight">Cero costos ocultos. Devoluciones incluidas.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="relative p-6 rounded-3xl bg-white/5 border border-white/10 overflow-hidden group">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-lime-400/5 rounded-full blur-3xl" />
+                                <div className="flex items-center gap-3 mb-4">
+                                    <Truck className="w-6 h-6 text-lime-400" />
+                                    <h4 className="text-xl font-black text-white uppercase">Servicio de Recolección</h4>
+                                </div>
+                                <ul className="space-y-3 text-blue-200/80 text-sm leading-relaxed">
+                                    <li className="flex gap-2">
+                                        <span className="text-lime-400 font-black">•</span>
+                                        <p><strong className="text-white">Ubicación:</strong> Este servicio aplica <span className="text-lime-400 font-black">ÚNICAMENTE</span> dentro de la Ciudad de Guatemala.</p>
+                                    </li>
+                                    <li className="flex gap-2">
+                                        <span className="text-lime-400 font-black">•</span>
+                                        <p><strong className="text-white">Funcionamiento:</strong> Nosotros pasamos a recolectar el paquete a la puerta de tu casa o negocio sin costo adicional por el viaje de recolección.</p>
+                                    </li>
+                                    <li className="flex gap-2">
+                                        <span className="text-lime-400 font-black">•</span>
+                                        <p><strong className="text-white">Volumen:</strong> Ideal para emprendedores y negocios que manejan un flujo constante y no pueden desplazarse.</p>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div className="relative p-6 rounded-3xl bg-white/5 border border-white/10 overflow-hidden group">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-3xl" />
+                                <div className="flex items-center gap-3 mb-4">
+                                    <Package className="w-6 h-6 text-accent" />
+                                    <h4 className="text-xl font-black text-white uppercase">Servicio de Envíos Normales</h4>
+                                </div>
+                                <ul className="space-y-3 text-blue-200/80 text-sm leading-relaxed">
+                                    <li className="flex gap-2">
+                                        <span className="text-accent font-black">•</span>
+                                        <p><strong className="text-white">Ubicación:</strong> Disponible para <span className="text-accent font-black">TODAS NUESTRAS RUTAS</span> (Peten, Huehuetenango, Chimaltenango y Capital).</p>
+                                    </li>
+                                    <li className="flex gap-2">
+                                        <span className="text-accent font-black">•</span>
+                                        <p><strong className="text-white">Funcionamiento:</strong> El cliente debe dejar sus paquetes en nuestros puntos de recepción establecidos para que sean procesados.</p>
+                                    </li>
+                                    <li className="flex gap-2">
+                                        <span className="text-accent font-black">•</span>
+                                        <p><strong className="text-white">Costo:</strong> El precio por guía es reducido ya que el cliente gestiona la entrega inicial en bodega.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className="mt-12 p-6 rounded-2xl bg-lime-400/10 border border-lime-400/20">
+                            <p className="text-center text-lime-400 text-xs font-black uppercase tracking-[0.2em]">
+                                Al adquirir cualquier paquete, aceptas estas condiciones de servicio para el año 2026.
+                            </p>
                         </div>
                     </div>
                 </div>
