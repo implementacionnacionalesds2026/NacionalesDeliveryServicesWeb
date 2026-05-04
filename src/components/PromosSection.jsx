@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Package, Truck, ShieldCheck, Tag, MapPin, X, Info, Zap, Star, ChevronRight } from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
 
@@ -9,45 +9,6 @@ const routes = [
     { id: 'peten', name: 'Petén', phone: '50231583067' }
 ]
 
-const PRICING_PACKAGES = [
-    { name: 'Paquete Micro', qty: 15, total: 540, perEnvio: 36, type: 'normal' },
-    { name: 'Paquete Petit', qty: 25, total: 850, perEnvio: 34, type: 'normal' },
-    { name: 'Paquete Básico', qty: 50, total: 1600, perEnvio: 32, type: 'normal' },
-    { name: 'Paquete Plus', qty: 100, total: 3000, perEnvio: 30, type: 'normal' },
-    { name: 'Paquete Gold', qty: 200, total: 5600, perEnvio: 28, type: 'normal' },
-    { name: 'Paquete Platino', qty: 400, total: 9600, perEnvio: 24, type: 'normal' },
-]
-
-const SPECIAL_PACKAGES = [
-    {
-        name: 'Paquete ¡Pensando en vos!',
-        mainQty: 25,
-        details: [
-            {
-                note: 'No deben pasarse de 10 Lbs, no menos de 5 paquetes. (Si aplica departamentos)',
-                qty: '20 guías',
-                total: 500,
-                perEnvio: 25,
-                realQty: 20
-            }
-        ],
-        highlight: 'yellow'
-    },
-    {
-        name: 'Paquete ¡Ponete Pilas!',
-        mainQty: 20,
-        details: [
-            {
-                note: 'No deben pasarse de 10 Lbs. (Solamente aplica para ciudad capital)',
-                qty: '40 guías',
-                total: 800,
-                perEnvio: 20,
-                realQty: 40
-            }
-        ],
-        highlight: 'blue'
-    }
-]
 
 const PROMO_CATEGORIES = {
     RECOLECCION: 'recoleccion',
@@ -55,7 +16,7 @@ const PROMO_CATEGORIES = {
 }
 
 export default function PromosSection() {
-    const [activeTab, setActiveTab] = useState(PROMO_CATEGORIES.RECOLECCION)
+    const [activeTab, setActiveTab] = useState(PROMO_CATEGORIES.NORMAL)
     const [selectedPackage, setSelectedPackage] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
@@ -102,14 +63,6 @@ export default function PromosSection() {
                 <div className="flex flex-col items-center mb-16 gap-4">
                     <div className="inline-flex p-1.5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl relative">
                         <button
-                            onClick={() => setActiveTab(PROMO_CATEGORIES.RECOLECCION)}
-                            className={`relative px-8 py-4 rounded-xl text-sm font-black uppercase tracking-wider transition-all duration-300 flex items-center gap-2 z-10 ${activeTab === PROMO_CATEGORIES.RECOLECCION ? 'text-[#060b22]' : 'text-blue-300 hover:text-white'
-                                }`}
-                        >
-                            <Truck className="w-4 h-4" />
-                            Recolección
-                        </button>
-                        <button
                             onClick={() => setActiveTab(PROMO_CATEGORIES.NORMAL)}
                             className={`relative px-8 py-4 rounded-xl text-sm font-black uppercase tracking-wider transition-all duration-300 flex items-center gap-2 z-10 ${activeTab === PROMO_CATEGORIES.NORMAL ? 'text-[#060b22]' : 'text-blue-300 hover:text-white'
                                 }`}
@@ -117,10 +70,18 @@ export default function PromosSection() {
                             <Package className="w-4 h-4" />
                             Envíos Normales
                         </button>
+                        <button
+                            onClick={() => setActiveTab(PROMO_CATEGORIES.RECOLECCION)}
+                            className={`relative px-8 py-4 rounded-xl text-sm font-black uppercase tracking-wider transition-all duration-300 flex items-center gap-2 z-10 ${activeTab === PROMO_CATEGORIES.RECOLECCION ? 'text-[#060b22]' : 'text-blue-300 hover:text-white'
+                                }`}
+                        >
+                            <Truck className="w-4 h-4" />
+                            Recolección
+                        </button>
 
                         {/* Sliding Background */}
                         <div
-                            className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-gradient-to-r from-lime-400 to-lime-500 rounded-xl transition-all duration-500 ease-out shadow-lg ${activeTab === PROMO_CATEGORIES.RECOLECCION ? 'left-1.5' : 'left-[calc(50%+4.5px)]'
+                            className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-gradient-to-r from-lime-400 to-lime-500 rounded-xl transition-all duration-500 ease-out shadow-lg ${activeTab === PROMO_CATEGORIES.NORMAL ? 'left-1.5' : 'left-[calc(50%+4.5px)]'
                                 }`}
                         />
                     </div>
@@ -128,7 +89,94 @@ export default function PromosSection() {
 
                 {/* Content Area */}
                 <div className="grid lg:grid-cols-2 gap-8 mb-20 min-h-[400px]">
-                    {activeTab === PROMO_CATEGORIES.RECOLECCION ? (
+                    {activeTab === PROMO_CATEGORIES.NORMAL ? (
+                        <>
+                            {/* NORMAL SHIPMENT PACKAGES */}
+                            <ScrollReveal delay={100}>
+                                <div className="group h-full">
+                                    <div className="relative h-full glass border border-white/10 rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 hover:border-accent/50 hover:shadow-[0_20px_50px_rgba(62,198,224,0.15)] flex flex-col">
+                                        <div className="absolute top-0 right-12 bg-blue-500 text-white px-6 py-2 rounded-b-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">
+
+                                        </div>
+                                        <div className="absolute top-8 right-8 w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center border border-accent/20 group-hover:scale-110 group-hover:bg-accent/20 transition-all duration-500 mt-4">
+                                            <Package className="w-7 h-7 text-accent" />
+                                        </div>
+
+                                        <div className="mb-8">
+                                            <span className="inline-block px-4 py-1 bg-accent/10 text-accent text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4 border border-accent/20">
+                                                Ideal para Inicio
+                                            </span>
+                                            <h3 className="text-3xl md:text-4xl font-black text-white mb-2 uppercase">Pensando en Vos</h3>
+                                            <p className="text-blue-200/70 text-sm leading-relaxed max-w-xs">
+                                                Tú dejas los paquetes, nosotros nos encargamos del resto. Envíos regulares con ahorro real.
+                                            </p>
+                                        </div>
+
+                                        <div className="mt-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+                                            <div className="flex items-baseline gap-1">
+                                                <span className="text-xl text-accent font-black">Q</span>
+                                                <span className="text-6xl font-black text-white tracking-tighter">25.00</span>
+                                                <span className="text-blue-300/60 font-bold ml-1 text-sm uppercase">c/u</span>
+                                            </div>
+                                            <div className="text-center sm:text-right">
+                                                <div className="text-2xl font-black text-white mb-1">¡20 GUÍAS!</div>
+                                                <p className="text-blue-400 text-[10px] font-bold uppercase tracking-widest">Envíos Normales</p>
+                                            </div>
+                                        </div>
+
+                                        <button
+                                            onClick={() => handlePackageClick('¡Pensando en Vos!', 25, 20, false)}
+                                            className="mt-10 w-full py-5 rounded-2xl bg-white/10 text-white border border-white/10 font-black uppercase tracking-widest text-sm transition-all duration-300 hover:bg-accent hover:text-[#060b22] hover:border-accent flex items-center justify-center gap-3"
+                                        >
+                                            LO QUIERO <ChevronRight className="w-4 h-4" />
+                                        </button>
+                                    </div>
+                                </div>
+                            </ScrollReveal>
+
+                            <ScrollReveal delay={200}>
+                                <div className="group h-full">
+                                    <div className="relative h-full glass border border-white/10 rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 hover:border-yellow-400/50 hover:shadow-[0_20px_50px_rgba(250,204,21,0.15)] flex flex-col">
+                                        <div className="absolute top-0 right-12 bg-yellow-400 text-[#060b22] px-6 py-2 rounded-b-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">
+
+                                        </div>
+                                        <div className="absolute top-8 right-8 w-14 h-14 bg-yellow-400/10 rounded-2xl flex items-center justify-center border border-yellow-400/20 group-hover:scale-110 group-hover:bg-yellow-400/20 transition-all duration-500 mt-4">
+                                            <Zap className="w-7 h-7 text-yellow-400" />
+                                        </div>
+
+                                        <div className="mb-8">
+                                            <span className="inline-block px-4 py-1 bg-yellow-400/10 text-yellow-400 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4 border border-yellow-400/20">
+                                                Alta Demanda
+                                            </span>
+                                            <h3 className="text-3xl md:text-4xl font-black text-white mb-2 uppercase">¡Ponete Pilas!</h3>
+                                            <p className="text-blue-200/70 text-sm leading-relaxed max-w-xs">
+                                                Si envías constantemente, este es tu paquete. El precio más bajo por mayor.
+                                            </p>
+                                        </div>
+
+                                        <div className="mt-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+                                            <div className="flex items-baseline gap-1">
+                                                <span className="text-xl text-yellow-400 font-black">Q</span>
+                                                <span className="text-6xl font-black text-white tracking-tighter">20.00</span>
+                                                <span className="text-blue-300/60 font-bold ml-1 text-sm uppercase">c/u</span>
+                                            </div>
+                                            <div className="text-center sm:text-right">
+                                                <div className="text-2xl font-black text-white mb-1">¡40 GUÍAS!</div>
+                                                <p className="text-yellow-400 text-[10px] font-bold uppercase tracking-widest">Envíos Normales</p>
+                                            </div>
+                                        </div>
+
+                                        <button
+                                            onClick={() => handlePackageClick('¡Ponete Pilas!', 20, 40, false)}
+                                            className="mt-10 w-full py-5 rounded-2xl bg-yellow-400 text-[#060b22] font-black uppercase tracking-widest text-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] flex items-center justify-center gap-3"
+                                        >
+                                            LO QUIERO <ChevronRight className="w-4 h-4" />
+                                        </button>
+                                    </div>
+                                </div>
+                            </ScrollReveal>
+                        </>
+                    ) : (
                         <>
                             {/* RECOLECCION PACKAGES */}
                             <ScrollReveal delay={100}>
@@ -211,210 +259,14 @@ export default function PromosSection() {
                                     </div>
                                 </div>
                             </ScrollReveal>
-                        </>
-                    ) : (
-                        <>
-                            {/* NORMAL SHIPMENT PACKAGES */}
-                            <ScrollReveal delay={100}>
-                                <div className="group h-full">
-                                    <div className="relative h-full glass border border-white/10 rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 hover:border-accent/50 hover:shadow-[0_20px_50px_rgba(62,198,224,0.15)] flex flex-col">
-                                        <div className="absolute top-0 right-12 bg-blue-500 text-white px-6 py-2 rounded-b-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">
-                                            Todas las Rutas
-                                        </div>
-                                        <div className="absolute top-8 right-8 w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center border border-accent/20 group-hover:scale-110 group-hover:bg-accent/20 transition-all duration-500 mt-4">
-                                            <Package className="w-7 h-7 text-accent" />
-                                        </div>
 
-                                        <div className="mb-8">
-                                            <span className="inline-block px-4 py-1 bg-accent/10 text-accent text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4 border border-accent/20">
-                                                Ideal para Inicio
-                                            </span>
-                                            <h3 className="text-3xl md:text-4xl font-black text-white mb-2 uppercase">Pensando en Vos</h3>
-                                            <p className="text-blue-200/70 text-sm leading-relaxed max-w-xs">
-                                                Tú dejas los paquetes, nosotros nos encargamos del resto. Envíos regulares con ahorro real.
-                                            </p>
-                                        </div>
-
-                                        <div className="mt-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
-                                            <div className="flex items-baseline gap-1">
-                                                <span className="text-xl text-accent font-black">Q</span>
-                                                <span className="text-6xl font-black text-white tracking-tighter">25.00</span>
-                                                <span className="text-blue-300/60 font-bold ml-1 text-sm uppercase">c/u</span>
-                                            </div>
-                                            <div className="text-center sm:text-right">
-                                                <div className="text-2xl font-black text-white mb-1">¡20 GUÍAS!</div>
-                                                <p className="text-blue-400 text-[10px] font-bold uppercase tracking-widest">Envíos Normales</p>
-                                            </div>
-                                        </div>
-
-                                        <button
-                                            onClick={() => handlePackageClick('¡Pensando en Vos!', 25, 20, false)}
-                                            className="mt-10 w-full py-5 rounded-2xl bg-white/10 text-white border border-white/10 font-black uppercase tracking-widest text-sm transition-all duration-300 hover:bg-accent hover:text-[#060b22] hover:border-accent flex items-center justify-center gap-3"
-                                        >
-                                            LO QUIERO <ChevronRight className="w-4 h-4" />
-                                        </button>
-                                    </div>
-                                </div>
-                            </ScrollReveal>
-
-                            <ScrollReveal delay={200}>
-                                <div className="group h-full">
-                                    <div className="relative h-full glass border border-white/10 rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 hover:border-yellow-400/50 hover:shadow-[0_20px_50px_rgba(250,204,21,0.15)] flex flex-col">
-                                        <div className="absolute top-0 right-12 bg-yellow-400 text-[#060b22] px-6 py-2 rounded-b-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">
-                                            Todas las Rutas
-                                        </div>
-                                        <div className="absolute top-8 right-8 w-14 h-14 bg-yellow-400/10 rounded-2xl flex items-center justify-center border border-yellow-400/20 group-hover:scale-110 group-hover:bg-yellow-400/20 transition-all duration-500 mt-4">
-                                            <Zap className="w-7 h-7 text-yellow-400" />
-                                        </div>
-
-                                        <div className="mb-8">
-                                            <span className="inline-block px-4 py-1 bg-yellow-400/10 text-yellow-400 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4 border border-yellow-400/20">
-                                                Alta Demanda
-                                            </span>
-                                            <h3 className="text-3xl md:text-4xl font-black text-white mb-2 uppercase">¡Ponete Pilas!</h3>
-                                            <p className="text-blue-200/70 text-sm leading-relaxed max-w-xs">
-                                                Si envías constantemente, este es tu paquete. El precio más bajo por mayor.
-                                            </p>
-                                        </div>
-
-                                        <div className="mt-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
-                                            <div className="flex items-baseline gap-1">
-                                                <span className="text-xl text-yellow-400 font-black">Q</span>
-                                                <span className="text-6xl font-black text-white tracking-tighter">20.00</span>
-                                                <span className="text-blue-300/60 font-bold ml-1 text-sm uppercase">c/u</span>
-                                            </div>
-                                            <div className="text-center sm:text-right">
-                                                <div className="text-2xl font-black text-white mb-1">¡40 GUÍAS!</div>
-                                                <p className="text-yellow-400 text-[10px] font-bold uppercase tracking-widest">Envíos Normales</p>
-                                            </div>
-                                        </div>
-
-                                        <button
-                                            onClick={() => handlePackageClick('¡Ponete Pilas!', 20, 40, false)}
-                                            className="mt-10 w-full py-5 rounded-2xl bg-yellow-400 text-[#060b22] font-black uppercase tracking-widest text-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] flex items-center justify-center gap-3"
-                                        >
-                                            LO QUIERO <ChevronRight className="w-4 h-4" />
-                                        </button>
-                                    </div>
-                                </div>
-                            </ScrollReveal>
                         </>
                     )}
                 </div>
 
-                {/* Full Pricing Table Section */}
-                <ScrollReveal delay={300}>
-                    <div className="mt-20 overflow-hidden rounded-[2.5rem] border border-white/10 glass shadow-2xl">
-                        <div className="p-8 md:p-12 bg-gradient-to-r from-blue-900/40 to-indigo-900/40 flex flex-col md:flex-row justify-between items-center gap-6 border-b border-white/10">
-                            <div>
-                                <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight mb-2">
-                                    Tarifa de Precios
-                                </h3>
-                                <p className="text-blue-300/60 font-bold text-xs uppercase tracking-[0.2em]">Nacionales Delivery Services 2026</p>
-                            </div>
-                            <img src="/images/logo.png" alt="NDS Logo" className="h-12 md:h-16 object-contain brightness-0 invert opacity-80" />
-                        </div>
 
-                        <div className="overflow-x-auto">
-                            <table className="w-full text-left border-collapse">
-                                <thead>
-                                    <tr className="bg-white/5 border-b border-white/10">
-                                        <th className="px-8 py-6 text-xs font-black text-blue-300 uppercase tracking-widest">Paquete</th>
-                                        <th className="px-8 py-6 text-xs font-black text-blue-300 uppercase tracking-widest text-center">Cantidad de envíos</th>
-                                        <th className="px-8 py-6 text-xs font-black text-blue-300 uppercase tracking-widest text-right">Precio con descuento</th>
-                                        <th className="px-8 py-6 text-xs font-black text-blue-300 uppercase tracking-widest text-right">Precio por envío</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="divide-y divide-white/5">
-                                    {PRICING_PACKAGES.map((pkg, idx) => (
-                                        <tr 
-                                            key={idx} 
-                                            className="group hover:bg-white/5 transition-colors cursor-pointer"
-                                            onClick={() => handlePackageClick(pkg.name, pkg.perEnvio, pkg.qty, false)}
-                                        >
-                                            <td className="px-8 py-5">
-                                                <span className="text-white font-bold group-hover:text-accent transition-colors">{pkg.name}</span>
-                                            </td>
-                                            <td className="px-8 py-5 text-center">
-                                                <span className="text-blue-200/70 font-medium">{pkg.qty}</span>
-                                            </td>
-                                            <td className="px-8 py-5 text-right">
-                                                <span className="text-white font-black">Q.{pkg.total.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
-                                            </td>
-                                            <td className="px-8 py-5 text-right">
-                                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-accent/10 border border-accent/20">
-                                                    <span className="text-accent font-black text-sm">Q.{pkg.perEnvio.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    ))}
-
-                                    {/* Special Packages */}
-                                    {SPECIAL_PACKAGES.map((pkg, idx) => (
-                                        <React.Fragment key={`special-${idx}`}>
-                                            <tr className="bg-white/[0.02]">
-                                                <td className="px-8 py-4">
-                                                    <span className="text-blue-300 font-black text-sm uppercase italic">{pkg.name}</span>
-                                                </td>
-                                                <td className="px-8 py-4 text-center">
-                                                    <span className="text-blue-300/60 font-bold">{pkg.mainQty}</span>
-                                                </td>
-                                                <td className="px-8 py-4"></td>
-                                                <td className="px-8 py-4"></td>
-                                            </tr>
-                                            {pkg.details.map((detail, dIdx) => (
-                                                <tr 
-                                                    key={`detail-${idx}-${dIdx}`}
-                                                    className={`${pkg.highlight === 'yellow' ? 'bg-yellow-400/5 hover:bg-yellow-400/10' : 'bg-accent/5 hover:bg-accent/10'} transition-colors cursor-pointer group`}
-                                                    onClick={() => handlePackageClick(pkg.name, detail.perEnvio, detail.realQty, false)}
-                                                >
-                                                    <td className="px-8 py-6">
-                                                        <div className="flex items-start gap-3">
-                                                            <div className={`mt-1 p-1 rounded-md ${pkg.highlight === 'yellow' ? 'bg-yellow-400/20 text-yellow-400' : 'bg-accent/20 text-accent'}`}>
-                                                                <ShieldCheck className="w-3 h-3" />
-                                                            </div>
-                                                            <p className="text-blue-200/80 text-xs leading-relaxed max-w-sm">
-                                                                <span className="font-bold text-white block mb-1">Nota:</span>
-                                                                {detail.note}
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td className="px-8 py-6 text-center">
-                                                        <span className="text-white font-bold">{detail.qty}</span>
-                                                    </td>
-                                                    <td className="px-8 py-6 text-right">
-                                                        <span className="text-white font-black">Q.{detail.total.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
-                                                    </td>
-                                                    <td className="px-8 py-6 text-right">
-                                                        <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg ${pkg.highlight === 'yellow' ? 'bg-yellow-400/20 border-yellow-400/30 text-yellow-400' : 'bg-accent/20 border-accent/30 text-accent'}`}>
-                                                            <span className="font-black text-sm">Q.{detail.perEnvio.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            ))}
-                                        </React.Fragment>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                        
-                        <div className="p-6 bg-white/5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-                            <p className="text-[10px] text-blue-300/40 font-bold uppercase tracking-widest">
-                                * Tarifas sujetas a cambios sin previo aviso. Aplican restricciones.
-                            </p>
-                            <button 
-                                onClick={() => setIsInfoModalOpen(true)}
-                                className="text-xs font-black text-accent hover:text-white transition-colors uppercase tracking-widest flex items-center gap-2"
-                            >
-                                <Info className="w-4 h-4" /> Ver Términos Detallados
-                            </button>
-                        </div>
-                    </div>
-                </ScrollReveal>
-
-                {/* Terms and conditions link moved below cards */}
-                <div className="flex justify-center mb-20 mt-12">
-                    <button 
+                <div className="flex justify-center mb-20 -mt-10">
+                    <button
                         onClick={() => setIsInfoModalOpen(true)}
                         className="flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors text-xs font-black uppercase tracking-widest group glass px-6 py-3 rounded-xl border border-yellow-400/20"
                     >
