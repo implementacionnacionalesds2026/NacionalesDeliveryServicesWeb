@@ -31,6 +31,7 @@ const services = [
 
 export default function ServicesSection() {
     const [hoveredIndex, setHoveredIndex] = useState(null)
+    const [activeMobileIndex, setActiveMobileIndex] = useState(0)
 
     const isAnyHovered = hoveredIndex !== null
 
@@ -101,27 +102,43 @@ export default function ServicesSection() {
 
                 {/* Mobile layout: List of cards */}
                 <div className="flex md:hidden flex-col gap-4 w-full">
-                    {services.map((s) => (
-                        <div
-                            key={s.title}
-                            className="group cursor-pointer relative overflow-hidden rounded-2xl border border-white/10 h-[220px]"
-                            style={{
-                                backgroundImage: `url('${s.img}')`,
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                            }}
-                        >
-                            {/* Shaded gradient overlay with description always visible on mobile */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
-                                <h3 className="text-lg font-bold text-accent mb-1">
-                                    {s.title}
-                                </h3>
-                                <p className="text-xs text-gray-200 font-light leading-relaxed">
-                                    {s.desc}
-                                </p>
+                    {services.map((s, i) => {
+                        const isActive = activeMobileIndex === i
+                        return (
+                            <div
+                                key={s.title}
+                                onClick={() => setActiveMobileIndex(i)}
+                                className={`cursor-pointer relative overflow-hidden rounded-2xl border transition-all duration-500 ease-in-out
+                                    ${isActive 
+                                        ? 'border-accent/40 bg-white/[0.08] h-[240px]' 
+                                        : 'border-white/10 bg-white/[0.05] h-[100px]'
+                                    }`}
+                                style={{
+                                    backgroundImage: `url('${s.img}')`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: isActive ? 'bottom' : 'center',
+                                }}
+                            >
+                                {/* Shaded gradient overlay with description transitioning */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent flex flex-col justify-end p-6 transition-all duration-500">
+                                    <h3 className="text-lg font-bold text-accent">
+                                        {s.title}
+                                    </h3>
+                                    <div 
+                                        className={`transition-all duration-500 ease-in-out overflow-hidden
+                                            ${isActive 
+                                                ? 'max-h-24 opacity-100 mt-2' 
+                                                : 'max-h-0 opacity-0 mt-0'
+                                            }`}
+                                    >
+                                        <p className="text-xs text-gray-200 font-light leading-relaxed">
+                                            {s.desc}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        )
+                    })}
                 </div>
             </div>
         </section>
