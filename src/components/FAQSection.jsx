@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { HelpCircle, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
 
 const faqs = [
@@ -33,13 +33,11 @@ export default function FAQSection() {
     const [openIndex, setOpenIndex] = useState(0)
 
     return (
-        <section className="py-24 relative" style={{ background: '#0a1035' }}>
+        <section className="py-24 relative">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                 <ScrollReveal>
                     <div className="text-center mb-12">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-accent font-medium mb-4">
-                            <HelpCircle className="w-4 h-4" /> Preguntas Frecuentes
-                        </div>
+
                         <h2 className="section-title">
                             ¿Tienes <span className="gradient-text">preguntas?</span>
                         </h2>

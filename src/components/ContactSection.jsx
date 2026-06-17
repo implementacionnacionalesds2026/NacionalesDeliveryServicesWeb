@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { Send, Phone, MapPin, Mail, Facebook, Instagram, Youtube } from 'lucide-react'
+import { Send, Phone, MapPin, Mail } from 'lucide-react'
 import toast from 'react-hot-toast'
 import ScrollReveal from './ScrollReveal'
 import { useAdmin } from '../context/AdminContext'
@@ -10,11 +10,7 @@ const WhatsAppIcon = ({ className }) => (
     </svg>
 )
 
-const TikTokIcon = ({ className }) => (
-    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 15.68a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34v-5.64a8.3 8.3 0 004 .87v-3.4a4.85 4.85 0 01-2.09-.82z" />
-    </svg>
-)
+
 
 export default function ContactSection() {
     const { config } = useAdmin()
@@ -67,9 +63,7 @@ export default function ContactSection() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <ScrollReveal>
                     <div className="text-center mb-12">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-accent font-medium mb-4">
-                            <WhatsAppIcon className="w-4 h-4" /> Contáctanos
-                        </div>
+
                         <h2 className="section-title">
                             ¿Listo para <span className="gradient-text">enviar?</span>
                         </h2>
@@ -230,22 +224,7 @@ export default function ContactSection() {
                                 </div>
                             </div>
 
-                            {/* Social Media Grid */}
-                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:col-span-2">
-                                {[
-                                    { name: 'Facebook', icon: Facebook, url: 'https://www.facebook.com/profile.php?id=61586422649312' },
-                                    { name: 'Instagram', icon: Instagram, url: 'https://www.instagram.com/nacionalesdelivery/' },
-                                    { name: 'TikTok', customIcon: <TikTokIcon className="w-5 h-5 text-accent" />, url: 'https://www.tiktok.com/@nacionales.delive' },
-                                    { name: 'YouTube', icon: Youtube, url: 'https://www.youtube.com/@NacionalesDS' }
-                                ].map(social => (
-                                    <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="glass rounded-xl p-4 flex flex-col items-center justify-center gap-2 hover:border-accent/50 transition-all group hover:scale-105">
-                                        <div className="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center transition-transform">
-                                            {social.icon ? <social.icon className="w-5 h-5" /> : social.customIcon}
-                                        </div>
-                                        <span className="text-blue-200 text-[10px] font-bold tracking-widest uppercase group-hover:text-white transition-colors">{social.name}</span>
-                                    </a>
-                                ))}
-                            </div>
+
                         </div>
                     </ScrollReveal>
                 </div>

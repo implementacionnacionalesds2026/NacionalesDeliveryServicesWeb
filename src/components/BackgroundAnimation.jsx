@@ -72,12 +72,6 @@ export default function BackgroundAnimation() {
 
     return (
         <div ref={containerRef} className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-            {/* Deep Dark Blue Gradient Base */}
-            <div className="absolute inset-0 bg-[#070b24]" />
-
-            {/* Subtle radial glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(20,45,122,0.3)_0%,transparent_70%)]" />
-
             {/* Floating Icons */}
             {particles.map((p) => (
                 <div

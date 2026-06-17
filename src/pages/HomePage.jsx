@@ -2,16 +2,18 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import HeroSection from '../components/HeroSection'
-import AboutSection from '../components/AboutSection'
 import ServicesSection from '../components/ServicesSection'
 import PromosSection from '../components/PromosSection'
-import RoutesSection from '../components/RoutesSection'
-import StatsSection from '../components/StatsSection'
-import TestimonialsSection from '../components/TestimonialsSection'
+import TrustSection from '../components/TrustSection'
 import FAQSection from '../components/FAQSection'
 import ContactSection from '../components/ContactSection'
-import CTASection from '../components/CTASection'
 import Footer from '../components/Footer'
+
+// Sections removed per user request:
+// - RoutesSection ("Conectamos a toda Guatemala")
+// - TestimonialsSection (moved to TrustSection, then also removed from there)
+// - CTASection ("¿Listo para enviar tu paquete?")
+// - AboutSection, StatsSection → merged into TrustSection
 
 export default function HomePage() {
     const location = useLocation();
@@ -29,19 +31,16 @@ export default function HomePage() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }, [location.pathname]);
+
     return (
         <div className="bg-main">
             <Navbar />
             <HeroSection />
             <ServicesSection />
             <PromosSection />
-            <RoutesSection />
-            <AboutSection />
-            <StatsSection />
-            <TestimonialsSection />
+            <TrustSection />
             <FAQSection />
             <ContactSection />
-            <CTASection />
             <Footer />
         </div>
     )

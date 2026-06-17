@@ -25,15 +25,15 @@ export default function StickyLinksPanel() {
     if (activeLinks.length === 0) return null
 
     return (
-        <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-1 items-end">
+        <div className="fixed left-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-1 items-start">
             {activeLinks.map((link) => (
                 <a
                     key={link.id}
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative flex items-center justify-start h-12 w-12 hover:w-36 rounded-l-xl
-                      bg-primary-dark/95 border border-white/10 border-r-0
+                    className="group relative flex items-center justify-start h-12 w-12 hover:w-36 rounded-r-xl
+                      bg-primary-dark/95 border border-white/10 border-l-0
                       text-white/70 transition-all duration-300 overflow-hidden cursor-pointer shadow-lg"
                     onMouseEnter={(e) => {
                         e.currentTarget.style.backgroundColor = link.color;
@@ -51,7 +51,7 @@ export default function StickyLinksPanel() {
                     <div className="flex items-center justify-center w-12 min-w-[48px] h-full transition-transform duration-300 group-hover:scale-110">
                         {iconMap[link.icon] || null}
                     </div>
-                    <span className="whitespace-nowrap font-semibold text-[13px] opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ transform: 'translateX(-4px)' }}>
+                    <span className="whitespace-nowrap font-semibold text-[13px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         {link.label}
                     </span>
                 </a>

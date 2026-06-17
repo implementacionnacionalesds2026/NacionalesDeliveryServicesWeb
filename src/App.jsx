@@ -1,23 +1,17 @@
-import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import LoadingScreen from './components/LoadingScreen'
 import { Toaster } from 'react-hot-toast'
 import { AdminProvider } from './context/AdminContext'
 import HomePage from './pages/HomePage'
 import AdminPage from './pages/AdminPage'
-import WhatsAppFab from './components/WhatsAppFab'
+import CotizadorPage from './pages/CotizadorPage'
+
 import StickyLinksPanel from './components/StickyLinksPanel'
 import BackgroundAnimation from './components/BackgroundAnimation'
 
 
 export default function App() {
-    const [isLoading, setIsLoading] = useState(true);
-
     return (
-        <>
-            {isLoading && <LoadingScreen onFinish={() => setIsLoading(false)} />}
-
-            <AdminProvider>
+        <AdminProvider>
             <BrowserRouter>
                 <Toaster
                     position="top-right"
@@ -38,7 +32,7 @@ export default function App() {
 
                 <BackgroundAnimation />
                 <StickyLinksPanel />
-                <WhatsAppFab />
+
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/inicio" element={<HomePage />} />
@@ -47,10 +41,10 @@ export default function App() {
                     <Route path="/promociones" element={<HomePage />} />
                     <Route path="/nosotros" element={<HomePage />} />
                     <Route path="/contacto" element={<HomePage />} />
+                    <Route path="/cotizador" element={<CotizadorPage />} />
                     <Route path="/admin" element={<AdminPage />} />
                 </Routes>
             </BrowserRouter>
         </AdminProvider>
-        </>
     )
 }

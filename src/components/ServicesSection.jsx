@@ -1,48 +1,47 @@
-import { Package, Truck, MapPin, Clock, Shield, Bike, Users, Building2 } from 'lucide-react'
+import { useState } from 'react'
 import ScrollReveal from './ScrollReveal'
 
 const services = [
     {
-        icon: Truck,
         title: 'Envío Nacional',
-        desc: 'Envíos seguros desde Guatemala a Huehuetenango, Chimaltenango, Petén y más destinos.',
-        color: 'from-blue-500 to-primary',
+        desc: 'Envíos rápidos y seguros a todos los departamentos de Guatemala, conectando comunidades de forma confiable.',
+        img: '/images/CarruselServicios/EnviosNacionales.png',
     },
     {
-        icon: Bike,
         title: 'Mensajería Express',
-        desc: 'Servicio de recolección y entrega rápida. Recolección en toda la Ciudad de Guatemala.',
-        color: 'from-accent to-accent-dark',
+        desc: 'Entrega urgente de documentos y paquetes pequeños dentro de la ciudad en tiempo récord y con rastreo.',
+        img: '/images/CarruselServicios/Mensajeria Express.png',
     },
     {
-        icon: Shield,
         title: 'Paquetería Segura',
-        desc: 'Manejo con cuidado y empaque protector. Tu paquete llega como lo enviaste.',
-        color: 'from-emerald-400 to-emerald-600',
+        desc: 'Protección garantizada para tus mercancías, con embalaje especial y seguro de envío incluido.',
+        img: '/images/CarruselServicios/Paqueteria Segura.png',
     },
     {
-        icon: Clock,
         title: 'Entregas Programadas',
-        desc: 'Programa la fecha y hora de entrega. Nos adaptamos a tu horario.',
-        color: 'from-amber-400 to-orange-500',
+        desc: 'Planifica la logística de tus entregas seleccionando el día y la hora más conveniente para tu destinatario.',
+        img: '/images/CarruselServicios/EntregasProgramadas.png',
     },
     {
-        icon: Building2,
         title: 'Logística Empresarial',
-        desc: 'Soluciones logísticas para empresas. Tarifas preferenciales y facturación.',
-        color: 'from-rose-400 to-pink-600',
+        desc: 'Soluciones integrales de distribución, almacenamiento y supply chain adaptadas a las necesidades de tu empresa.',
+        img: '/images/CarruselServicios/LogisticaEmpresarial.png',
     },
 ]
 
 export default function ServicesSection() {
+    const [hoveredIndex, setHoveredIndex] = useState(null)
+
+    const isAnyHovered = hoveredIndex !== null
+
     return (
-        <section id="servicios" className="py-24 relative" style={{ background: '#0a1035' }}>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="servicios" className="py-24 relative overflow-hidden">
+            {/* Background elements */}
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <ScrollReveal>
                     <div className="text-center mb-16">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-accent font-medium mb-4">
-                            <Package className="w-4 h-4" /> Nuestros Servicios
-                        </div>
                         <h2 className="section-title">
                             Todo lo que necesitas para{' '}
                             <span className="gradient-text">enviar y recibir</span>
@@ -53,29 +52,75 @@ export default function ServicesSection() {
                     </div>
                 </ScrollReveal>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {services.map((s, i) => (
-                        <ScrollReveal key={s.title} delay={i * 100}>
-                            <div className="service-card group h-full">
-                                {/* Gradient orb */}
-                                <div
-                                    className={`absolute -top-6 -right-6 w-24 h-24 rounded-full bg-gradient-to-br ${s.color}
-                              opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-2xl`}
-                                />
+                {/* Desktop layout: Expanding Cards */}
+                <div 
+                    className="hidden md:flex flex-row gap-4 h-[460px] w-full items-stretch justify-center"
+                    onMouseLeave={() => setHoveredIndex(null)}
+                >
+                    {services.map((s, i) => {
+                        const isHovered = hoveredIndex === i
+                        const isExpanded = isAnyHovered ? isHovered : false
+                        const flexClass = isAnyHovered 
+                            ? (isHovered ? 'flex-[3.5]' : 'flex-[0.7]') 
+                            : 'flex-1'
 
-                                <div
-                                    className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${s.color} flex items-center justify-center
-                              mb-5 shadow-lg group-hover:scale-110 transition-transform duration-500`}
+                        return (
+                            <div
+                                key={s.title}
+                                className={`cursor-pointer relative overflow-hidden rounded-3xl border transition-all duration-700 ease-in-out
+                                    ${isExpanded 
+                                        ? 'border-accent/40 bg-white/[0.08]' 
+                                        : 'border-white/10 bg-white/[0.05]'
+                                    } ${flexClass}`}
+                                style={{
+                                    backgroundImage: `url('${s.img}')`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: isExpanded ? 'bottom' : 'center',
+                                }}
+                                onMouseEnter={() => setHoveredIndex(i)}
+                            >
+                                {/* Shaded gradient overlay for text readability, transitioning on hover */}
+                                <div 
+                                    className={`absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent flex flex-col justify-end p-8 transition-all duration-500 ease-in-out
+                                        ${isExpanded 
+                                            ? 'opacity-100 translate-y-0 delay-100' 
+                                            : 'opacity-0 translate-y-6 pointer-events-none'
+                                        }`}
                                 >
-                                    <s.icon className="w-7 h-7 text-white" />
+                                    <h3 className="text-2xl font-bold text-accent mb-2">
+                                        {s.title}
+                                    </h3>
+                                    <p className="text-sm text-gray-200 font-light leading-relaxed max-w-lg">
+                                        {s.desc}
+                                    </p>
                                 </div>
+                            </div>
+                        )
+                    })}
+                </div>
 
-                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
+                {/* Mobile layout: List of cards */}
+                <div className="flex md:hidden flex-col gap-4 w-full">
+                    {services.map((s) => (
+                        <div
+                            key={s.title}
+                            className="group cursor-pointer relative overflow-hidden rounded-2xl border border-white/10 h-[220px]"
+                            style={{
+                                backgroundImage: `url('${s.img}')`,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                            }}
+                        >
+                            {/* Shaded gradient overlay with description always visible on mobile */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+                                <h3 className="text-lg font-bold text-accent mb-1">
                                     {s.title}
                                 </h3>
-                                <p className="text-blue-300 text-sm leading-relaxed">{s.desc}</p>
+                                <p className="text-xs text-gray-200 font-light leading-relaxed">
+                                    {s.desc}
+                                </p>
                             </div>
-                        </ScrollReveal>
+                        </div>
                     ))}
                 </div>
             </div>
