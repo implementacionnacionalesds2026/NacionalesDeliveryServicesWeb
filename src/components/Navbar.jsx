@@ -17,6 +17,11 @@ export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false)
     const navRef = useRef(null)
 
+    const getCotizarUrl = () => {
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        return isLocal ? 'http://localhost:4200/cotizar' : 'https://nexgo.delivery/cotizar';
+    };
+
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 50)
         window.addEventListener('scroll', onScroll)
@@ -92,8 +97,8 @@ export default function Navbar() {
                                 <Phone className="w-4 h-4" />
                                 <span className="font-semibold">5568-3682</span>
                             </a>
-                             <Link
-                                  to="/cotizador"
+                             <a
+                                  href={getCotizarUrl()}
                                   className="btn-primary !px-4 !py-2 !rounded-xl !flex !items-center !gap-2.5 animate-cta-pulse cursor-pointer border-none bg-transparent"
                               >
                                   <img 
@@ -105,7 +110,7 @@ export default function Navbar() {
                                       <span className="text-[9px] font-bold opacity-80 uppercase tracking-wider">Cotiza con</span>
                                       <span className="text-xs font-black uppercase tracking-wide -mt-0.5">Nexgo</span>
                                   </span>
-                              </Link>
+                              </a>
                         </div>
 
                         {/* Mobile toggle */}
@@ -162,11 +167,11 @@ export default function Navbar() {
                         <a href={`tel:${telNumber}`} className="flex items-center gap-2 text-accent font-semibold text-lg">
                             <Phone className="w-5 h-5" /> 5568-3682
                         </a>
-                          <Link
-                              to="/cotizador"
-                              onClick={() => setMobileOpen(false)}
-                              className="btn-primary !w-full !justify-center !flex !items-center !gap-3 !py-2.5 !rounded-xl animate-cta-pulse cursor-pointer border-none bg-transparent"
-                          >
+                           <a
+                               href={getCotizarUrl()}
+                               onClick={() => setMobileOpen(false)}
+                               className="btn-primary !w-full !justify-center !flex !items-center !gap-3 !py-2.5 !rounded-xl animate-cta-pulse cursor-pointer border-none bg-transparent"
+                           >
                               <img 
                                   src="/images/IzotipoNormalNexgoWhite.png" 
                                   alt="Nexgo Logo" 
@@ -176,7 +181,7 @@ export default function Navbar() {
                                   <span className="text-[10px] font-bold opacity-80 uppercase tracking-wider">Cotiza con</span>
                                   <span className="text-sm font-black uppercase tracking-wide -mt-0.5">Nexgo</span>
                               </span>
-                          </Link>
+                          </a>
                     </div>
                 </div>
             </div>
