@@ -97,35 +97,50 @@ export default function Navbar() {
                                 <Phone className="w-4 h-4" />
                                 <span className="font-semibold">5568-3682</span>
                             </a>
-                             <a
-                                  href={getCotizarUrl()}
-                                  className="btn-primary !px-4 !py-2 !rounded-xl !flex !items-center !gap-2.5 animate-cta-pulse cursor-pointer border-none bg-transparent"
-                              >
-                                  <img 
-                                      src="/images/IzotipoNormalNexgoWhite.png" 
-                                      alt="Nexgo Logo" 
-                                      className="w-[38px] h-[38px] object-contain brightness-0" 
-                                  />
-                                  <span className="flex flex-col text-left leading-tight">
-                                      <span className="text-[9px] font-bold opacity-80 uppercase tracking-wider">Cotiza con</span>
-                                      <span className="text-xs font-black uppercase tracking-wide -mt-0.5">Nexgo</span>
-                                  </span>
-                              </a>
+                            <a
+                                href={getCotizarUrl()}
+                                className="btn-primary !px-4 !py-2 !rounded-xl !flex !items-center !gap-2.5 animate-cta-pulse cursor-pointer border-none bg-transparent"
+                            >
+                                <img
+                                    src="/images/IzotipoNormalNexgoWhite.png"
+                                    alt="Nexgo Logo"
+                                    className="w-[38px] h-[38px] object-contain brightness-0"
+                                />
+                                <span className="flex flex-col text-left leading-tight">
+                                    <span className="text-[9px] font-bold opacity-80 uppercase tracking-wider">Cotiza con</span>
+                                    <span className="text-xs font-black uppercase tracking-wide -mt-0.5">Nexgo</span>
+                                </span>
+                            </a>
                         </div>
 
-                        {/* Mobile toggle */}
-                        <button
-                            onClick={() => setMobileOpen(!mobileOpen)}
-                            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl
-                       bg-white/10 hover:bg-white/20 transition-all duration-300"
-                            aria-label="Toggle menu"
-                        >
-                            {mobileOpen ? (
-                                <X className="w-5 h-5 text-white" />
-                            ) : (
-                                <Menu className="w-5 h-5 text-white" />
-                            )}
-                        </button>
+                        {/* Mobile CTA & Toggle */}
+                        <div className="flex lg:hidden items-center gap-2">
+                            <a
+                                href={getCotizarUrl()}
+                                className="btn-primary !px-2.5 !py-1.5 !rounded-lg flex items-center gap-1.5 animate-cta-pulse cursor-pointer border-none bg-transparent"
+                            >
+                                <img
+                                    src="/images/IzotipoNormalNexgoWhite.png"
+                                    alt="Nexgo Logo"
+                                    className="w-[22px] h-[22px] object-contain brightness-0"
+                                />
+                                <span className="flex flex-col text-left leading-tight">
+                                    <span className="text-[7px] font-bold opacity-80 uppercase tracking-wider">Cotiza con</span>
+                                    <span className="text-[10px] font-black uppercase tracking-wide -mt-0.5">Nexgo</span>
+                                </span>
+                            </a>
+                            <button
+                                onClick={() => setMobileOpen(!mobileOpen)}
+                                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 transition-all duration-300"
+                                aria-label="Toggle menu"
+                            >
+                                {mobileOpen ? (
+                                    <X className="w-5 h-5 text-white" />
+                                ) : (
+                                    <Menu className="w-5 h-5 text-white" />
+                                )}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -155,9 +170,8 @@ export default function Navbar() {
                             key={link.path}
                             to={link.path}
                             onClick={() => handleNavClick(link.path)}
-                            className={`cursor-pointer text-2xl font-semibold transition-all duration-300 bg-transparent border-none w-full text-center block ${
-                                mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-                            } text-white hover:text-accent`}
+                            className={`cursor-pointer text-2xl font-semibold transition-all duration-300 bg-transparent border-none w-full text-center block ${mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                                } text-white hover:text-accent`}
                         >
                             {link.label}
                         </Link>
@@ -167,21 +181,6 @@ export default function Navbar() {
                         <a href={`tel:${telNumber}`} className="flex items-center gap-2 text-accent font-semibold text-lg">
                             <Phone className="w-5 h-5" /> 5568-3682
                         </a>
-                           <a
-                               href={getCotizarUrl()}
-                               onClick={() => setMobileOpen(false)}
-                               className="btn-primary !w-full !justify-center !flex !items-center !gap-3 !py-2.5 !rounded-xl animate-cta-pulse cursor-pointer border-none bg-transparent"
-                           >
-                              <img 
-                                  src="/images/IzotipoNormalNexgoWhite.png" 
-                                  alt="Nexgo Logo" 
-                                  className="w-[44px] h-[44px] object-contain brightness-0" 
-                              />
-                              <span className="flex flex-col text-left leading-tight">
-                                  <span className="text-[10px] font-bold opacity-80 uppercase tracking-wider">Cotiza con</span>
-                                  <span className="text-sm font-black uppercase tracking-wide -mt-0.5">Nexgo</span>
-                              </span>
-                          </a>
                     </div>
                 </div>
             </div>
