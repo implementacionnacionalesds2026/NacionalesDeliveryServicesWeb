@@ -56,31 +56,12 @@ export default function BackgroundAnimation() {
             }
         }
 
-        // Helper to draw a 4-pointed star
-        const drawStar = (cx, cy, spikes, outerRadius, innerRadius, color, alpha) => {
-            let rot = Math.PI / 2 * 3
-            let x = cx
-            let y = cy
-            const step = Math.PI / spikes
-
+        // Helper to draw a dot
+        const drawDot = (cx, cy, radius, color, alpha) => {
             ctx.fillStyle = color
             ctx.globalAlpha = alpha
-
             ctx.beginPath()
-            ctx.moveTo(cx, cy - outerRadius)
-            for (let i = 0; i < spikes; i++) {
-                x = cx + Math.cos(rot) * outerRadius
-                y = cy + Math.sin(rot) * outerRadius
-                ctx.lineTo(x, y)
-                rot += step
-
-                x = cx + Math.cos(rot) * innerRadius
-                y = cy + Math.sin(rot) * innerRadius
-                ctx.lineTo(x, y)
-                rot += step
-            }
-            ctx.lineTo(cx, cy - outerRadius)
-            ctx.closePath()
+            ctx.arc(cx, cy, radius, 0, Math.PI * 2)
             ctx.fill()
             ctx.globalAlpha = 1.0 // reset
         }
@@ -135,26 +116,23 @@ export default function BackgroundAnimation() {
 
                 // RGB tide brightness modulation: higher opacity at high tide (waveFactor close to 1)
                 const normWave = (waveFactor + 1) / 2 // Normalize to 0..1
-                let outerR = 2.2
-                let innerR = 0.7
+                let outerR = 1.87 // 15% smaller than 2.2
                 
                 // Base opacity fluctuates between 0.15 (low tide) and 0.42 (high tide)
                 let alpha = 0.15 + normWave * 0.27
 
                 if (dist < mouse.radius) {
                     const factor = 1 - dist / mouse.radius
-                    outerR = 2.2 + factor * 3.8 // grow star size
-                    innerR = 0.7 + factor * 1.3
+                    outerR = 1.87 + factor * 3.23 // grow dot size, 15% smaller than 3.8
                     // Interaction glow: overlay additional opacity up to 0.85
                     alpha = alpha + factor * (0.85 - alpha)
                 }
 
-                // Dynamic RGB color: Hue slides smoothly over time
-                const hue = (p.baseHue + time * 15) % 360
-                const color = `hsl(${hue}, 85%, 65%)`
+                // Celeste color
+                const color = '#3EC6E0'
 
-                // Draw as a 4-pointed star
-                drawStar(p.x, p.y, 4, outerR, innerR, color, alpha)
+                // Draw as a dot
+                drawDot(p.x, p.y, outerR, color, alpha)
             }
 
 
