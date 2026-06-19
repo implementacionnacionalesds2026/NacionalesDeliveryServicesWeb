@@ -5,18 +5,41 @@ export default function ChromaKeyVideo({ src, className, scale = 1.0 }) {
     const canvasRef = useRef(null)
     const containerRef = useRef(null)
     const [videoError, setVideoError] = useState(false)
+    const [isInView, setIsInView] = useState(false)
+
+    // Setup Intersection Observer to detect visibility
+    useEffect(() => {
+        const container = containerRef.current
+        if (!container) return
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsInView(entry.isIntersecting)
+            },
+            { threshold: 0.05 } // Trigger when at least 5% of the component is visible
+        )
+        observer.observe(container)
+
+        return () => {
+            observer.disconnect()
+        }
+    }, [])
 
     useEffect(() => {
         const video = videoRef.current
         const canvas = canvasRef.current
         if (!video || !canvas) return
 
+        let active = true
         let animationFrameId
+        let callbackId
         const ctx = canvas.getContext('2d', { willReadFrequently: true })
 
         const processFrame = () => {
-            if (video.paused || video.ended) {
-                animationFrameId = requestAnimationFrame(processFrame)
+            if (!active) return
+
+            // Stop processing if not visible, paused, or ended
+            if (!isInView || video.paused || video.ended) {
                 return
             }
 
@@ -29,10 +52,10 @@ export default function ChromaKeyVideo({ src, className, scale = 1.0 }) {
                 const sw = Math.round(vw * 0.9062) // 1160px on 1280px width
                 const sh = Math.round(vh * 0.7638) // 550px on 720px height (preserves tires and roofs)
 
-                // Optimization: on mobile screens, render at 50% resolution to save CPU and battery.
-                // It will be scaled back up by the browser's CSS rendering.
+                // Optimization: render at lower resolution scale (0.8 on desktop, 0.5 on mobile)
+                // This reduces processing load by ~36% on desktop while maintaining high visual quality.
                 const isMobile = window.innerWidth < 768
-                const resolutionScale = isMobile ? 0.5 : 1.0
+                const resolutionScale = isMobile ? 0.5 : 0.8
 
                 const targetW = Math.round(sw * scale * resolutionScale)
                 const targetH = Math.round(sh * scale * resolutionScale)
@@ -41,7 +64,7 @@ export default function ChromaKeyVideo({ src, className, scale = 1.0 }) {
                     canvas.height = targetH
                 }
 
-                // Draw cropped frame to canvas (zoom in on the truck)
+                // Draw cropped frame to canvas
                 ctx.drawImage(video, sx, sy, sw, sh, 0, 0, targetW, targetH)
 
                 // Retrieve frame pixel data
@@ -103,28 +126,51 @@ export default function ChromaKeyVideo({ src, className, scale = 1.0 }) {
                 ctx.putImageData(imgData, 0, 0)
             }
 
-            animationFrameId = requestAnimationFrame(processFrame)
+            // Schedule next frame processing
+            if (video.requestVideoFrameCallback) {
+                callbackId = video.requestVideoFrameCallback(processFrame)
+            } else {
+                animationFrameId = requestAnimationFrame(processFrame)
+            }
         }
 
-        const handlePlay = () => {
-            animationFrameId = requestAnimationFrame(processFrame)
+        const startLoop = () => {
+            if (!active || !isInView) return
+            if (video.requestVideoFrameCallback) {
+                if (callbackId) video.cancelVideoFrameCallback(callbackId)
+                callbackId = video.requestVideoFrameCallback(processFrame)
+            } else {
+                if (animationFrameId) cancelAnimationFrame(animationFrameId)
+                animationFrameId = requestAnimationFrame(processFrame)
+            }
         }
 
-        const handlePause = () => {
-            cancelAnimationFrame(animationFrameId)
+        const stopLoop = () => {
+            if (animationFrameId) cancelAnimationFrame(animationFrameId)
+            if (callbackId && video.cancelVideoFrameCallback) {
+                video.cancelVideoFrameCallback(callbackId)
+            }
         }
 
-        video.addEventListener('play', handlePlay)
-        video.addEventListener('pause', handlePause)
+        video.addEventListener('play', startLoop)
+        video.addEventListener('pause', stopLoop)
 
-        // Attempt play
-        video.play().catch(err => {
-            console.log("Autoplay was prevented by browser security rules, waiting for user interaction:", err)
-        })
+        // Control video play/pause based on visibility in viewport
+        if (isInView) {
+            video.play().catch(err => {
+                console.log("Autoplay was prevented by browser security rules, waiting for user interaction:", err)
+            })
+            if (!video.paused) {
+                startLoop()
+            }
+        } else {
+            video.pause()
+            stopLoop()
+        }
 
         // Backup play on window user interactions
         const forcePlay = () => {
-            if (video.paused) {
+            if (isInView && video.paused) {
                 video.play().catch(() => { })
             }
         }
@@ -132,13 +178,14 @@ export default function ChromaKeyVideo({ src, className, scale = 1.0 }) {
         window.addEventListener('touchstart', forcePlay)
 
         return () => {
-            cancelAnimationFrame(animationFrameId)
-            video.removeEventListener('play', handlePlay)
-            video.removeEventListener('pause', handlePause)
+            active = false
+            stopLoop()
+            video.removeEventListener('play', startLoop)
+            video.removeEventListener('pause', stopLoop)
             window.removeEventListener('click', forcePlay)
             window.removeEventListener('touchstart', forcePlay)
         }
-    }, [src, scale])
+    }, [src, scale, isInView])
 
     return (
         <div ref={containerRef} className={`relative flex items-center justify-center ${className}`}>

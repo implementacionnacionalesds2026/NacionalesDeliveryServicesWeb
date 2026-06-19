@@ -360,4 +360,21 @@ body {
 
 .animate-cta-pulse:hover {
     animation-play-state: paused;
+}
+
+/* ===== BACKGROUND FLOATING PARTICLES ===== */
+@keyframes floatBgParticle {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+        opacity: 0.03;
+    }
+    50% {
+        transform: translate3d(var(--x-drift, 40px), var(--y-drift, -40px), 0) rotate(var(--r-drift, 15deg));
+        opacity: 0.09;
+    }
+}
+
+.bg-particle-animated {
+    animation: floatBgParticle var(--duration, 15s) ease-in-out var(--delay, 0s) infinite alternate;
+    will-change: transform, opacity;
 }

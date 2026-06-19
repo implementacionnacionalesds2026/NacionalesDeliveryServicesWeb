@@ -22,7 +22,7 @@ const ENVIOS_PACKAGES = [
     { name: 'Paquete Petit',   qty: 25,  perEnvio: 34, total: 850  },
     { name: 'Paquete Básico',  qty: 50,  perEnvio: 32, total: 1600 },
     { name: 'Paquete Plus',    qty: 100, perEnvio: 30, total: 3000 },
-    { name: 'Perdamos en Vos', qty: 30,  perEnvio: 25, total: 750  },
+    { name: 'Pensando en Vos', qty: 30,  perEnvio: 25, total: 750  },
     { name: 'Ponete Pilas',    qty: 10,  perEnvio: 20, total: 200  },
 ]
 
