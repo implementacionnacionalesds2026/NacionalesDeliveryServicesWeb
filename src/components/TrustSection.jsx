@@ -1,14 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { Shield, Package, Users, MapPin, Award, Target, Eye } from 'lucide-react'
+import { Shield, Package, Users, MapPin, Award, Target, Eye, Briefcase } from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
-
-// ===== STATS DATA (valores del brief) =====
-const stats = [
-    { icon: Package, value: 1833, suffix: '+', label: 'Envíos Realizados', color: 'text-accent' },
-    { icon: Users, value: 550, suffix: '+', label: 'Clientes Satisfechos', color: 'text-blue-400' },
-    { icon: MapPin, value: 18, suffix: '+', label: 'Municipios Cubiertos', color: 'text-purple-400' },
-    { icon: Award, value: 18, suffix: '%', label: 'Confianza / Recomendación', color: 'text-amber-400' },
-]
 
 // ===== COUNTER COMPONENT =====
 function Counter({ target, suffix }) {
@@ -17,6 +9,10 @@ function Counter({ target, suffix }) {
     const started = useRef(false)
 
     useEffect(() => {
+        // Reset if target changes so it animates again on new data
+        started.current = false;
+        setCount(0);
+
         const obs = new IntersectionObserver(
             ([e]) => {
                 if (e.isIntersecting && !started.current) {
@@ -51,6 +47,37 @@ function Counter({ target, suffix }) {
 
 // ===== MAIN COMPONENT =====
 export default function TrustSection() {
+    const [stats, setStats] = useState([
+        { id: 'envios', icon: Package, value: 0, suffix: '+', label: 'Envíos Realizados', color: 'text-accent' },
+        { id: 'clientes', icon: Users, value: 0, suffix: '+', label: 'Clientes Satisfechos', color: 'text-blue-400' },
+        { id: 'municipios', icon: MapPin, value: 340, suffix: '', label: 'Municipios Cubiertos', color: 'text-purple-400' },
+        { id: 'colaboradores', icon: Briefcase, value: 0, suffix: '', label: 'Colaboradores trabajando en el sistema', color: 'text-emerald-400' },
+    ]);
+
+    useEffect(() => {
+        const fetchStats = async () => {
+            try {
+                // Fetch de la API creada en Nexgo
+                const response = await fetch('http://localhost:3000/api/public/stats');
+                const result = await response.json();
+                
+                if (result.success) {
+                    const data = result.data;
+                    setStats([
+                        { id: 'envios', icon: Package, value: data.enviosRealizados, suffix: '+', label: 'Envíos Realizados', color: 'text-accent' },
+                        { id: 'clientes', icon: Users, value: data.clientesSatisfechos, suffix: '+', label: 'Clientes Satisfechos', color: 'text-blue-400' },
+                        { id: 'municipios', icon: MapPin, value: data.municipiosCubiertos, suffix: '', label: 'Municipios Cubiertos', color: 'text-purple-400' },
+                        { id: 'colaboradores', icon: Briefcase, value: data.colaboradores, suffix: '', label: 'Colaboradores trabajando en el sistema', color: 'text-emerald-400' },
+                    ]);
+                }
+            } catch (error) {
+                console.error("Error al obtener estadísticas en vivo:", error);
+            }
+        };
+
+        fetchStats();
+    }, []);
+
     return (
         <section id="nosotros" className="py-28 relative overflow-hidden">
             {/* Ambient orbs */}
@@ -120,7 +147,7 @@ export default function TrustSection() {
                         <div className="absolute inset-0 grid-pattern opacity-20 rounded-3xl" />
                         <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                             {stats.map((s, i) => (
-                                <ScrollReveal key={s.label} delay={i * 80}>
+                                <ScrollReveal key={s.id} delay={i * 80}>
                                     <div className="stat-card group hover:border-accent/40 hover:bg-white/10 transition-all duration-500 flex flex-col items-center justify-center p-6 min-h-[160px]">
                                         <s.icon className={`w-8 h-8 mx-auto mb-3 ${s.color} group-hover:scale-110 transition-transform duration-500`} />
                                         <p className={`text-3xl md:text-4xl font-extrabold ${s.color} mb-2`}>
