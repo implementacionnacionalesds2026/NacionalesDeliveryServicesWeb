@@ -153,8 +153,8 @@ export default function TrustSection() {
                                 <h3 className="text-xl md:text-2xl font-bold text-white">Nuestro Impacto</h3>
                                 <p className="text-blue-300 text-xs md:text-sm mt-1">Cifras que respaldan nuestro compromiso con Guatemala</p>
                             </div>
-                            <div className="flex items-center">
-                                <span className="text-amber-400 text-xs font-bold tracking-wide uppercase">Actualizado en tiempo real</span>
+                            <div className="flex items-center px-4 py-1.5 rounded-full bg-amber-400 shadow-sm">
+                                <span className="text-blue-950 text-xs font-bold tracking-wider uppercase">Actualizado en tiempo real</span>
                             </div>
                         </div>
 
