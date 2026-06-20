@@ -150,8 +150,8 @@ export default function TrustSection() {
                         <div className="absolute inset-0 grid-pattern opacity-20 rounded-3xl" />
                         <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                             {stats.map((s, i) => (
-                                <ScrollReveal key={s.id} delay={i * 80} className="h-full">
-                                    <div className="stat-card h-full group hover:border-accent/40 hover:bg-white/10 transition-all duration-500 flex flex-col items-center justify-center p-6 min-h-[160px]">
+                                <ScrollReveal key={s.id} delay={i * 80} className="flex">
+                                    <div className="w-full stat-card group hover:border-accent/40 hover:bg-white/10 transition-all duration-500 flex flex-col items-center justify-center p-6 min-h-[160px]">
                                         <s.icon className={`w-8 h-8 mx-auto mb-3 ${s.color} group-hover:scale-110 transition-transform duration-500`} />
                                         <p className={`text-3xl md:text-4xl font-extrabold ${s.color} mb-2`}>
                                             <Counter target={s.value} suffix={s.suffix} />
