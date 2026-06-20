@@ -43,11 +43,11 @@ export default function ServicesSection() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <ScrollReveal>
                     <div className="text-center mb-16">
-                        <h2 className="section-title">
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-3 leading-tight">
                             Todo lo que necesitas para{' '}
                             <span className="gradient-text">enviar y recibir</span>
                         </h2>
-                        <p className="section-subtitle">
+                        <p className="text-base md:text-lg text-blue-200 max-w-2xl mx-auto leading-relaxed">
                             Ofrecemos una gama completa de servicios de paquetería y mensajería para conectar Guatemala.
                         </p>
                     </div>
