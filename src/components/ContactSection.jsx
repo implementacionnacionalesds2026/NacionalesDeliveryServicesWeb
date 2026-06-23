@@ -74,11 +74,8 @@ export default function ContactSection() {
                 </ScrollReveal>
 
                 <div className="grid lg:grid-cols-2 gap-8">
-                    {/* Form */}
                     <ScrollReveal delay={100}>
                         <form ref={formRef} onSubmit={handleSubmit} className="glass rounded-3xl p-8 space-y-5 relative overflow-hidden">
-                            {/* Decorative background glow removed as per user request */}
-
                             <div className="grid sm:grid-cols-2 gap-5 relative z-10">
                                 <div className="group">
                                     <label className="text-sm text-blue-300 font-semibold mb-1.5 block">Nombre *</label>
@@ -87,7 +84,6 @@ export default function ContactSection() {
                                         name="name"
                                         value={form.name}
                                         onChange={(e) => {
-                                            // Only allow letters and spaces
                                             if (/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/.test(e.target.value)) {
                                                 handleChange(e)
                                             }
@@ -109,7 +105,6 @@ export default function ContactSection() {
                                             name="phone"
                                             value={form.phone}
                                             onChange={(e) => {
-                                                // Only allow up to 8 digits
                                                 if (/^[0-9]{0,8}$/.test(e.target.value)) {
                                                     handleChange(e)
                                                 }
@@ -164,10 +159,8 @@ export default function ContactSection() {
                         </form>
                     </ScrollReveal>
 
-                    {/* Info */}
                     <ScrollReveal delay={200} className="h-full">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 h-full">
-                            {/* Contact cards */}
                             {[
                                 {
                                     city: 'GUATEMALA (CENTRAL)',
@@ -211,19 +204,27 @@ export default function ContactSection() {
                                 </div>
                             ))}
 
-                            {/* Email Card - Wide */}
-                            <div className="sm:col-span-2 glass rounded-2xl p-6 hover:border-accent/30 transition-all group flex items-center gap-5">
-                                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-lg">
-                                    <Mail className="w-6 h-6" />
+                            {/* Bottom row: Email and WhatsApp */}
+                            <div className="sm:col-span-2 flex flex-col sm:flex-row gap-5 items-stretch min-h-[90px]">
+                                {/* Email Card (Glass rectangular) */}
+                                <div className="flex-1 glass rounded-2xl p-5 hover:border-accent/30 transition-all group flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-lg">
+                                        <Mail className="w-6 h-6" />
+                                    </div>
+                                    <div className="flex flex-col min-w-0">
+                                        <p className="text-white font-bold text-sm mb-0.5">Correo Electrónico</p>
+                                        <a href="mailto:nacionalesdelivery@gmail.com" className="text-blue-300 text-sm hover:text-accent transition-colors truncate">
+                                            nacionalesdelivery@gmail.com
+                                        </a>
+                                    </div>
                                 </div>
-                                <div className="flex flex-col">
-                                    <p className="text-white font-bold text-sm mb-0.5">Correo Electrónico</p>
-                                    <a href="mailto:nacionalesdelivery@gmail.com" className="text-blue-300 text-sm hover:text-accent transition-colors truncate">
-                                        nacionalesdelivery@gmail.com
-                                    </a>
-                                </div>
-                            </div>
 
+                                {/* WhatsApp Card (Cyan btn-primary square) */}
+                                <a href="https://wa.me/50255683682" target="_blank" rel="noopener noreferrer" className="btn-primary !p-0 !rounded-2xl !flex !flex-col !items-center !justify-center !gap-1.5 shrink-0 w-full sm:w-[110px] py-5 sm:py-0 group">
+                                    <WhatsAppIcon className="w-7 h-7 text-[#05081a] group-hover:scale-110 transition-transform" />
+                                    <span className="text-[#05081a] font-bold text-[11px] uppercase tracking-wider">WhatsApp</span>
+                                </a>
+                            </div>
 
                         </div>
                     </ScrollReveal>
