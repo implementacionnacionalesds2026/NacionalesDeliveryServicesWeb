@@ -1,12 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import { AdminProvider } from './context/AdminContext'
-import HomePage from './pages/HomePage'
-import AdminPage from './pages/AdminPage'
-import CotizadorPage from './pages/CotizadorPage'
-
+import React, { Suspense } from 'react'
 import StickyLinksPanel from './components/StickyLinksPanel'
 import BackgroundAnimation from './components/BackgroundAnimation'
+
+const HomePage = React.lazy(() => import('./pages/HomePage'))
+const AdminPage = React.lazy(() => import('./pages/AdminPage'))
+const CotizadorPage = React.lazy(() => import('./pages/CotizadorPage'))
 
 
 export default function App() {
@@ -33,17 +34,19 @@ export default function App() {
                 <BackgroundAnimation />
                 <StickyLinksPanel />
 
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/inicio" element={<HomePage />} />
-                    <Route path="/servicios" element={<HomePage />} />
-                    <Route path="/rutas" element={<HomePage />} />
-                    <Route path="/promociones" element={<HomePage />} />
-                    <Route path="/nosotros" element={<HomePage />} />
-                    <Route path="/contacto" element={<HomePage />} />
-                    <Route path="/cotizador" element={<CotizadorPage />} />
-                    <Route path="/admin" element={<AdminPage />} />
-                </Routes>
+                <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#05081a] text-accent font-bold">Cargando...</div>}>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/inicio" element={<HomePage />} />
+                        <Route path="/servicios" element={<HomePage />} />
+                        <Route path="/rutas" element={<HomePage />} />
+                        <Route path="/promociones" element={<HomePage />} />
+                        <Route path="/nosotros" element={<HomePage />} />
+                        <Route path="/contacto" element={<HomePage />} />
+                        <Route path="/cotizador" element={<CotizadorPage />} />
+                        <Route path="/admin" element={<AdminPage />} />
+                    </Routes>
+                </Suspense>
             </BrowserRouter>
         </AdminProvider>
     )

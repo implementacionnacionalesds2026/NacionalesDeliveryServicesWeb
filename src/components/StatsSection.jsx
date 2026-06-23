@@ -49,7 +49,7 @@ export default function StatsSection() {
         { id: 'envios', icon: Package, value: 0, suffix: '+', label: 'Envíos Realizados', color: 'text-accent' },
         { id: 'clientes', icon: Users, value: 0, suffix: '+', label: 'Clientes Satisfechos', color: 'text-blue-400' },
         { id: 'municipios', icon: MapPin, value: 340, suffix: '', label: 'Municipios Cubiertos', color: 'text-purple-400' },
-        { id: 'colaboradores', icon: Briefcase, value: 0, suffix: '', label: 'Colaboradores trabajando en el sistema', color: 'text-emerald-400' },
+        { id: 'colaboradores', icon: Briefcase, value: 0, suffix: '', label: 'Colaboradores activos', color: 'text-emerald-400' },
     ]);
 
     useEffect(() => {
@@ -65,7 +65,7 @@ export default function StatsSection() {
                         { id: 'envios', icon: Package, value: data.enviosRealizados, suffix: '+', label: 'Envíos Realizados', color: 'text-accent' },
                         { id: 'clientes', icon: Users, value: data.clientesSatisfechos, suffix: '+', label: 'Clientes Satisfechos', color: 'text-blue-400' },
                         { id: 'municipios', icon: MapPin, value: data.municipiosCubiertos, suffix: '', label: 'Municipios Cubiertos', color: 'text-purple-400' },
-                        { id: 'colaboradores', icon: Briefcase, value: data.colaboradores, suffix: '', label: 'Colaboradores trabajando en el sistema', color: 'text-emerald-400' },
+                        { id: 'colaboradores', icon: Briefcase, value: data.colaboradores, suffix: '', label: 'Colaboradores activos', color: 'text-emerald-400' },
                     ]);
                 }
             } catch (error) {
