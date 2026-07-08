@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, X, Package, Phone } from 'lucide-react'
+import { Menu, X, Package, Phone, Search } from 'lucide-react'
 import { useAdmin } from '../context/AdminContext'
 
 const navLinks = [
     { label: 'Inicio', path: '/inicio' },
+    { label: 'Rastreo', path: '/rastreo' },
     { label: 'Servicios', path: '/servicios' },
     { label: 'Nosotros', path: '/nosotros' },
     { label: 'Contacto', path: '/contacto' },
@@ -64,7 +65,7 @@ export default function Navbar() {
                                 <img src="/images/logo.png" alt="Nacionales Logo" className="w-full h-full object-contain rounded-xl" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
                                 <Package className="w-full h-full text-accent hidden p-1" />
                             </div>
-                            <div>
+                            <div className="hidden lg:block">
                                 <h1 className="text-lg font-bold text-white leading-tight tracking-tight">
                                     Nacionales
                                 </h1>
@@ -73,6 +74,22 @@ export default function Navbar() {
                                 </p>
                             </div>
                         </Link>
+
+                        {/* Mobile Rastreo Button */}
+                        <button
+                            onClick={() => handleNavClick('/rastreo')}
+                            className="flex lg:hidden btn-primary !px-2.5 !py-1.5 !rounded-lg items-center gap-1.5 animate-cta-pulse cursor-pointer border-none bg-transparent"
+                        >
+                            <img
+                                src="/images/IzotipoNormalNexgoWhite.png"
+                                alt="Nexgo Logo"
+                                className="w-[22px] h-[22px] object-contain brightness-0"
+                            />
+                            <span className="flex flex-col text-left leading-tight">
+                                <span className="text-[7px] font-bold opacity-80 uppercase tracking-wider">Rastrea con</span>
+                                <span className="text-[10px] font-black uppercase tracking-wide -mt-0.5">Nexgo</span>
+                            </span>
+                        </button>
 
                         {/* Desktop nav */}
                         <div className="hidden lg:flex items-center gap-2">

@@ -38,6 +38,7 @@ export default function App() {
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/inicio" element={<HomePage />} />
+                        <Route path="/rastreo" element={<HomePage />} />
                         <Route path="/servicios" element={<HomePage />} />
                         <Route path="/rutas" element={<HomePage />} />
                         <Route path="/promociones" element={<HomePage />} />
