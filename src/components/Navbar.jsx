@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, X, Package, Phone, Search } from 'lucide-react'
-import { useAdmin } from '../context/AdminContext'
+import { Menu, X, Package, Phone } from 'lucide-react'
 
 const navLinks = [
     { label: 'Inicio', path: '/inicio' },
@@ -13,15 +12,9 @@ const navLinks = [
 ]
 
 export default function Navbar() {
-    const { config } = useAdmin()
     const [scrolled, setScrolled] = useState(false)
     const [mobileOpen, setMobileOpen] = useState(false)
     const navRef = useRef(null)
-
-    const getCotizarUrl = () => {
-        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        return isLocal ? 'http://localhost:4200/cotizar' : 'https://nexgo.delivery/cotizar';
-    };
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 50)
