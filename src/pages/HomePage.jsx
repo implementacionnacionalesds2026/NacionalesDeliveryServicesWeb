@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import HeroSection from '../components/HeroSection'
+import TrackingSection from '../components/TrackingSection'
 import ServicesSection from '../components/ServicesSection'
 import PromosSection from '../components/PromosSection'
 import TrustSection from '../components/TrustSection'
@@ -36,7 +37,7 @@ export default function HomePage() {
         <div className="bg-main">
             <Navbar />
             <HeroSection />
-            {/* <TrackingSection /> */}
+            <TrackingSection />
             <ServicesSection />
             <PromosSection />
             <TrustSection />

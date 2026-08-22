@@ -1,7 +1,86 @@
-import { Target, Eye } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { Shield, Package, Users, MapPin, Award, Target, Eye, Briefcase } from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
 
+// ===== COUNTER COMPONENT =====
+function Counter({ target, suffix }) {
+    const [count, setCount] = useState(0)
+    const ref = useRef(null)
+    const started = useRef(false)
+
+    useEffect(() => {
+        // Reset if target changes so it animates again on new data
+        started.current = false;
+        setCount(0);
+
+        const obs = new IntersectionObserver(
+            ([e]) => {
+                if (e.isIntersecting && !started.current) {
+                    started.current = true
+                    const dur = 1800
+                    const steps = 60
+                    const inc = target / steps
+                    let current = 0
+                    const timer = setInterval(() => {
+                        current += inc
+                        if (current >= target) {
+                            setCount(target)
+                            clearInterval(timer)
+                        } else {
+                            setCount(Math.floor(current))
+                        }
+                    }, dur / steps)
+                }
+            },
+            { threshold: 0.3 }
+        )
+        if (ref.current) obs.observe(ref.current)
+        return () => obs.disconnect()
+    }, [target])
+
+    return (
+        <span ref={ref}>
+            {count.toLocaleString()}{suffix}
+        </span>
+    )
+}
+
+// ===== MAIN COMPONENT =====
 export default function TrustSection() {
+    const [stats, setStats] = useState([
+        { id: 'envios', icon: Package, value: 0, suffix: '+', label: 'Envíos Realizados', color: 'text-accent' },
+        { id: 'clientes', icon: Users, value: 0, suffix: '+', label: 'Clientes Satisfechos', color: 'text-blue-400' },
+        { id: 'municipios', icon: MapPin, value: 340, suffix: '', label: 'Municipios Cubiertos', color: 'text-purple-400' },
+        { id: 'colaboradores', icon: Briefcase, value: 0, suffix: '', label: 'Colaboradores activos', color: 'text-emerald-400' },
+    ]);
+
+    useEffect(() => {
+        const fetchStats = async () => {
+            try {
+                // Fetch dinámico dependiendo del entorno (local o producción)
+                const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+                    ? 'http://localhost:3000/api/public/stats'
+                    : 'https://api.nexgo.delivery/api/public/stats';
+                const response = await fetch(apiUrl);
+                const result = await response.json();
+                
+                if (result.success) {
+                    const data = result.data;
+                    setStats([
+                        { id: 'envios', icon: Package, value: data.enviosRealizados, suffix: '+', label: 'Envíos Realizados', color: 'text-accent' },
+                        { id: 'clientes', icon: Users, value: data.clientesSatisfechos, suffix: '+', label: 'Clientes Satisfechos', color: 'text-blue-400' },
+                        { id: 'municipios', icon: MapPin, value: data.municipiosCubiertos, suffix: '', label: 'Municipios Cubiertos', color: 'text-purple-400' },
+                        { id: 'colaboradores', icon: Briefcase, value: data.colaboradores, suffix: '', label: 'Colaboradores activos', color: 'text-emerald-400' },
+                    ]);
+                }
+            } catch (error) {
+                console.error("Error al obtener estadísticas en vivo:", error);
+            }
+        };
+
+        fetchStats();
+    }, []);
+
     return (
         <section id="nosotros" className="min-h-screen flex flex-col justify-center py-20 md:py-24 relative overflow-hidden">
             {/* Ambient orbs */}
@@ -65,10 +144,10 @@ export default function TrustSection() {
                     </ScrollReveal>
                 </div>
 
-                {/* ── STATS STRIP (Temporalmente deshabilitado - Nexgo) ── */}
-                {/*
+                {/* ── STATS STRIP ── */}
                 <ScrollReveal>
                     <div className="relative mt-8">
+                        {/* Title & Live indicator */}
                         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-6 gap-3 border-b border-white/10 pb-4">
                             <div>
                                 <h3 className="text-xl md:text-2xl font-bold text-white">Nuestro Impacto</h3>
@@ -84,6 +163,7 @@ export default function TrustSection() {
                                 <ScrollReveal key={s.id} delay={i * 100} className="flex">
                                     <div className="relative w-full h-full rounded-2xl bg-[#0a1035]/60 border border-white/10 p-5 md:p-6 backdrop-blur-xl group hover:-translate-y-1 hover:border-white/30 transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-xl">
                                         
+                                        {/* Background subtle glow */}
                                         <div className="absolute -top-20 -right-20 w-40 h-40 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-colors duration-700 pointer-events-none" />
 
                                         <div className="relative z-10 flex items-center justify-between mb-6">
@@ -99,6 +179,7 @@ export default function TrustSection() {
                                             </p>
                                         </div>
                                         
+                                        {/* Bottom subtle accent line */}
                                         <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:w-full transition-all duration-700 opacity-0 group-hover:opacity-100" />
                                     </div>
                                 </ScrollReveal>
@@ -106,7 +187,6 @@ export default function TrustSection() {
                         </div>
                     </div>
                 </ScrollReveal>
-                */}
 
             </div>
         </section>

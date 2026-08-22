@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, X, Package, Phone } from 'lucide-react'
+import { Menu, X, Package, Phone, Search } from 'lucide-react'
+import { useAdmin } from '../context/AdminContext'
 
 const navLinks = [
     { label: 'Inicio', path: '/inicio' },
-    // { label: 'Rastreo', path: '/rastreo' }, // Temporalmente deshabilitado (Nexgo)
+    { label: 'Rastreo', path: '/rastreo' },
     { label: 'Servicios', path: '/servicios' },
     { label: 'Nosotros', path: '/nosotros' },
     { label: 'Contacto', path: '/contacto' },
@@ -12,9 +13,15 @@ const navLinks = [
 ]
 
 export default function Navbar() {
+    const { config } = useAdmin()
     const [scrolled, setScrolled] = useState(false)
     const [mobileOpen, setMobileOpen] = useState(false)
     const navRef = useRef(null)
+
+    const getCotizarUrl = () => {
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        return isLocal ? 'http://localhost:4200/cotizar' : 'https://nexgo.delivery/cotizar';
+    };
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 50)
@@ -41,6 +48,7 @@ export default function Navbar() {
         if (mobileOpen) setMobileOpen(false);
     };
 
+    const whatsappNumber = config.whatsapp.number
     const telNumber = '55683682'
 
     return (
@@ -67,6 +75,22 @@ export default function Navbar() {
                             </div>
                         </Link>
 
+                        {/* Mobile Rastreo Button */}
+                        <button
+                            onClick={() => handleNavClick('/rastreo')}
+                            className="flex lg:hidden btn-primary !px-2.5 !py-1.5 !rounded-lg items-center gap-1.5 animate-cta-pulse cursor-pointer border-none bg-transparent"
+                        >
+                            <img
+                                src="/images/IzotipoNormalNexgoWhite.png"
+                                alt="Nexgo Logo"
+                                className="w-[22px] h-[22px] object-contain brightness-0"
+                            />
+                            <span className="flex flex-col text-left leading-tight">
+                                <span className="text-[7px] font-bold opacity-80 uppercase tracking-wider">Rastrea con</span>
+                                <span className="text-[10px] font-black uppercase tracking-wide -mt-0.5">Nexgo</span>
+                            </span>
+                        </button>
+
                         {/* Desktop nav */}
                         <div className="hidden lg:flex items-center gap-2">
                             {navLinks.map((link) => (
@@ -90,16 +114,37 @@ export default function Navbar() {
                                 <Phone className="w-4 h-4" />
                                 <span className="font-semibold">5568-3682</span>
                             </a>
+                            <a
+                                href={getCotizarUrl()}
+                                className="btn-primary !px-4 !py-2 !rounded-xl !flex !items-center !gap-2.5 animate-cta-pulse cursor-pointer border-none bg-transparent"
+                            >
+                                <img
+                                    src="/images/IzotipoNormalNexgoWhite.png"
+                                    alt="Nexgo Logo"
+                                    className="w-[38px] h-[38px] object-contain brightness-0"
+                                />
+                                <span className="flex flex-col text-left leading-tight">
+                                    <span className="text-[9px] font-bold opacity-80 uppercase tracking-wider">Cotiza con</span>
+                                    <span className="text-xs font-black uppercase tracking-wide -mt-0.5">Nexgo</span>
+                                </span>
+                            </a>
                         </div>
 
                         {/* Mobile CTA & Toggle */}
                         <div className="flex lg:hidden items-center gap-2">
                             <a
-                                href={`tel:${telNumber}`}
-                                className="flex items-center gap-1 px-3 py-1.5 text-xs text-accent hover:text-white transition-colors"
+                                href={getCotizarUrl()}
+                                className="btn-primary !px-2.5 !py-1.5 !rounded-lg flex items-center gap-1.5 animate-cta-pulse cursor-pointer border-none bg-transparent"
                             >
-                                <Phone className="w-4 h-4" />
-                                <span className="font-semibold">5568-3682</span>
+                                <img
+                                    src="/images/IzotipoNormalNexgoWhite.png"
+                                    alt="Nexgo Logo"
+                                    className="w-[22px] h-[22px] object-contain brightness-0"
+                                />
+                                <span className="flex flex-col text-left leading-tight">
+                                    <span className="text-[7px] font-bold opacity-80 uppercase tracking-wider">Cotiza con</span>
+                                    <span className="text-[10px] font-black uppercase tracking-wide -mt-0.5">Nexgo</span>
+                                </span>
                             </a>
                             <button
                                 onClick={() => setMobileOpen(!mobileOpen)}
