@@ -41,7 +41,6 @@ export default function Navbar() {
         if (mobileOpen) setMobileOpen(false);
     };
 
-    const whatsappNumber = config.whatsapp.number
     const telNumber = '55683682'
 
     return (
