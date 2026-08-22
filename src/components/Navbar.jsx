@@ -5,7 +5,7 @@ import { useAdmin } from '../context/AdminContext'
 
 const navLinks = [
     { label: 'Inicio', path: '/inicio' },
-    { label: 'Rastreo', path: '/rastreo' },
+    // { label: 'Rastreo', path: '/rastreo' }, // Temporalmente deshabilitado (Nexgo)
     { label: 'Servicios', path: '/servicios' },
     { label: 'Nosotros', path: '/nosotros' },
     { label: 'Contacto', path: '/contacto' },
@@ -75,22 +75,6 @@ export default function Navbar() {
                             </div>
                         </Link>
 
-                        {/* Mobile Rastreo Button */}
-                        <button
-                            onClick={() => handleNavClick('/rastreo')}
-                            className="flex lg:hidden btn-primary !px-2.5 !py-1.5 !rounded-lg items-center gap-1.5 animate-cta-pulse cursor-pointer border-none bg-transparent"
-                        >
-                            <img
-                                src="/images/IzotipoNormalNexgoWhite.png"
-                                alt="Nexgo Logo"
-                                className="w-[22px] h-[22px] object-contain brightness-0"
-                            />
-                            <span className="flex flex-col text-left leading-tight">
-                                <span className="text-[7px] font-bold opacity-80 uppercase tracking-wider">Rastrea con</span>
-                                <span className="text-[10px] font-black uppercase tracking-wide -mt-0.5">Nexgo</span>
-                            </span>
-                        </button>
-
                         {/* Desktop nav */}
                         <div className="hidden lg:flex items-center gap-2">
                             {navLinks.map((link) => (
@@ -114,37 +98,16 @@ export default function Navbar() {
                                 <Phone className="w-4 h-4" />
                                 <span className="font-semibold">5568-3682</span>
                             </a>
-                            <a
-                                href={getCotizarUrl()}
-                                className="btn-primary !px-4 !py-2 !rounded-xl !flex !items-center !gap-2.5 animate-cta-pulse cursor-pointer border-none bg-transparent"
-                            >
-                                <img
-                                    src="/images/IzotipoNormalNexgoWhite.png"
-                                    alt="Nexgo Logo"
-                                    className="w-[38px] h-[38px] object-contain brightness-0"
-                                />
-                                <span className="flex flex-col text-left leading-tight">
-                                    <span className="text-[9px] font-bold opacity-80 uppercase tracking-wider">Cotiza con</span>
-                                    <span className="text-xs font-black uppercase tracking-wide -mt-0.5">Nexgo</span>
-                                </span>
-                            </a>
                         </div>
 
                         {/* Mobile CTA & Toggle */}
                         <div className="flex lg:hidden items-center gap-2">
                             <a
-                                href={getCotizarUrl()}
-                                className="btn-primary !px-2.5 !py-1.5 !rounded-lg flex items-center gap-1.5 animate-cta-pulse cursor-pointer border-none bg-transparent"
+                                href={`tel:${telNumber}`}
+                                className="flex items-center gap-1 px-3 py-1.5 text-xs text-accent hover:text-white transition-colors"
                             >
-                                <img
-                                    src="/images/IzotipoNormalNexgoWhite.png"
-                                    alt="Nexgo Logo"
-                                    className="w-[22px] h-[22px] object-contain brightness-0"
-                                />
-                                <span className="flex flex-col text-left leading-tight">
-                                    <span className="text-[7px] font-bold opacity-80 uppercase tracking-wider">Cotiza con</span>
-                                    <span className="text-[10px] font-black uppercase tracking-wide -mt-0.5">Nexgo</span>
-                                </span>
+                                <Phone className="w-4 h-4" />
+                                <span className="font-semibold">5568-3682</span>
                             </a>
                             <button
                                 onClick={() => setMobileOpen(!mobileOpen)}

@@ -144,10 +144,10 @@ export default function TrustSection() {
                     </ScrollReveal>
                 </div>
 
-                {/* ── STATS STRIP ── */}
+                {/* ── STATS STRIP (Temporalmente deshabilitado - Nexgo) ── */}
+                {/*
                 <ScrollReveal>
                     <div className="relative mt-8">
-                        {/* Title & Live indicator */}
                         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-6 gap-3 border-b border-white/10 pb-4">
                             <div>
                                 <h3 className="text-xl md:text-2xl font-bold text-white">Nuestro Impacto</h3>
@@ -163,7 +163,6 @@ export default function TrustSection() {
                                 <ScrollReveal key={s.id} delay={i * 100} className="flex">
                                     <div className="relative w-full h-full rounded-2xl bg-[#0a1035]/60 border border-white/10 p-5 md:p-6 backdrop-blur-xl group hover:-translate-y-1 hover:border-white/30 transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-xl">
                                         
-                                        {/* Background subtle glow */}
                                         <div className="absolute -top-20 -right-20 w-40 h-40 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-colors duration-700 pointer-events-none" />
 
                                         <div className="relative z-10 flex items-center justify-between mb-6">
@@ -179,7 +178,6 @@ export default function TrustSection() {
                                             </p>
                                         </div>
                                         
-                                        {/* Bottom subtle accent line */}
                                         <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:w-full transition-all duration-700 opacity-0 group-hover:opacity-100" />
                                     </div>
                                 </ScrollReveal>
@@ -187,6 +185,7 @@ export default function TrustSection() {
                         </div>
                     </div>
                 </ScrollReveal>
+                */}
 
             </div>
         </section>

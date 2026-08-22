@@ -37,7 +37,7 @@ export default function HomePage() {
         <div className="bg-main">
             <Navbar />
             <HeroSection />
-            <TrackingSection />
+            {/* <TrackingSection /> */}
             <ServicesSection />
             <PromosSection />
             <TrustSection />
